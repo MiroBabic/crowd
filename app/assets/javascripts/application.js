@@ -12,10 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require modernizr
 //= require bootstrap-sprockets
 //= require app.js
+//= require login-signup-modal/main.js
 //= require turbolinks
 //= require_tree .
+
 
  jQuery(document).ready(function() {
       	App.init();
