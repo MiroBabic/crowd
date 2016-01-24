@@ -21,7 +21,19 @@
                     <li class="topbar-devider"></li>
                     <li><a href="page_faq.html">FAQ</a></li>
                     <li class="topbar-devider"></li>
+                    <% if user_signed_in? %>
+                    <li class="hoverSelector">
+                        <a>
+                            Profil
+                        </a>
+                    <ul class="languages hoverSelectorBlock">
+                    <%= link_to current_user.email, edit_user_registration_path, :class => 'active' %>
+                    <%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete  %>
+                    </ul>
+                    </li>
+                    <% else %>
                     <li class="cd-log_reg"><a class="cd-signin" href="javascript:void(0);">Login</a></li>
+                    <% end %>
                 </ul>
     </div>
     </div>
@@ -74,39 +86,29 @@
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
-                <form class="cd-form">
+                
                     <p class="social-login">
                         <span class="social-login-facebook"><a href="#"><i class="fa fa-facebook"></i> Facebook</a></span>
                         <span class="social-login-google"><a href="#"><i class="fa fa-google"></i> Google</a></span>
                         <span class="social-login-twitter"><a href="#"><i class="fa fa-twitter"></i> Twitter</a></span>
                     </p>
 
-                    <div class="lined-text"><span>Or use your account on Unify</span><hr></div>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="signin-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
-                        <span class="cd-error-message">Error message here!</span>
+                    <div class="lined-text"><span>Alebo použi svoj účet na Support Your Dream</span><hr></div>
+                    <%= form_for(:user, :url => session_path(:user), :html => { :class => "cd-form"}) do |f| %>
+                      <p class="fieldset">
+                       <%= f.label :name, 'Username', :class => 'image-replace cd-username' %>
+                       <%= f.text_field :email, :class => 'full-width has-padding has-border', :placeholder => 'Username' %>
+                   </p>
+                       <p class="fieldset">
+                        <%= f.label :name, 'Heslo', :class => 'image-replace cd-password' %>
+                        <%= f.password_field :password, :class => 'full-width has-padding has-border', :placeholder => 'Heslo' %>
                     </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signin-password">Password</label>
-                        <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
-                        <a href="javascript:void(0);" class="hide-password">Hide</a>
-                        <span class="cd-error-message">Error message here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input type="checkbox" id="remember-me" checked>
-                        <label for="remember-me">Remember me</label>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width" type="submit" value="Login">
-                    </p>
-                </form>
-
-                <p class="cd-form-bottom-message"><a href="javascript:void(0);">Forgot your password?</a></p>
+                       <p class="fieldset"><%= f.check_box :remember_me %>
+                      <%= f.label :remember_me %></p>
+                      <%= f.submit 'Sign in', :class=>'full-width has-padding' %>
+                    <p class="cd-form-bottom-message">  <%= link_to "Forgot your password?", new_password_path(:user) %><p>
+                    <% end %>
+                   
                 <!-- <a href="javascript:void(0);" class="cd-close-form">Close</a> -->
             </div> <!-- cd-login -->
 
@@ -119,7 +121,7 @@
                     </p>
 
                     <div class="lined-text"><span>Or register your new account on Unify</span><hr></div>
-
+                    
                     <p class="fieldset">
                         <label class="image-replace cd-username" for="signup-username">Username</label>
                         <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
@@ -146,7 +148,7 @@
 
                     <p class="fieldset">
                         <input class="full-width has-padding" type="submit" value="Create account">
-                    </p>
+                    </p> 
                 </form>
 
                 <!-- <a href="javascript:void(0);" class="cd-close-form">Close</a> -->
