@@ -19,7 +19,7 @@
                         </ul>
                     </li>
                     <li class="topbar-devider"></li>
-                    <li><a href="page_faq.html">FAQ</a></li>
+                    <li><a href="page_faq.html">O nás</a></li>
                     <li class="topbar-devider"></li>
                     <% if user_signed_in? %>
                     <li class="hoverSelector">
@@ -105,7 +105,7 @@
                         <%= f.password_field :password, :class => 'full-width has-padding has-border', :placeholder => 'Heslo' %>
                     </p>
                        <p class="fieldset"><%= f.check_box :remember_me %>
-                      <%= f.label :remember_me %></p>
+                      <%= f.label :name, 'pamätaj si ma' %></p>
                       <%= f.submit 'Prihlás sa', :class=>'full-width has-padding' %>
                     <p class="cd-form-bottom-message">  <%= link_to "Zabudol si heslo?", new_password_path(:user) %><p>
                     <% end %>

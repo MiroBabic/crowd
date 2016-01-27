@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Bios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>Zip</th>
+      <th>Phone</th>
+      <th>Contactemail</th>
+      <th>Picture</th>
+      <th>Fbprofile</th>
+      <th>Gplusprofile</th>
+      <th>Twitterprofile</th>
+      <th>Personalweb</th>
+      <th>Aboutme</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bios.each do |bio| %>
+      <tr>
+        <td><%= bio.name %></td>
+        <td><%= bio.street %></td>
+        <td><%= bio.city %></td>
+        <td><%= bio.zip %></td>
+        <td><%= bio.phone %></td>
+        <td><%= bio.contactemail %></td>
+        <td><%= bio.picture %></td>
+        <td><%= bio.fbprofile %></td>
+        <td><%= bio.gplusprofile %></td>
+        <td><%= bio.twitterprofile %></td>
+        <td><%= bio.personalweb %></td>
+        <td><%= bio.aboutme %></td>
+        <td><%= bio.user %></td>
+        <td><%= link_to 'Show', bio %></td>
+        <td><%= link_to 'Edit', edit_bio_path(bio) %></td>
+        <td><%= link_to 'Destroy', bio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bio', new_bio_path %>
