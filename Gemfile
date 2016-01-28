@@ -28,6 +28,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'jquery-turbolinks'
 gem 'will_paginate'
+
+#omniauth for fb,google,twitter login
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-google'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
