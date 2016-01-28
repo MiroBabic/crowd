@@ -1,5 +1,7 @@
 <div class="container content profile">
   <div class="row">
+    <div class="col-md-3 md-margin-bottom-40">
+    </div>
     <div class="col-md-9">
       <div class="profile-body margin-bottom-20">
          <div class="tab-v1">
@@ -11,37 +13,64 @@
                 <div id="profile" class="profile-edit tab-pane fade in active">
                 </div>
                  <div id="passwordTab" class="profile-edit tab-pane fade">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+                  <h2 class="heading-md">Bezpečnostné nastavenia </h2>
+                        <p>Zmeň heslo</p>
+                        <br>
+                        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "sky-form", method: :put }) do |f| %>
+                        <%= devise_error_messages! %>
+                     <!--<form class="sky-form" id="sky-form4" action="#">-->
+                    <dl class="dl-horizontal">
+                                      <dt>Registračný Email </dt>
+                                        <dd>
+                                            <section>
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-envelope"></i>
+                                                    <%= f.email_field :email, autofocus: true, :placeholder=>'Emailová adresa' %>
+                                                    <!--<input type="email" placeholder="Email address" name="email">-->
+                                                    <b class="tooltip tooltip-bottom-right">Potrebný ako prihlasovacie meno </b>
+                                                </label>
+                                            </section>
+                                        </dd>
+                                        <dt>Heslo</dt>
+                                        <dd>
+                                            <section>
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-lock"></i>
+                                                    <%= f.password_field :password, autocomplete: "off", :placeholder => 'Heslo'  %>
+                                                   <!--<input type="password" id="password" name="password" placeholder="Heslo">-->
+                                                    <b class="tooltip tooltip-bottom-right">Nezabudni svoje heslo</b>
+                                                </label>
+                                            </section>
+                                        </dd>
+                                        <dt>Potvrď heslo</dt>
+                                        <dd>
+                                            <section>
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-lock"></i>
+                                                    <%= f.password_field :password_confirmation, autocomplete: "off",:placeholder => 'Heslo'  %>
+                                                   <!-- <input type="password" name="passwordConfirm" placeholder="Potvrď heslo">-->
+                                                    <b class="tooltip tooltip-bottom-right">Nezabudni svoje heslo</b>
+                                                </label>
+                                            </section>
+                                        </dd>
+                                        <dt>Aktuálne heslo</dt>
+                                        <dd>
+                                            <section>
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-lock"></i>
+                                                    <%= f.password_field :current_password, autocomplete: "off",:placeholder => 'Aktuálne heslo'  %>
+                                                   <!-- <input type="password" name="passwordConfirm" placeholder="Potvrď heslo">-->
+                                                    <b class="tooltip tooltip-bottom-right">Nezabudni svoje heslo</b>
+                                                </label>
+                                            </section>
+                                        </dd>
+                                    </dl>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
+</br>
+ 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Ulož zmeny", :class=> 'btn-u' %>
   </div>
 <% end %>
 
@@ -51,7 +80,7 @@
 
 <%= link_to "Back", :back %>
 
-
+              </div>
             </div>
           </div>
         </div>

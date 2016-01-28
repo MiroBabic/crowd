@@ -114,7 +114,7 @@
             </div> <!-- cd-login -->
 
             <div id="cd-signup"> <!-- sign up form -->
-                
+
                 <%= form_for(:user, :url => registration_path(:user), :html => { :class => "cd-form"}) do |f| %>
                     <p class="social-login">
                         <span class="social-login-facebook"><a href="#"><i class="fa fa-facebook"></i> Facebook</a></span>
@@ -168,4 +168,5 @@
             </div> <!-- cd-reset-password -->
             <a href="javascript:void(0);" class="cd-close-form">Close</a>
         </div> <!-- cd-user-modal-container -->
+    </div>
     </div> <!-- cd-user-modal -->
