@@ -14,7 +14,8 @@ class BiosController < ApplicationController
 
   # GET /bios/new
   def new
-    @bio = Bio.new
+    @bio = Bio.new(bio_params)
+    respond_with(@bio)
   end
 
   # GET /bios/1/edit
