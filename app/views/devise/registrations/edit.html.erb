@@ -11,6 +11,124 @@
           </ul>
           <div class="tab-content">
                 <div id="profile" class="profile-edit tab-pane fade in active">
+                  <h2 class="heading-md">Manage your Name, ID and Email Addresses.</h2>
+                                <p>Below are the name and email addresses on file for your account.</p>
+                                <br>
+                                <dl class="dl-horizontal">
+                                    <dt><strong>Meno </strong></dt>
+                                    <dd>
+                                        <%= current_user.bio.name %>
+                                        <span>
+                                            <a class="pull-right" href="#">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <hr>
+                                    <dt><strong>Ulica </strong></dt>
+                                    <dd>
+                                        <%= current_user.bio.street %>
+                                        <span>
+                                            <a class="pull-right" href="#">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <hr>
+                                    <dt><strong>Mesto </strong></dt>
+                                    <dd>
+                                        <%= current_user.bio.city %>
+                                        <span>
+                                            <a class="pull-right" href="#">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <hr>
+                                    <dt><strong>PSČ </strong></dt>
+                                    <dd>
+                                        <%= current_user.bio.zip %>
+                                        <span>
+                                            <a class="pull-right" href="#">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <hr>
+                                    <dt><strong>Telefón </strong></dt>
+                                    <dd>
+                                        <%= current_user.bio.phone %>
+                                        <span>
+                                            <a class="pull-right" href="#">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <hr>
+                                    <dt><strong>Kontaktný email </strong></dt>
+                                    <dd>
+                                        <%= current_user.bio.contactemail %>
+                                        <span>
+                                            <a class="pull-right" href="#">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <hr>
+                                    <dt><strong>FB profil </strong></dt>
+                                    <dd>
+                                        <%= current_user.bio.fbprofile %>
+                                        <span>
+                                            <a class="pull-right" href="#">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <hr>
+                                    <dt><strong>Google+ profil </strong></dt>
+                                    <dd>
+                                        <%= current_user.bio.gplusprofile %>
+                                        <span>
+                                            <a class="pull-right" href="#">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <hr>
+                                    <dt><strong>Twitter profil </strong></dt>
+                                    <dd>
+                                        <%= current_user.bio.twitterprofile %>
+                                        <span>
+                                            <a class="pull-right" href="#">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <hr>
+                                    <dt><strong>Môj web </strong></dt>
+                                    <dd>
+                                        <%= current_user.bio.personalweb %>
+                                        <span>
+                                            <a class="pull-right" href="#">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <hr>
+                                    <dt><strong>O mne </strong></dt>
+                                    <dd>
+                                        <%= current_user.bio.aboutme %>
+                                        <span>
+                                            <a class="pull-right" href="#">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </span>
+                                    </dd>
+                                    <hr>
+                                </dl>
+                                <button type="button" class="btn-u btn-u-default">Cancel</button>
+                                <button type="button" class="btn-u">Save Changes</button>
+                            
                 </div>
                  <div id="passwordTab" class="profile-edit tab-pane fade">
 
