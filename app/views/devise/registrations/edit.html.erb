@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3 md-margin-bottom-40">
       <img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
-      <%= current_user.email %>
+      
     </div>
     <div class="col-md-9">
       <div class="profile-body margin-bottom-20">
@@ -73,8 +73,8 @@
                                     </dd>
                                     <hr>
                                 </dl>
-                                <button type="button" class="btn-u btn-u-default">Cancel</button>
-                                <button type="button" class="btn-u">Save Changes</button>
+                                <%= button_to 'Uprav profil', edit_bio_path(current_user.bio), :class=>"btn-u", :type=>"button",  :method => :get  %>
+                                
                             
                 </div>
                  <div id="passwordTab" class="profile-edit tab-pane fade">

@@ -1,4 +1,4 @@
-<%= form_for(@bio) do |f| %>
+<%= form_for(@bio, html: {:class => "sky-form", method: :put }) do |f| %>
   <% if @bio.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@bio.errors.count, "error") %> prohibited this bio from being saved:</h2>
@@ -10,60 +10,124 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :street %><br>
-    <%= f.text_field :street %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :zip %><br>
-    <%= f.number_field :zip %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :contactemail %><br>
-    <%= f.text_field :contactemail %>
-  </div>
-  <div class="field">
+    <div class="field">
     <%= f.label :picture %><br>
     <%= f.text_field :picture %>
   </div>
-  <div class="field">
-    <%= f.label :fbprofile %><br>
-    <%= f.text_field :fbprofile %>
-  </div>
-  <div class="field">
-    <%= f.label :gplusprofile %><br>
-    <%= f.text_field :gplusprofile %>
-  </div>
-  <div class="field">
-    <%= f.label :twitterprofile %><br>
-    <%= f.text_field :twitterprofile %>
-  </div>
-  <div class="field">
-    <%= f.label :personalweb %><br>
-    <%= f.text_field :personalweb %>
-  </div>
-  <div class="field">
-    <%= f.label :aboutme %><br>
-    <%= f.text_field :aboutme %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
+<dt>Meno </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-envelope"></i>
+        <%= f.text_field :name, :placeholder=>'Meno užívateľa', :value=> current_user.bio.name %>
+        <b class="tooltip tooltip-bottom-right">Toto meno bude použité v prípade zaslania odmeny </b>
+        </label>
+    </section>
+    </dd>
+<dt>Ulica </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-home"></i>
+        <%= f.text_field :street, :placeholder=>'Ulica', :value=> current_user.bio.street %>
+        <b class="tooltip tooltip-bottom-right">Na túto adresu bude zaslaná prípadná odmena </b>
+        </label>
+    </section>
+    </dd>
+<dt>Mesto </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-map"></i>
+        <%= f.text_field :city, :placeholder=>'Mesto', :value=> current_user.bio.city %>
+        <b class="tooltip tooltip-bottom-right">Na túto adresu bude zaslaná prípadná odmena </b>
+        </label>
+    </section>
+    </dd>
+  <dt>PSČ </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-map"></i>
+        <%= f.number_field :zip, :placeholder=>'PSČ', :value=> current_user.bio.zip %>
+        <b class="tooltip tooltip-bottom-right">Na túto adresu bude zaslaná prípadná odmena </b>
+        </label>
+    </section>
+    </dd>
+  <dt>Telefón </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-mobile"></i>
+        <%= f.text_field :phone, :placeholder=>'Telefón', :value=> current_user.bio.phone %>
+        <b class="tooltip tooltip-bottom-right">Pre rýchlu komunikáciu od správcu v prípade potreby </b>
+        </label>
+    </section>
+    </dd>
+  <dt>Kontaktný email </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-envelope"></i>
+        <%= f.text_field :contactemail, :placeholder=>'Kontaktný email', :value=> current_user.bio.contactemail %>
+        <b class="tooltip tooltip-bottom-right">Zmeňte ak chcete byt kontaktovaný na iný email, než ste použili pri registrácii </b>
+        </label>
+    </section>
+    </dd>
+  <dt>FB Profil </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-facebook"></i>
+        <%= f.text_field :fbprofile, :placeholder=>'Facebook profil', :value=> current_user.bio.fbprofile %>
+        <b class="tooltip tooltip-bottom-right">Facebook profil </b>
+        </label>
+    </section>
+    </dd>
+  <dt>Google+ Profil </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-google-plus"></i>
+        <%= f.text_field :gplusprofile, :placeholder=>'Google+ profil', :value=> current_user.bio.gplusprofile %>
+        <b class="tooltip tooltip-bottom-right">Google+ profil </b>
+        </label>
+    </section>
+    </dd>
+  <dt>Twitter Profil </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-twitter"></i>
+        <%= f.text_field :twitterprofile, :placeholder=>'Twitter profil', :value=> current_user.bio.twitterprofile %>
+        <b class="tooltip tooltip-bottom-right">Twitter profil </b>
+        </label>
+    </section>
+    </dd>
+  <dt>Môj web </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-link"></i>
+        <%= f.text_field :personalweb, :placeholder=>'Môj web', :value=> current_user.bio.personalweb %>
+        <b class="tooltip tooltip-bottom-right">Môj web </b>
+        </label>
+    </section>
+    </dd>
+  <dt>O mne </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-user-plus"></i>
+        <%= f.text_field :aboutme, :placeholder=>'O mne', :value=> current_user.bio.aboutme %>
+        <b class="tooltip tooltip-bottom-right">O mne </b>
+        </label>
+    </section>
+    </dd>
+  
+ </br>
+ 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Ulož zmeny", :class=> 'btn-u' %>
   </div>
 <% end %>

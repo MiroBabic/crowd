@@ -15,7 +15,8 @@ class BiosController < ApplicationController
   # GET /bios/new
   def new
     @bio = Bio.new(bio_params)
-    respond_with(@bio)
+    #respond_with(@bio)
+
   end
 
   # GET /bios/1/edit
@@ -29,7 +30,8 @@ class BiosController < ApplicationController
 
     respond_to do |format|
       if @bio.save
-        format.html { redirect_to @bio, notice: 'Bio was successfully created.' }
+        #format.html { redirect_to @bio, notice: 'Bio was successfully created.' }
+        format.html { redirect_to "/users/edit", notice: 'Bio was successfully created.' }
         format.json { render :show, status: :created, location: @bio }
       else
         format.html { render :new }
@@ -43,7 +45,8 @@ class BiosController < ApplicationController
   def update
     respond_to do |format|
       if @bio.update(bio_params)
-        format.html { redirect_to @bio, notice: 'Bio was successfully updated.' }
+        #format.html { redirect_to @bio, notice: 'Bio was successfully updated.' }
+        format.html { redirect_to "/users/edit", notice: 'Bio was successfully updated.' }
         format.json { render :show, status: :ok, location: @bio }
       else
         format.html { render :edit }

@@ -1,5 +1,41 @@
-<h2>Log in</h2>
+ 
+      <div class="row">
+            <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class=>'reg-page') do |f| %>
+                    <div class="reg-header">
+                        <h2>Prihlás sa</h2>
+                    </div>
 
+                    <div class="input-group margin-bottom-20">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <%= f.email_field :email, autofocus: true, :class=>'form-control', :placeholder=>'Prihlasovací email' %>
+                        </div>
+                    <div class="input-group margin-bottom-20">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <%= f.password_field :password, autocomplete: "off",:class=>'form-control', :placeholder=>'Heslo' %>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 checkbox">
+                          <%= f.label :remember_me, "Ostať prihlásený" %>
+                            <!--<label><input type="checkbox"> </label>-->
+                        </div>
+                        <div class="col-md-6">
+                          <%= f.submit "Log in", :class=> 'btn-u pull-right' %>
+                           <!-- <button class="btn-u pull-right" type="submit">Login</button>-->
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h4>Forget your Password ?</h4>
+                    <p>no worries, <a class="color-green" href="#">click here</a> to reset your password.</p>
+                <% end %>
+            </div>
+        </div><!--/row-->
+    
+
+<!--
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -23,4 +59,4 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %>-->
