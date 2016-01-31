@@ -3,7 +3,7 @@
 class PictureUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -17,6 +17,21 @@ class PictureUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  version :resized do
+    # returns an image with a maximum width of 100px 
+    # while maintaining the aspect ratio
+    # 10000 is used to tell CW that the height is free 
+    # and so that it will hit the 100 px width first
+    process :resize_to_limit => [250, 10000]
+  end
+
+  after :store, :remove_original_file
+
+  def remove_original_file(p)
+    if self.version_name.nil?
+      self.file.delete if self.file.exists?
+    end
+  end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
