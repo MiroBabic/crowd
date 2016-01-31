@@ -19,7 +19,8 @@
                         </ul>
                     </li>
                     <li class="topbar-devider"></li>
-                    <li><a href="page_faq.html">O nás</a></li>
+                    <%= content_tag(:li, link_to('O nás', about_url)) %>
+                    <!--<li><a href="static">O nás</a></li>-->
                     <li class="topbar-devider"></li>
                     <% if user_signed_in? %>
                     <li class="hoverSelector">
