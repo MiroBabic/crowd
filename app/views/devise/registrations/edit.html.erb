@@ -1,8 +1,11 @@
 <div class="container content profile">
   <div class="row">
     <div class="col-md-3 md-margin-bottom-40">
+      <% if current_user.picture? %>
       <img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
-      
+      <% else %>
+      <img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
+      <% end %>
     </div>
     <div class="col-md-9">
       <div class="profile-body margin-bottom-20">
@@ -16,64 +19,128 @@
                   <h2 class="heading-md">Údaje o užívateľovi</h2>
                                 <p>Ak projekt za príspevok ponúka odmenu, na adresu ktorú tu uvediete bude odoslaná.</p>
                                 <br>
-                                  <dl class="dl-horizontal">
-                                    <dt><strong>Meno </strong></dt>
-                                    <dd>
-                                        <%= current_user.bio.name %>
-                                     </dd>
-                                    <hr>
-                                    <dt><strong>Ulica </strong></dt>
-                                    <dd>
-                                        <%= current_user.bio.street %>
-                                    </dd>
-                                    <hr>
-                                    <dt><strong>Mesto </strong></dt>
-                                    <dd>
-                                        <%= current_user.bio.city %>
-                                      </dd>
-                                    <hr>
-                                    <dt><strong>PSČ </strong></dt>
-                                    <dd>
-                                        <%= current_user.bio.zip %>
-                                    </dd>
-                                    <hr>
-                                    <dt><strong>Telefón </strong></dt>
-                                    <dd>
-                                        <%= current_user.bio.phone %>
-                                    </dd>
-                                    <hr>
-                                    <dt><strong>Kontaktný email </strong></dt>
-                                    <dd>
-                                        <%= current_user.bio.contactemail %>
-                                    </dd>
-                                    <hr>
-                                    <dt><strong>FB profil </strong></dt>
-                                    <dd>
-                                        <%= current_user.bio.fbprofile %>
-                                    </dd>
-                                    <hr>
-                                    <dt><strong>Google+ profil </strong></dt>
-                                    <dd>
-                                        <%= current_user.bio.gplusprofile %>
-                                    </dd>
-                                    <hr>
-                                    <dt><strong>Twitter profil </strong></dt>
-                                    <dd>
-                                        <%= current_user.bio.twitterprofile %>
-                                    </dd>
-                                    <hr>
-                                    <dt><strong>Môj web </strong></dt>
-                                    <dd>
-                                        <%= current_user.bio.personalweb %>
-                                    </dd>
-                                    <hr>
-                                    <dt><strong>O mne </strong></dt>
-                                    <dd>
-                                        <%= current_user.bio.aboutme %>
-                                    </dd>
-                                    <hr>
-                                </dl>
-                                <%= button_to 'Uprav profil', edit_bio_path(current_user.bio), :class=>"btn-u", :type=>"button",  :method => :get  %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),  html: {:class => "sky-form", id: "profile_#{resource.email}_edit", namespace: "profile_#{resource.email}", method: :put }) do |f| %>
+ 
+    <div class="field">
+    <%= f.label :picture %><br>
+    <%= f.text_field :picture, html: {id: "profile_#{resource.email}_pic"} %>
+  </div>
+<dt>Meno </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-user"></i>
+        <%= f.text_field :name, :placeholder=>'Meno užívateľa', :value=> current_user.name, html: {id: "profile_#{resource.email}_name"} %>
+        <b class="tooltip tooltip-bottom-right">Toto meno bude použité v prípade zaslania odmeny </b>
+        </label>
+    </section>
+    </dd>
+<dt>Ulica </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-home"></i>
+        <%= f.text_field :street, :placeholder=>'Ulica', :value=> current_user.street,html: {id: "profile_#{resource.email}_street"} %>
+        <b class="tooltip tooltip-bottom-right">Na túto adresu bude zaslaná prípadná odmena </b>
+        </label>
+    </section>
+    </dd>
+<dt>Mesto </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-map"></i>
+        <%= f.text_field :city, :placeholder=>'Mesto', :value=> current_user.city, html: {id: "profile_#{resource.email}_city"} %>
+        <b class="tooltip tooltip-bottom-right">Na túto adresu bude zaslaná prípadná odmena </b>
+        </label>
+    </section>
+    </dd>
+  <dt>PSČ </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-map"></i>
+        <%= f.text_field :zip, :placeholder=>'PSČ', :value=> current_user.zip, html: {id: "profile_#{resource.email}_zip"} %>
+        <b class="tooltip tooltip-bottom-right">Na túto adresu bude zaslaná prípadná odmena </b>
+        </label>
+    </section>
+    </dd>
+  <dt>Telefón </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-mobile"></i>
+        <%= f.text_field :phone, :placeholder=>'Telefón', :value=> current_user.phone, html: {id: "profile_#{resource.email}_phone"} %>
+        <b class="tooltip tooltip-bottom-right">Pre rýchlu komunikáciu od správcu v prípade potreby </b>
+        </label>
+    </section>
+    </dd>
+  <dt>Alternatívny email </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-envelope"></i>
+        <%= f.text_field :altemail, :placeholder=>'Kontaktný email', :value=> current_user.altemail, html: {id: "profile_#{resource.email}_altmail"} %>
+        <b class="tooltip tooltip-bottom-right">Zmeňte ak chcete byt kontaktovaný na iný email, než ste použili pri registrácii </b>
+        </label>
+    </section>
+    </dd>
+  <dt>FB Profil </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-facebook"></i>
+        <%= f.text_field :fbprofile, :placeholder=>'Facebook profil', :value=> current_user.fbprofile, html: {id: "profile_#{resource.email}_fb"} %>
+        <b class="tooltip tooltip-bottom-right">Facebook profil </b>
+        </label>
+    </section>
+    </dd>
+  <dt>Google+ Profil </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-google-plus"></i>
+        <%= f.text_field :gplusprofile, :placeholder=>'Google+ profil', :value=> current_user.gplusprofile, html: {id: "profile_#{resource.email}_gplus"} %>
+        <b class="tooltip tooltip-bottom-right">Google+ profil </b>
+        </label>
+    </section>
+    </dd>
+  <dt>Twitter Profil </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-twitter"></i>
+        <%= f.text_field :twitterprofile, :placeholder=>'Twitter profil', :value=> current_user.twitterprofile,html: {id: "profile_#{resource.email}_twitter"} %>
+        <b class="tooltip tooltip-bottom-right">Twitter profil </b>
+        </label>
+    </section>
+    </dd>
+  <dt>Môj web </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-link"></i>
+        <%= f.text_field :personalweb, :placeholder=>'Môj web', :value=> current_user.personalweb, html: {id: "profile_#{resource.email}_web"} %>
+        <b class="tooltip tooltip-bottom-right">Môj web </b>
+        </label>
+    </section>
+    </dd>
+  <dt>O mne </dt>
+    <dd>
+     <section>
+        <label class="input">
+        <i class="icon-append fa fa-user-plus"></i>
+        <%= f.text_field :aboutme, :placeholder=>'O mne', :value=> current_user.aboutme,html: {id: "profile_#{resource.email}_aboutme"} %>
+        <b class="tooltip tooltip-bottom-right">O mne </b>
+        </label>
+    </section>
+    </dd>
+   </br>
+ 
+  <div class="actions">
+    <%= f.submit "Ulož zmeny", :class=> 'btn-u' %>
+  </div>
+<% end %>                             
                                 
                             
                 </div>
@@ -82,7 +149,7 @@
                   <h2 class="heading-md">Bezpečnostné nastavenia </h2>
                         <p>Zmeň heslo</p>
                         <br>
-                        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "sky-form", method: :put }) do |f| %>
+                        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "sky-form", method: :put }) do |f2| %>
                         <%= devise_error_messages! %>
                     
                     <dl class="dl-horizontal">
@@ -91,7 +158,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-envelope"></i>
-                                                    <%= f.email_field :email, autofocus: true, :placeholder=>'Emailová adresa' %>
+                                                    <%= f2.email_field :email, autofocus: true, :placeholder=>'Emailová adresa' %>
                                                     <!--<input type="email" placeholder="Email address" name="email">-->
                                                     <b class="tooltip tooltip-bottom-right">Potrebný ako prihlasovacie meno </b>
                                                 </label>
@@ -102,7 +169,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <%= f.password_field :current_password, autocomplete: "off",:placeholder => 'Aktuálne heslo'  %>
+                                                    <%= f2.password_field :current_password, autocomplete: "off",:placeholder => 'Aktuálne heslo'  %>
                                                    <!-- <input type="password" name="passwordConfirm" placeholder="Potvrď heslo">-->
                                                     <b class="tooltip tooltip-bottom-right">Nezabudni svoje heslo</b>
                                                 </label>
@@ -113,7 +180,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <%= f.password_field :password, autocomplete: "off", :placeholder => 'Nové heslo'  %>
+                                                    <%= f2.password_field :password, autocomplete: "off", :placeholder => 'Nové heslo'  %>
                                                    <!--<input type="password" id="password" name="password" placeholder="Heslo">-->
                                                     <b class="tooltip tooltip-bottom-right">Nezabudni svoje heslo</b>
                                                 </label>
@@ -124,7 +191,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <%= f.password_field :password_confirmation, autocomplete: "off",:placeholder => 'Potvrď Heslo'  %>
+                                                    <%= f2.password_field :password_confirmation, autocomplete: "off",:placeholder => 'Potvrď Heslo'  %>
                                                    <!-- <input type="password" name="passwordConfirm" placeholder="Potvrď heslo">-->
                                                     <b class="tooltip tooltip-bottom-right">Nezabudni svoje heslo</b>
                                                 </label>
@@ -136,7 +203,7 @@
 </br>
  
   <div class="actions">
-    <%= f.submit "Ulož zmeny", :class=> 'btn-u' %>
+    <%= f2.submit "Ulož zmeny", :class=> 'btn-u' %>
   </div>
 <% end %>
 </br>

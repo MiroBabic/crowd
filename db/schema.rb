@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127211840) do
+ActiveRecord::Schema.define(version: 20160130212322) do
 
   create_table "bios", force: :cascade do |t|
     t.string   "name"
@@ -65,6 +65,19 @@ ActiveRecord::Schema.define(version: 20160127211840) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "zip"
+    t.binary   "picture"
+    t.string   "fbprofile"
+    t.string   "gplusprofile"
+    t.string   "twitterprofile"
+    t.string   "phone"
+    t.string   "altemail"
+    t.string   "personalweb"
+    t.string   "aboutme"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
