@@ -11,27 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130212322) do
-
-  create_table "bios", force: :cascade do |t|
-    t.string   "name"
-    t.string   "street"
-    t.string   "city"
-    t.integer  "zip"
-    t.string   "phone"
-    t.string   "contactemail"
-    t.binary   "picture"
-    t.string   "fbprofile"
-    t.string   "gplusprofile"
-    t.string   "twitterprofile"
-    t.string   "personalweb"
-    t.string   "aboutme"
-    t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "bios", ["user_id"], name: "index_bios_on_user_id"
+ActiveRecord::Schema.define(version: 20160131111759) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -69,7 +49,7 @@ ActiveRecord::Schema.define(version: 20160130212322) do
     t.string   "street"
     t.string   "city"
     t.string   "zip"
-    t.binary   "picture"
+    t.string   "picture"
     t.string   "fbprofile"
     t.string   "gplusprofile"
     t.string   "twitterprofile"

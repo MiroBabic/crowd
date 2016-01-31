@@ -24,5 +24,6 @@ class User < ActiveRecord::Base
         clean_up_passwords
         result
       end
-      
+
+  mount_uploader :picture, PictureUploader    
 end

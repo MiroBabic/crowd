@@ -1,8 +1,8 @@
 <div class="container content profile">
   <div class="row">
     <div class="col-md-3 md-margin-bottom-40">
-      <% if current_user.picture? %>
-      <img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
+      <% if @user.picture.present? %>
+      <%= image_tag @user.picture.url.to_s %>
       <% else %>
       <img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
       <% end %>
@@ -23,7 +23,7 @@
  
     <div class="field">
     <%= f.label :picture %><br>
-    <%= f.text_field :picture, html: {id: "profile_#{resource.email}_pic"} %>
+    <%= f.file_field :picture, html: {id: "profile_#{resource.email}_pic"} %>
   </div>
 <dt>Meno </dt>
     <dd>
