@@ -13,7 +13,8 @@
 9. Header - Fixed Boxed
 -----------------------------------------------------------------------*/
 body.header-fixed-space-default {
-	padding-top: 81px;
+	/*padding-top: 81px;*/
+	/*toto je custom zakomentovane padding-top*/
 }
 
 @media (max-width: 991px) {
@@ -170,6 +171,7 @@ body.header-fixed-space-default {
 	min-width: 100px;
 	display: table-cell;
 	vertical-align: middle;
+
 }
 
 .header .logo img {

@@ -7,4 +7,8 @@ class StaticPagesController < ApplicationController
 
   def aboutus
   end
+
+  def project_terms
+  end
+
 end
