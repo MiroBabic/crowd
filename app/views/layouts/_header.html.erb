@@ -2,11 +2,11 @@
 <div class="header">
     <!-- Topbar -->
     <div class="container">
+        
+        <div class="topbar">
+        <!--logo-->
+       <%= link_to image_tag("logo2.png",size: "150x42", :alt => "SupportYourDream Logo", :class => "logo"), root_path %>
        
-
-    <div class="topbar">
-         <!--logo-->
-       <!-- <%= link_to image_tag("logo2.png",size: "150x42", :alt => "SupportYourDream Logo", :class => "logo"), root_path %>-->
         <!-- logo end -->
         
            <ul class="loginbar pull-right">
@@ -42,15 +42,17 @@
                     <li class="cd-log_reg"><a class="cd-signin" href="#">Login</a></li>
                     <% end %>
                 </ul>
+    </div>
     
     </div>
-    </div>
+    
     <!--  End Topbar -->
 
     <!-- Navbar -->
-    <!--<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">-->
-    <div class="navbar navbar-default mega-menu" role="navigation">
+    <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+    <!--<div class="navbar navbar-default mega-menu" role="navigation">-->
         <div class="container">
+
                 <ul class="nav navbar-nav">
                     <!-- Home -->
                     <%= content_tag(:li, link_to('Úvod', home_url)) %>
@@ -82,6 +84,7 @@
                 </ul>
             </div>
     </div>
+
     
     <!-- End Navbar -->
 </div>

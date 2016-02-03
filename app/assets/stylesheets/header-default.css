@@ -13,9 +13,9 @@
 9. Header - Fixed Boxed
 -----------------------------------------------------------------------*/
 body.header-fixed-space-default {
-	/*padding-top: 81px;*/
-	/*toto je custom zakomentovane padding-top*/
-}
+	padding-top: 81px;
+	
+}	
 
 @media (max-width: 991px) {
 	body.header-fixed-space-default {
@@ -31,8 +31,10 @@ body.header-fixed-space-default {
 ------------------------------------*/
 .header .topbar {
 	z-index: 12;
-	padding: 8px 0;
+	/*padding: 8px 0;*/
+	padding: 8px 0 25px 0;
 	position: relative;
+
 }
 
 @media (max-width: 991px) {
@@ -61,7 +63,6 @@ body.header-fixed-space-default {
 
 .header .topbar ul.loginbar li i.fa {
 	color: #bbb;
-	/*color: #2F3236;*/
 }
 
 .header .topbar ul.loginbar li.topbar-devider {
@@ -141,8 +142,9 @@ body.header-fixed-space-default {
 
 /*Navbar*/
 .header {
-	z-index: 99;
-	background: #fff;
+	z-index: 999;
+	/*background: #fff;*/
+	background: #2F3236;
 	position: relative;
 	border-bottom: solid 2px #eee;
 }
@@ -150,7 +152,9 @@ body.header-fixed-space-default {
 /*Header Container*/
 .header > .container {
 	display: table;
-	margin-bottom: -40px;
+	margin-bottom: -30px;
+	
+
 }
 
 @media (max-width: 768px) {
@@ -170,9 +174,10 @@ body.header-fixed-space-default {
 	height: 100%;
 	min-height: 40px;
 	min-width: 100px;
-	display: table-cell;
-	vertical-align: middle;
-
+	/*display: table-cell;*/
+	display: inline-block;
+	/*vertical-align: middle;*/
+	vertical-align: bottom;
 }
 
 .header .logo img {
@@ -297,6 +302,7 @@ body.header-fixed-space-default {
 		float: none;
 		width: auto;
 		margin-top: 0;
+		
 		position: static;
 		box-shadow: none;
 		background-color: transparent;
