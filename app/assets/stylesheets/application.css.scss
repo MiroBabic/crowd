@@ -10,8 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+
  */
 
  // Google Fonts
@@ -19,10 +18,10 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "font-awesome";
-@import "style";
 @import "header-default";
 @import "footer-default";
+@import "style";
+@import "font-awesome";
 @import "theme-colors/default";
 @import "login-signup-modal/style";
 @import "sky-form";

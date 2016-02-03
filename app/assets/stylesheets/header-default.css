@@ -61,6 +61,7 @@ body.header-fixed-space-default {
 
 .header .topbar ul.loginbar li i.fa {
 	color: #bbb;
+	/*color: #2F3236;*/
 }
 
 .header .topbar ul.loginbar li.topbar-devider {

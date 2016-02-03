@@ -1,0 +1,91 @@
+<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+        <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+            <ul class="cd-switcher">
+                <li><a href="javascript:void(0);">Prihlás</a></li>
+                <li><a href="javascript:void(0);">Registruj</a></li>
+            </ul>
+
+            <div id="cd-login"> <!-- log in form -->
+                
+                    <%= form_for(:user, :url => session_path(:user), :html => { :class => "cd-form"}) do |f| %>
+                    <p class="social-login">
+                        <span class="social-login-facebook"><a href="#"><i class="fa fa-facebook"></i> Facebook</a></span>
+                        <span class="social-login-google"><a href="#"><i class="fa fa-google"></i> Google</a></span>
+                        <span class="social-login-twitter"><a href="#"><i class="fa fa-twitter"></i> Twitter</a></span>
+                    </p>
+                    <div class="lined-text"><span>Alebo použi svoj účet na Support Your Dream</span><hr></div>
+
+                      <p class="fieldset">
+                       <%= f.label :name, 'Email', :class => 'image-replace cd-username' %>
+                       <%= f.text_field :email, :class => 'full-width has-padding has-border', :placeholder => 'Email' %>
+                   </p>
+                       <p class="fieldset">
+                        <%= f.label :name, 'Heslo', :class => 'image-replace cd-password' %>
+                        <%= f.password_field :password, :class => 'full-width has-padding has-border', :placeholder => 'Heslo' %>
+                    </p>
+                       <p class="fieldset"><%= f.check_box :remember_me %>
+                      <%= f.label :name, 'pamätaj si ma' %></p>
+                      <%= f.submit 'Prihlás sa', :class=>'full-width has-padding' %>
+                    <p class="cd-form-bottom-message">  <%= link_to "Zabudol si heslo?", new_password_path(:user) %><p>
+                    <% end %>
+                   
+                <!-- <a href="javascript:void(0);" class="cd-close-form">Close</a> -->
+            </div> <!-- cd-login -->
+
+            <div id="cd-signup"> <!-- sign up form -->
+
+                <%= form_for(:user, :url => registration_path(:user), :html => { :class => "cd-form"}) do |f| %>
+                    <p class="social-login">
+                        <span class="social-login-facebook"><a href="#"><i class="fa fa-facebook"></i> Facebook</a></span>
+                        <span class="social-login-google"><a href="#"><i class="fa fa-google"></i> Google</a></span>
+                        <span class="social-login-twitter"><a href="#"><i class="fa fa-twitter"></i> Twitter</a></span>
+                    </p>
+                    <div class="lined-text"><span>Alebo vytvor svoj účet na Support Your Dream</span><hr></div>
+
+                      <p class="fieldset">
+                       <%= f.label :name, 'Email', :class => 'image-replace cd-username' %>
+                       <%= f.text_field :email, :class => 'full-width has-padding has-border', :placeholder => 'Email' %>
+                   </p>
+                       <p class="fieldset">
+                        <%= f.label :name, 'Heslo', :class => 'image-replace cd-password' %>
+                           <% if @minimum_password_length %>
+                            <em>(<%= @minimum_password_length %> characters minimum)</em>
+                            <% end %><br />
+                        <%= f.password_field :password, autocomplete: "off", :class => 'full-width has-padding has-border', :placeholder => 'Heslo' %>
+                    </p>
+                        <p class="fieldset">
+                          <%= f.label :name, 'Potvrď heslo', :class => 'image-replace cd-password' %>
+                          <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'full-width has-padding has-border', :placeholder => 'Potvrď heslo' %>   
+                        </p>
+                       <p class="fieldset">
+                        <input type="checkbox" id="accept-terms">
+                        <label for="accept-terms">Súhlasím s <a href="page_terms.html">podmienkami</a></label>
+                    </p>
+                      <%= f.submit 'Registruj', :class=>'full-width has-padding' %>
+                    
+                    <% end %>
+                    
+                    <!-- <a href="javascript:void(0);" class="cd-close-form">Close</a> -->
+            </div> <!-- cd-signup -->
+
+            <div id="cd-reset-password"> <!-- reset password form -->
+                <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+                <form class="cd-form">
+                    <p class="fieldset">
+                        <label class="image-replace cd-email" for="reset-email">E-mail</label>
+                        <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+                        <span class="cd-error-message">Error message here!</span>
+                    </p>
+
+                    <p class="fieldset">
+                        <input class="full-width has-padding" type="submit" value="Reset password">
+                    </p>
+                </form>
+
+                <p class="cd-form-bottom-message"><a href="javascript:void(0);">Back to log-in</a></p>
+            </div> <!-- cd-reset-password -->
+            <a href="javascript:void(0);" class="cd-close-form">Close</a>
+        </div> <!-- cd-user-modal-container -->
+    </div>
+    </div> <!-- cd-user-modal -->
