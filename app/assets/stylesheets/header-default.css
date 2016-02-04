@@ -32,7 +32,7 @@ body.header-fixed-space-default {
 .header .topbar {
 	z-index: 12;
 	/*padding: 8px 0;*/
-	padding: 8px 0 25px 0;
+	/*padding: 8px 0 25px 0;*/
 	position: relative;
 
 }
@@ -152,7 +152,7 @@ body.header-fixed-space-default {
 /*Header Container*/
 .header > .container {
 	display: table;
-	margin-bottom: -30px;
+	margin-bottom: -10px;
 	
 
 }
