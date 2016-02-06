@@ -137,9 +137,8 @@
   <dt>O mne </dt>
     <dd>
      <section>
-        <label class="input">
-        <i class="icon-append fa fa-user-plus"></i>
-        <%= f.text_field :aboutme, :placeholder=>'O mne', :value=> current_user.aboutme,html: {id: "profile_#{resource.email}_aboutme"} %>
+        <label class="textarea">
+        <%= f.text_area :aboutme, :placeholder=>'O mne', :value=> current_user.aboutme,html: {id: "profile_#{resource.email}_aboutme"} %>
         <b class="tooltip tooltip-bottom-right">O mne </b>
         </label>
     </section>

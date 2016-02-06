@@ -1,4 +1,6 @@
-<%= form_for(@project) do |f| %>
+<div class="row">
+  
+<%= form_for(@project, html: {:class => "sky-form"}, method: :put) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -10,24 +12,54 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<div class="col-md-3">
+  <h2> Typ a cieľ projektu</h2>
+</br>
+    <label class="select">
+  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: 'Vyber kategóriu'},{:class => 'form-control m-b'} %>
+      </label>
+    </br>
+    <dt>Cieľová suma </dt>
+    <dd>
+     <section>
+       <label class="input">
+              <%= f.number_field :amount, :placeholder=>"Cieľová suma" %>
+              <b class="tooltip tooltip-bottom-right">Zvoľ cieľovú sumu </b>
+       </label>
+     </section>
+   </dd>
+    <dt>Názov projektu </dt>
+    <dd>
+     <section>
+         <label class="input">
+              <%= f.text_field :name, :placeholder=>'Názov projektu' %>
+              <b class="tooltip tooltip-bottom-right">Vymysli meno, ktoré zarezonuje a pritiahne pozornosť na tvoj projekt </b>
+        </label>
+        </section>
+   </dd>
+</br>
+</div>
+<div class="col-md-9">
+  
+    <h2> O projekte </h2>
+  <div class="input">
+    <%= f.label :about %><br>
+    <%= f.text_field :about %>
   </div>
+       
+    
+ 
+  
   <div class="field">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
   </div>
-  <div class="field">
-    <%= f.label :about %><br>
-    <%= f.text_field :about %>
-  </div>
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.number_field :amount %>
-  </div>
+  
+ 
+ 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
+</div>
