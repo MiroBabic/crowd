@@ -1,6 +1,6 @@
 <div class="row">
   
-<%= form_for(@project, html: {:class => "sky-form"}, method: :put) do |f| %>
+<%= form_for(@project, html: {:class => "sky-form"}) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -15,20 +15,7 @@
 <div class="col-md-3">
   <h2> Typ a cieľ projektu</h2>
 </br>
-    <label class="select">
-  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: 'Vyber kategóriu'},{:class => 'form-control m-b'} %>
-      </label>
-    </br>
-    <dt>Cieľová suma </dt>
-    <dd>
-     <section>
-       <label class="input">
-              <%= f.number_field :amount, :placeholder=>"Cieľová suma" %>
-              <b class="tooltip tooltip-bottom-right">Zvoľ cieľovú sumu </b>
-       </label>
-     </section>
-   </dd>
-    <dt>Názov projektu </dt>
+<!--<dt>Názov projektu </dt>-->
     <dd>
      <section>
          <label class="input">
@@ -37,28 +24,42 @@
         </label>
         </section>
    </dd>
+    <label class="select">
+  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: 'Vyber kategóriu'},{:class => 'form-control m-b'} %>
+      </label>
+    </br>
+    <!--<dt>Cieľová suma </dt>-->
+    <dd>
+     <section>
+       <label class="input">
+              <i class="icon-append fa fa-eur"></i>
+              <%= f.number_field :amount, :placeholder=>"Cieľová suma" %>
+              <b class="tooltip tooltip-bottom-right">Zvoľ cieľovú sumu </b>
+       </label>
+     </section>
+   </dd>
+    
+
+          <label class="label">Ako dlho má bežať kampaň?</label>
+              <label class="toggle"><%= f.radio_button :duration, "10", :type=>'radio', :checked => 'checked' %><i class="no-rounded"></i> 10 dní</label>
+              <label class="toggle"><%= f.radio_button :duration, "30", :type=>'radio'  %><i class="no-rounded"></i> 30 dní</label>
+              <label class="toggle"><%= f.radio_button :duration, "60", :type=>'radio' %><i class="no-rounded"></i> 60 dní</label>
+              
 </br>
 </div>
 <div class="col-md-9">
   
     <h2> O projekte </h2>
-  <div class="input">
-    <%= f.label :about %><br>
-    <%= f.text_field :about %>
-  </div>
+  </br>
+  <label class="textarea">
+    <%= f.text_area :about, rows: '20', :placeholder=>'Detailný popis projektu' %>
+  </label>
        
     
  
-  
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  
- 
  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Vytvor projekt", :class=> 'btn-u' %>
   </div>
 <% end %>
 </div>
