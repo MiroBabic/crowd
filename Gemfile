@@ -6,7 +6,8 @@ gem 'rails', '4.2.4'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'font-awesome-rails', '4.3.0.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -37,8 +38,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-google'
 
 #carrierwave for images
-gem 'carrierwave'
-gem 'rmagick'
+gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
+gem 'rmagick',require: false
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
