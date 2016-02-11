@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207205539) do
+ActiveRecord::Schema.define(version: 20160211201642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 20160207205539) do
 
   add_index "projects", ["category_id"], name: "index_projects_on_category_id", using: :btree
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
+
+  create_table "rewards", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "amount"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "rewards", ["project_id"], name: "index_rewards_on_project_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -71,4 +81,5 @@ ActiveRecord::Schema.define(version: 20160207205539) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "projects", "users"
+  add_foreign_key "rewards", "projects"
 end
