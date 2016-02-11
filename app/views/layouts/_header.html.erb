@@ -5,11 +5,11 @@
         
         <div class="topbar">
         <!--logo-->
-       <%= link_to image_tag("logo_d.png",size: "150x42", :alt => "SupportYourDream Logo", :class => "logo"), root_path %>
-       
+         <%= link_to image_tag("logo_d_white.png",size: "130x42", :alt => "SupportYourDream Logo", :class => "logo"), root_path %>     
         <!-- logo end -->
         
            <ul class="loginbar pull-right">
+
                     <li class="hoverSelector">
                         <i class="fa fa-globe"></i>
                         <a>Jazyky/Languages</a>
@@ -52,11 +52,14 @@
     <!--  End Topbar -->
 
     <!-- Navbar -->
+
     <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+
     <!--<div class="navbar navbar-default mega-menu" role="navigation">-->
         <div class="container">
 
                 <ul class="nav navbar-nav">
+
                     <!-- Home -->
                     <%= content_tag(:li, link_to('Úvod', home_url)) %>
                     <li class="dropdown">
