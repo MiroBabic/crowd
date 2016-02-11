@@ -2,11 +2,9 @@
 <div class="header">
     <!-- Topbar -->
     <div class="container">
-        
+
         <div class="topbar">
-        <!--logo-->
-         <%= link_to image_tag("logo_d_white.png",size: "130x42", :alt => "SupportYourDream Logo", :class => "logo"), root_path %>     
-        <!-- logo end -->
+        
         
            <ul class="loginbar pull-right">
 
@@ -57,8 +55,10 @@
 
     <!--<div class="navbar navbar-default mega-menu" role="navigation">-->
         <div class="container">
-
-                <ul class="nav navbar-nav">
+<!--logo-->
+         <%= link_to image_tag("logo_d_white.png",size: "200x62", :alt => "SupportYourDream Logo", :class => "logo", :style=>"margin-top: -25px"), root_path %>     
+        <!-- logo end -->
+                <ul class="nav navbar-nav" style="margin-top: 53px;">
 
                     <!-- Home -->
                     <%= content_tag(:li, link_to('Úvod', home_url)) %>

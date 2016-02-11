@@ -242,6 +242,7 @@ body.header-fixed-space-default {
 	font-size: 15px;
 	font-weight:400;
 	text-transform: uppercase;
+
 }
 
 .header .navbar-nav > .active > a {
@@ -405,6 +406,7 @@ body.header-fixed-space-default {
 
 	.header .navbar-nav {
 		position: relative;
+	
 	}
 
 	.header .navbar-nav > li > a {
