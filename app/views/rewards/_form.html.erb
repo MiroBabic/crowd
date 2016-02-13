@@ -12,17 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, "Názov odmeny" %><br>
     <%= f.text_field :name %>
   </div>
+   <div class="field">
+    <%= f.label :about, "Čo odmena obsahuje" %><br>
+    <%= f.text_field :about %>
+  </div>
   <div class="field">
-    <%= f.label :amount %><br>
+    <%= f.label :amount, "Hodnota odmeny" %><br>
     <%= f.number_field :amount %>
   </div>
-  <div class="field">
-    <%= f.label :project_id %><br>
-    <%= f.text_field :project_id %>
-  </div>
+    <%= f.hidden_field :project_id, :value => params[:project_id] %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

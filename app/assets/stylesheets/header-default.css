@@ -32,7 +32,7 @@ body.header-fixed-space-default {
 .header .topbar {
 	z-index: 12;
 	/*padding: 8px 0;*/
-	/*padding: 8px 0 25px 0;*/
+	padding: 8px 0 25px 0;
 	position: relative;
 
 }
@@ -142,7 +142,7 @@ body.header-fixed-space-default {
 
 /*Navbar*/
 .header {
-	z-index: 999;
+	/*z-index: 999;*/
 	/*background: #fff;*/
 	background: #2F3236;
 	position: relative;
@@ -178,6 +178,7 @@ body.header-fixed-space-default {
 	display: inline-block;
 	/*vertical-align: middle;*/
 	vertical-align: bottom;
+
 }
 
 .header .logo img {
@@ -214,16 +215,20 @@ body.header-fixed-space-default {
 .header .navbar-toggle:hover,
 .header .navbar-toggle:focus {
 	background: #72c02c;
-	padding: 6px 10px 2px;
+	/*padding: 6px 10px 2px;*/
+	position: relative;
 }
 
 .header .navbar-toggle:hover {
 	background: #5fb611 !important;
+	position: relative;
 }
 
 /*Navbar Collapse*/
 .header .navbar-collapse {
 	position: relative;
+	
+
 }
 
 /*Navbar Collapse*/

@@ -1,10 +1,13 @@
 <!--=== Header ===-->
-<div class="header">
+<div class="header" >
     <!-- Topbar -->
     <div class="container">
 
-        <div class="topbar">
-        
+        <div class="topbar" >
+            
+        <!--logo-->
+         <%= link_to image_tag("logo_d_white.png",size: "180x62", :alt => "SupportYourDream Logo", :class => "logo" ), root_path %>     
+        <!-- logo end -->
         
            <ul class="loginbar pull-right">
 
@@ -51,14 +54,12 @@
 
     <!-- Navbar -->
 
-    <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
-
+    <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse" style="margin-top: -60px; z-index:999">
+    <!--<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">-->
     <!--<div class="navbar navbar-default mega-menu" role="navigation">-->
-        <div class="container">
-<!--logo-->
-         <%= link_to image_tag("logo_d_white.png",size: "200x62", :alt => "SupportYourDream Logo", :class => "logo", :style=>"margin-top: -25px"), root_path %>     
-        <!-- logo end -->
-                <ul class="nav navbar-nav" style="margin-top: 53px;">
+       <div class="container">
+
+                <ul class="nav navbar-nav" >
 
                     <!-- Home -->
                     <%= content_tag(:li, link_to('Úvod', home_url)) %>
@@ -88,7 +89,7 @@
                     <a href="/">Najčastejšie otázky</a>
                     </li>
                 </ul>
-            </div>
+          </div>
     </div>
 
     

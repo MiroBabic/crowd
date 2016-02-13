@@ -1,4 +1,36 @@
+<div class="row">
+  
+<%= form_for(@project, html: {:class => "sky-form"}) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <label class="input">
+              <%= f.text_field :name, :placeholder=>'Názov projektu' %>
+              <b class="tooltip tooltip-bottom-right">Vymysli meno, ktoré zarezonuje a pritiahne pozornosť na tvoj projekt </b>
+        </label>
+    <label class="select">
+  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: 'Vyber kategóriu'},{:class => 'form-control m-b'} %>
+      </label>
+
+
+ <div class="actions">
+    <center><%= f.submit "Pokračuj", :class=> 'btn-u' %></center>
+  </div>
+<% end %>
+
+</div>
+
+
+
+
 
 <!--<%= link_to 'Späť', projects_path %>-->

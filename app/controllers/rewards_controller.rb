@@ -25,10 +25,11 @@ class RewardsController < ApplicationController
   # POST /rewards.json
   def create
     @reward = Reward.new(reward_params)
-
+    @project = Project.find(reward_params[:project_id])
     respond_to do |format|
       if @reward.save
-        format.html { redirect_to @reward, notice: 'Reward was successfully created.' }
+        #format.html { redirect_to @reward, notice: 'Reward was successfully created.' }
+        format.html { redirect_to @project, notice: 'Reward was successfully created.' }
         format.json { render :show, status: :created, location: @reward }
       else
         format.html { render :new }
@@ -69,6 +70,6 @@ class RewardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reward_params
-      params.require(:reward).permit(:name, :amount, :project_id)
+      params.require(:reward).permit(:name, :about, :amount, :project_id)
     end
 end
