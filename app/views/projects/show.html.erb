@@ -4,7 +4,8 @@
                 <!-- Left Inner -->
                 <div class="col-md-7">
                     <div class="left-inner">
-                        <img src="assets/img/clients2/ea-canada.png" alt="">
+                        
+                        <%= image_tag @project.pictures.first.url, size: "140" %>
                         <h3><%= @project.name %></h3>
                         <p class="hex">Cieľová suma: <%= @project.amount %></p>
                         <p class="hex">Trvanie projektu: <%= @project.duration %></p>
@@ -38,12 +39,13 @@
 
                         <hr>
                         
-                         <h2>Galéria ku projektu</h2>
-                        <p>This job was a great job for the pay and benefits when compared to waiting table and working fast food. I also preferred working for the vs other stores like . The biggest problem was unreasonable expectations from management. Even as one of there top employees you feel taken advantage of and over worked. Dealing with the customers was the other issue.</p>
-
-                        <hr>
-                       
                     </div>
+                    <h2>Galéria ku projektu</h2>
+                        <% @project.pictures.each do |pic| %>
+                        <%= image_tag pic.url(:resized).to_s %>
+                        <% end %>
+                    	</br>
+                        <hr>
                 </div>
                 <!-- End Left Inner -->
 
@@ -63,7 +65,8 @@
       					<% end %>
                         <div class="overflow-h">
                             <span class="font-s"><%= @project.user.name %></span>
-                            
+
+                            <p class="color-green"><span class="hex"><%=raw %(#{link_to(@project.user.personalweb, url_with_protocol(@project.user.personalweb), :target => '_blank')}) %></span></p>
                             <ul class="social-icons">
                                 <li><a class="social_facebook" data-original-title="Facebook" href="#"></a></li>
                                 <li><a class="social_googleplus" data-original-title="Google Plus" href="#"></a></li>
@@ -87,7 +90,7 @@
                         <div class="people-say margin-bottom-20">
                             <div class="overflow-h">
                                 <span><%= p.name %></span>
-                                <small class="hex pull-right"><%= p.amount %></small>
+                                <small class="hex pull-right">suma: <%= p.amount %></small>
                                 <p><%= p.about %></p>
                             </div>
                         </div>
