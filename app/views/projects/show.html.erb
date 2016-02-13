@@ -4,8 +4,12 @@
                 <!-- Left Inner -->
                 <div class="col-md-7">
                     <div class="left-inner">
-                        
+                        <% if @project.pictures.present? %>
                         <%= image_tag @project.pictures.first.url, size: "140" %>
+                        <% else %>
+                        <img src="<%= asset_path( 'thumbnail-default.jpg' ) %>" alt="">
+                        
+                        <% end %>
                         <h3><%= @project.name %></h3>
                         <p class="hex">Cieľová suma: <%= @project.amount %></p>
                         <p class="hex">Trvanie projektu: <%= @project.duration %></p>
