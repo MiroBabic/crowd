@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" >
   
 <%= form_for(@project, html: {:class => "sky-form"}) do |f| %>
   <% if @project.errors.any? %>
@@ -12,7 +12,11 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="col-md-12" style="height:150px;">
+  </div>
+  <div class="col-md-3" >
+  </div>
+  <div class="col-md-6" style="height:250px;">
   <label class="input">
               <%= f.text_field :name, :placeholder=>'Názov projektu' %>
               <b class="tooltip tooltip-bottom-right">Vymysli meno, ktoré zarezonuje a pritiahne pozornosť na tvoj projekt </b>
@@ -21,11 +25,13 @@
   <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: 'Vyber kategóriu'},{:class => 'form-control m-b'} %>
       </label>
 
-
+<div class="control-group">
  <div class="actions">
     <center><%= f.submit "Pokračuj", :class=> 'btn-u' %></center>
   </div>
 <% end %>
+</div>
+</div>
 
 </div>
 

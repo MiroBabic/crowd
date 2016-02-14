@@ -40,6 +40,10 @@ gem 'omniauth-google'
 #carrierwave for images
 gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
 gem 'rmagick',require: false
+
+#jquery file uploader
+gem "jquery-fileupload-rails"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,3 +1,4 @@
+<% if @project.user_id == current_user.id %>
     <div class="job-description">
         <div class="container content">
            <div class="row">
@@ -111,4 +112,6 @@
             </div>
         </div>
     </div>
-
+<% else %>
+<% controller.redirect_to root_path %>
+<% end %>
