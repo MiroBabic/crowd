@@ -53,7 +53,7 @@
                     <%= form_for @project, url: project_pictures_path(@project), method: :post do |f| %>
                     <%= f.file_field :pictures, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %> 
                     <div class="actions">
-                        <%= f.submit "Pridaj obrázky", :class=> 'btn-u' %>
+                        <%= f.submit "Pridaj obrázky", :class=> 'btn-u', :disabled => "disabled" %>
                       </div>
                       <% end %>
                     	</br>
