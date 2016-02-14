@@ -2,6 +2,10 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
+  def userprojects
+    @user=current_user
+    @projects=Project.where("user_id=?",@user)
+  end
 
   # GET /projects
   # GET /projects.json

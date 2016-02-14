@@ -48,7 +48,7 @@
                     <h2>Galéria ku projektu</h2>
                         <% @project.pictures.each_with_index do |pic, index| %>
                         <%= image_tag pic.url(:resized).to_s %>
-                        <%= link_to "Delete", project_picture_path(@project, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" } %>
+                        <%= link_to content_tag(:i,nil,class: 'fa fa-trash-o'),project_picture_path(@project, index), :method => :delete, data: { confirm: "Naozaj chceš zmazať tento obrázok?" } %>
                         <% end %>
                     <%= form_for @project, url: project_pictures_path(@project), method: :post do |f| %>
                     <%= f.file_field :pictures, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %> 

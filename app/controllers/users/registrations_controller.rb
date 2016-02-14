@@ -20,6 +20,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  # GET /resource/userproject
+   def userprojects
+    @user=current_user.id
+    @project = Project.user_id(@user)
+   end
+
   # PUT /resource
   # def update
   #   super
