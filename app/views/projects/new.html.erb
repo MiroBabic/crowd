@@ -16,7 +16,7 @@
   </div>
   <div class="col-md-3" >
   </div>
-  <div class="col-md-6" style="height:250px;">
+  <div class="col-md-6" style="height:450px;">
   <label class="input">
               <%= f.text_field :name, :placeholder=>'Názov projektu' %>
               <b class="tooltip tooltip-bottom-right">Vymysli meno, ktoré zarezonuje a pritiahne pozornosť na tvoj projekt </b>
@@ -24,6 +24,17 @@
     <label class="select">
   <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: 'Vyber kategóriu'},{:class => 'form-control m-b'} %>
       </label>
+
+      <label class="input">
+              <i class="icon-append fa fa-eur"></i>
+              <%= f.number_field :amount, :placeholder=>"Cieľová suma" %>
+              <b class="tooltip tooltip-bottom-right">Zvoľ cieľovú sumu </b>
+       </label>
+
+       <label class="label">Ako dlho má bežať kampaň?</label>
+              <label class="toggle"><%= f.radio_button :duration, "10", :type=>'radio', :checked => 'checked' %><i class="no-rounded"></i> 10 dní</label>
+              <label class="toggle"><%= f.radio_button :duration, "30", :type=>'radio'  %><i class="no-rounded"></i> 30 dní</label>
+              <label class="toggle"><%= f.radio_button :duration, "60", :type=>'radio' %><i class="no-rounded"></i> 60 dní</label>
 
 <div class="control-group">
  <div class="actions">
