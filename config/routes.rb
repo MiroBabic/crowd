@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
 
   get '/userprojects' => 'projects#userprojects', :as => 'userprojects'
+  post '/submitproject/:id' => 'projects#submitproject', :as => 'submitproject'
 
   resources :projects do
     resources :pictures, :only => [:create, :destroy]

@@ -6,7 +6,7 @@
                 <div class="col-md-7">
                     <div class="left-inner">
                         <% if @project.pictures.present? %>
-                        <%= image_tag @project.pictures.first.url, size: "140" %>
+                        <%= image_tag @project.pictures.first.url, size: "140", :style=>"max-height: 100px" %>
                         <% else %>
                         <img src="<%= asset_path( 'thumbnail-default.jpg' ) %>" alt="">
                         
@@ -14,6 +14,7 @@
                         <h3><%= @project.name %></h3>
                         <p class="hex">Cieľová suma: <%= @project.amount %></p>
                         <p class="hex">Trvanie projektu: <%= @project.duration %></p>
+                        <p class="hex">Kategória: <%= @project.category.name %></p>
                         <hr>
 
                         <div class="progression">
@@ -65,8 +66,13 @@
                 <div class="col-md-5">
                     <div class="right-inner">
                     	<% if @project.user_id == current_user.id %>
+                        <% if @project.requested %>
+                        <button class="btn-u btn-u-default btn-block" type="button" disabled><i class="fa fa-envelope-o"></i> Projekt odoslaný na schválenie</button>                        
+                        <% else %>
                         <%= link_to "Uprav/Doplň projekt", edit_project_path(@project), :class=>"btn-u btn-block" %>
                         <%= link_to "Pridaj odmeny", new_reward_path(:project_id=>@project.id), :class=>"btn-u btn-block" %>
+                        <%= link_to "Pošli projekt na schválenie", submitproject_path(@project), :class=>"btn-u btn-block", method: :post %>
+                        <% end %>
                         </hr>
                         <% end %>
                         <h3>Autor projektu</h3>

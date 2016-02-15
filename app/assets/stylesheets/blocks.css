@@ -4016,10 +4016,10 @@ a.btn-u-xs {
 .btn-u.btn-u-blue:active,
 .btn-u.btn-u-blue.active,
 .open .dropdown-toggle.btn-u.btn-u-blue {
-	 background: #2980b9;
+	 background: #1ABC9C;
 }
 .btn-u.btn-u-split-blue.dropdown-toggle {
-	 border-left: solid 1px #2980b9;
+	 border-left: solid 1px #1ABC9C;
 }
 
 .btn-u.btn-u-red {
@@ -4244,11 +4244,11 @@ a.btn-u-xs {
 	border-color: #3498db;
 }
 .btn-u.btn-brd.btn-u-blue:hover {
-	color: #2980b9;
-	border-color: #2980b9;
+	color: #1ABC9C;
+	border-color: #1ABC9C;
 }
 .btn-u.btn-brd.btn-u-blue.btn-brd-hover:hover {
-	 background: #2980b9;
+	 background: #1ABC9C;
 }
 
 .btn-u.btn-brd.btn-u-red {
@@ -5346,7 +5346,7 @@ i.icon-bg-light-grey {
 }
 
 .funny-boxes-left-blue:hover {
-	border-left-color: #2980b9;
+	border-left-color: #1ABC9C;
 }
 
 /*Dark Left Bordered Funny Box**/

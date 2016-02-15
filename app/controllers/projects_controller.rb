@@ -7,6 +7,24 @@ class ProjectsController < ApplicationController
     @projects=Project.where("user_id=?",@user)
   end
 
+  def submitproject
+
+    @p=Project.find(params[:id])
+    @p.requested=true
+
+    respond_to do |format|
+    if @p.save
+       
+        format.html { redirect_to @p, notice: 'Project was successfully created.' }
+        format.json { render :show, status: :created, location: @p }
+      else
+        format.html { render :new }
+        format.json { render json: @p.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   # GET /projects
   # GET /projects.json
   def index
