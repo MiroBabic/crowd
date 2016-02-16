@@ -15,6 +15,7 @@ class RewardsController < ApplicationController
   # GET /rewards/new
   def new
     @reward = Reward.new
+    
   end
 
   # GET /rewards/1/edit
