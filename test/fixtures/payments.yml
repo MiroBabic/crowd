@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  project_id: 
+  reward_id: 
+  amount: 1
+  confirmed: false
+
+two:
+  user_id: 
+  project_id: 
+  reward_id: 
+  amount: 1
+  confirmed: false
