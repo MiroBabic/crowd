@@ -1,2 +1,103 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="col-md-12">
+	<h2>Najnovšie projekty </h2>
+     <div class="profile-body">
+      <!-- first -->
+      <% get4new.each do |p| %>
+     	<div class="col-sm-3">
+     		<div class="easy-block-v1">
+                    	 <% if p.pictures.present? %>
+                        <%= image_tag p.pictures.first.url, :class=>"img-responsive", :height=>"120" %>
+                        <% else %>
+                        <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
+                        <% end %>
+                        
+                        
+                    
+                    <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
+              </div>
+     	<div class="projects">
+                                <h2><a class="color-dark" href="/projects/<%= p.id %>"><%= p.name %></a></h2>
+                                <ul class="list-unstyled list-inline blog-info-v2">
+                                    <li>By: <a class="color-green" href="#"><%= p.user.name %></a></li>
+                                    <li><i class="fa fa-clock-o"></i> <%= p.confirmdate %></li>
+                                </ul>
+                                <p><%= p.annotation %></p>
+                                <br>
+                                <h3 class="heading-xs">Project Completeness <span class="pull-right">77%</span></h3>
+                                <div class="progress progress-u progress-xxs">
+                                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%">
+                                    </div>
+                                </div>
+                                <ul class="list-inline blog-info-v2">
+                                    <li>
+                                        <strong>12%</strong>
+                                        <span>Funded</span>
+                                    </li>
+                                    <li>
+                                        <strong>17%</strong>
+                                        <span>Pludged</span>
+                                    </li>
+                                    <li>
+                                        <strong>25</strong>
+                                        <span>days to go</span>
+                                    </li>
+                                </ul>
+                            </div> 
+            </div>
+          <% end %>  
+    </div>
+</div>
+<hr class="devider devider-dotted"></hr>
+    <!-- end of new projects -->
+    <!-- most successful projects -->
+   <div class="col-md-12">
+    <h2>Najúspešnejšie projekty </h2>
+     <div class="profile-body">
+      <!-- first -->
+      <% get4best.each do |p| %>
+     	<div class="col-sm-3">
+     		<div class="easy-block-v1">
+                    	 <% if p.pictures.present? %>
+                        <%= image_tag p.pictures.first.url, :class=>"img-responsive", :height=>"120" %>
+                        <% else %>
+                        <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
+                        <% end %>
+                        
+                        
+                    
+                    <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
+              </div>
+     	<div class="projects">
+                                <h2><a class="color-dark" href="/projects/<%= p.id %>"><%= p.name %></a></h2>
+                                <ul class="list-unstyled list-inline blog-info-v2">
+                                    <li>By: <a class="color-green" href="#"><%= p.user.name %></a></li>
+                                    <li><i class="fa fa-clock-o"></i> <%= p.confirmdate %></li>
+                                </ul>
+                                <p><%= p.annotation %></p>
+                                <br>
+                                <h3 class="heading-xs">Project Completeness <span class="pull-right">77%</span></h3>
+                                <div class="progress progress-u progress-xxs">
+                                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%">
+                                    </div>
+                                </div>
+                                <ul class="list-inline blog-info-v2">
+                                    <li>
+                                        <strong>12%</strong>
+                                        <span>Funded</span>
+                                    </li>
+                                    <li>
+                                        <strong>17%</strong>
+                                        <span>Pludged</span>
+                                    </li>
+                                    <li>
+                                        <strong>25</strong>
+                                        <span>days to go</span>
+                                    </li>
+                                </ul>
+                            </div> 
+            </div>
+          <% end %>  
+     </div>
+  </div>
+   <!-- end most successful projects -->
+
