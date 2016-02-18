@@ -18,6 +18,7 @@
 //= require bootstrap-sprockets
 //= require app.js
 //= require login-signup-modal/main.js
+//= require dataTables/datatables.min.js
 //= require turbolinks
 //= require_tree .
 

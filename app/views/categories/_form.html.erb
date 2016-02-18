@@ -1,4 +1,4 @@
-<%= form_for(@category) do |f| %>
+<%= form_for(@category, html: {:class => "sky-form"}) do |f| %>
   <% if @category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -10,12 +10,22 @@
       </ul>
     </div>
   <% end %>
+  <div class="col-md3">
+  </div>
+  <div class="col-md6">
+    <dd>
+     <section>
+         <label class="input">
+              <%= f.text_field :name, :placeholder=>'Názov kategórie' %>
+          </label>
+        </section>
+   </dd>
+  
+   <div class="actions">
+    <%= f.submit "Vytvor/uprav kategóriu", :class=> 'btn-u' %>
+    <%= link_to "Späť", @category, :class=> 'btn-u btn-u-red' %>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
 <% end %>
+</div>

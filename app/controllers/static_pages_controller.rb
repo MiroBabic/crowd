@@ -11,4 +11,8 @@ class StaticPagesController < ApplicationController
   def project_terms
   end
 
+  def adminpage
+		@projects=Project.all
+  end
+
 end
