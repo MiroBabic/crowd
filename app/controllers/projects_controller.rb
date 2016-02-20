@@ -24,6 +24,21 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def enableproject
+    @p=Project.find(params[:id])
+    @p.enabled = true
+
+    respond_to do |format|
+    if @p.save
+       
+        format.html { redirect_to "/adminpage", notice: 'Project was successfully enabled.' }
+        format.json { render :show, status: :created, location: @p }
+      else
+        format.html { render :new }
+        format.json { render json: @p.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # GET /projects
   # GET /projects.json
@@ -52,7 +67,8 @@ class ProjectsController < ApplicationController
 
     @project = Project.new(project_params)
     @project.user_id = current_user.id
-    @project.enabled = 0
+    @project.enabled = false
+    @project.requested = false
 
     respond_to do |format|
       if @project.save

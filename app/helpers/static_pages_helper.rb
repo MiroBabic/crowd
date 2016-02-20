@@ -1,6 +1,7 @@
 module StaticPagesHelper
 	def get4new
-		Project.order(confirmdate: :desc).limit(4)
+		@projects=Project.where('enabled = true')
+		@projects.order(confirmdate: :desc).limit(4)
 	end
 
 	def get4best

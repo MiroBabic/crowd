@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get '/userprojects' => 'projects#userprojects', :as => 'userprojects'
   post '/submitproject/:id' => 'projects#submitproject', :as => 'submitproject'
+  post '/enableproject/:id' => 'projects#enableproject', :as => 'enableproject'
 
   resources :projects do
     resources :pictures, :only => [:create, :destroy]
