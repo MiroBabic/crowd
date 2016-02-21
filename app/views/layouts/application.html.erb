@@ -11,7 +11,7 @@
 
        		
        		 <%= render 'layouts/header' %>
-       		<%= render 'layouts/slider' %>
+           <%= render 'layouts/slider' if current_page?(root_path) %>
     		
             <div class="container content-md">
                 <%= yield %>
