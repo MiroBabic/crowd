@@ -48,17 +48,19 @@
                     </div>
                     <h2>Galéria ku projektu</h2>
                         <% @project.pictures.each_with_index do |pic, index| %>
-                        <%= image_tag pic.url(:resized).to_s %>
+                        <%= link_to image_tag(pic.url(:resized).to_s), pic.url, class: "fancybox" %>
                         <%= link_to content_tag(:i,nil,class: 'fa fa-trash-o'),project_picture_path(@project, index), :method => :delete, data: { confirm: "Naozaj chceš zmazať tento obrázok?" } %>
                         <% end %>
+                         <div class="actions">
                     <%= form_for @project, url: project_pictures_path(@project), method: :post do |f| %>
                     <%= f.file_field :pictures, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %> 
-                    <div class="actions">
+                   
                         <%= f.submit "Pridaj obrázky", :class=> 'btn-u', :disabled => "disabled" %>
                       </div>
                       <% end %>
                     	</br>
                         <hr>
+                    
                 </div>
                 <!-- End Left Inner -->
 

@@ -44,7 +44,7 @@
 
                         <hr>
                         
-                    </div>
+                    
                     <h2>Galéria ku projektu</h2>
                         <% @project.pictures.each_with_index do |pic, index| %>
                         <%= image_tag pic.url(:resized).to_s %>
@@ -52,6 +52,7 @@
                     
                     	</br>
                         <hr>
+                    </div>
                 </div>
                 <!-- End Left Inner -->
 
@@ -84,7 +85,8 @@
                         </ul>
 
                         <hr>
-                
+                	
+                		<%= link_to "Podpor projekt", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block fa fa-eur" %>
                          
                         <h3>Odmeny</h3>
                         <% if @project.rewards.any? %>
