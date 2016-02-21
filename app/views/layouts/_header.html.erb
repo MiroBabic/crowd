@@ -11,23 +11,7 @@
         
            <ul class="loginbar pull-right">
 
-                    <li class="hoverSelector">
-                        <i class="fa fa-globe"></i>
-                        <a>Jazyky/Languages</a>
-                        <ul class="languages hoverSelectorBlock">
-                            <li class="active">
-                                <a href="#">Slovenský <i class="fa fa-check"></i></a>
-                            </li>
-                            <li><a href="#">English</a></li>
-                            <li><a href="#">Český</a></li>
-                            <li><a href="#">Poľský</a></li>
-                            <li><a href="#">Magyar</a></li>
-                        </ul>
-                    </li>
-                    <li class="topbar-devider"></li>
-                    <%= content_tag(:li, link_to('O nás', about_url)) %>
-                    <!--<li><a href="static">O nás</a></li>-->
-                    <li class="topbar-devider"></li>
+                  
                     <% if user_signed_in? %>
                     <li class="hoverSelector">
                         <a>
@@ -40,7 +24,7 @@
                     </ul>
                     </li>
                     <% else %>
-                    <li class="cd-log_reg"><a class="cd-signin" href="#">Login</a></li>
+                    <li class="cd-log_reg"><a class="cd-signin" href="#">Login/Register</a></li>
                     <% end %>
                 </ul>
     </div>
@@ -60,19 +44,9 @@
        <div class="container">
 
                 <ul class="nav navbar-nav" >
-
+                   
                     <!-- Home -->
                     <%= content_tag(:li, link_to('Úvod', root_path)) %>
-                    <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                            Pre Investorov
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.html">Poďte s nami</a></li>
-                            <li><a href="index.html">Investičné príležitosti</a></li>
-                            <li><a href="index.html">Úspešne ukončené kampane</a></li>
-                        </ul>
-                    </li>
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">
                             Projekty
@@ -86,6 +60,8 @@
                         </ul>
                     </li>
                     <%= content_tag(:li, link_to('Najčastejšie otázky', faq_path)) %>
+                    <%= content_tag(:li, link_to('O nás', about_url)) %>
+
                     <% if user_signed_in? && current_user.admin? %>
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">
@@ -99,6 +75,18 @@
                     </li>
                    
                     <% end %>
+                     <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                           <i class="fa fa-globe"></i> 
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Slovenský</a></li>
+                            <li><a href="index.html">English</a></li>
+                            <li><a href="index.html">Český</a></li>
+                            <li><a href="index.html">Polsky</a></li>
+                            <li><a href="index.html">Magyar</a></li>
+                        </ul>
+                    </li>
                 </ul>
           </div>
     </div>
