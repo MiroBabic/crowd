@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
 
   get '/userprojects' => 'projects#userprojects', :as => 'userprojects'
+  get '/showproject/:id' => 'projects#showproject', :as => 'showproject'
   post '/submitproject/:id' => 'projects#submitproject', :as => 'submitproject'
   post '/enableproject/:id' => 'projects#enableproject', :as => 'enableproject'
 

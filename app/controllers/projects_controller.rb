@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:showproject]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+
+  def showproject
+    @project=Project.find(params[:id])
+  end
 
   def userprojects
     @user=current_user

@@ -1,4 +1,3 @@
-<% if (@project.user_id == current_user.id) || (current_user.admin?) %>
     <div class="job-description">
         <div class="container content">
            <div class="row">
@@ -49,14 +48,8 @@
                     <h2>Galéria ku projektu</h2>
                         <% @project.pictures.each_with_index do |pic, index| %>
                         <%= image_tag pic.url(:resized).to_s %>
-                        <%= link_to content_tag(:i,nil,class: 'fa fa-trash-o'),project_picture_path(@project, index), :method => :delete, data: { confirm: "Naozaj chceš zmazať tento obrázok?" } %>
                         <% end %>
-                    <%= form_for @project, url: project_pictures_path(@project), method: :post do |f| %>
-                    <%= f.file_field :pictures, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %> 
-                    <div class="actions">
-                        <%= f.submit "Pridaj obrázky", :class=> 'btn-u', :disabled => "disabled" %>
-                      </div>
-                      <% end %>
+                    
                     	</br>
                         <hr>
                 </div>
@@ -65,19 +58,10 @@
                 <!-- Right Inner -->
                 <div class="col-md-5">
                     <div class="right-inner">
-                    	<% if @project.user_id == current_user.id %>
-                        <% if @project.requested %>
-                        <button class="btn-u btn-u-default btn-block" type="button" disabled><i class="fa fa-envelope-o"></i> Projekt odoslaný na schválenie</button>                        
-                        <% else %>
-                        <%= link_to "Uprav/Doplň projekt", edit_project_path(@project), :class=>"btn-u btn-block" %>
-                        <%= link_to "Pridaj odmeny", new_reward_path(:project_id=>@project.id), :class=>"btn-u btn-block" %>
-                        <%= link_to "Pošli projekt na schválenie", submitproject_path(@project), :class=>"btn-u btn-block", method: :post %>
-                        <% end %>
-                        </hr>
-                        <% end %>
+                    	
                         <h3>Autor projektu</h3>
                         <% if @project.user.picture.url(:resized).present? %>
-                                <%= image_tag @project.user.picture.url(:resized).to_s %>
+      							<%= image_tag @project.user.picture.url(:resized).to_s %>
       						<% else %>
       							<img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
       					<% end %>
@@ -125,6 +109,5 @@
             </div>
         </div>
     </div>
-<% else %>
-<% controller.redirect_to root_path %>
-<% end %>
+
+
