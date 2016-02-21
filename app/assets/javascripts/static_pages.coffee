@@ -7,3 +7,13 @@ jQuery ->
 		'order': [0,'asc']
 		'language': 'url': 'datatables_slovak.json'
 	);
+
+ParallaxSlider = do ->
+  { initParallaxSlider: ->
+    $('#da-slider').cslider
+      current: 0
+      bgincrement: 50
+      autoplay: false
+      interval: 4000
+    return
+ } 

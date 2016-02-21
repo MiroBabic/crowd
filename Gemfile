@@ -44,6 +44,10 @@ gem 'rmagick',require: false
 #jquery file uploader
 gem "jquery-fileupload-rails"
 
+#modernizr and slider
+gem 'modernizr-rails', '~> 2.7', '>= 2.7.1'
+gem 'parallaxslider-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

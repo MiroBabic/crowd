@@ -19,10 +19,14 @@
 //= require app.js
 //= require login-signup-modal/main.js
 //= require dataTables/datatables.min.js
+//= require modernizr
+//= require jquery.cslider
 //= require turbolinks
 //= require_tree .
 
 
  jQuery(document).ready(function() {
       	App.init();
+      	ParallaxSlider.initParallaxSlider();
        });
+
