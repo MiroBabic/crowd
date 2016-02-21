@@ -3,12 +3,12 @@
     <!-- Topbar -->
     <div class="container">
 
-        <div class="topbar" >
-            
-        <!--logo-->
-         <%= link_to image_tag("logo_d_white.png",size: "180x62", :alt => "SupportYourDream Logo", :class => "logo" ), root_path %>     
-        <!-- logo end -->
+       
+            <a class="logo" href="/">
+                <img src="<%= asset_path( 'logo.png' ) %>" alt="Logo" height="75">
+            </a>
         
+        <div class="topbar" >
            <ul class="loginbar pull-right">
 
                     <li class="hoverSelector">
@@ -19,7 +19,7 @@
                                 <a href="#">Slovenský <i class="fa fa-check"></i></a>
                             </li>
                             <li><a href="#">English</a></li>
-                            <li><a href="#">Český</a></li>
+                            <li ><a href="#">Český</a></li>
                             <li><a href="#">Poľský</a></li>
                             <li><a href="#">Magyar</a></li>
                         </ul>
@@ -54,10 +54,10 @@
 
     <!-- Navbar -->
 
-    <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse" style="margin-top: -60px; z-index:999">
+    <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse" >
     <!--<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">-->
     <!--<div class="navbar navbar-default mega-menu" role="navigation">-->
-       <div class="container">
+       <div class="container" style="margin-top: -30px">
 
                 <ul class="nav navbar-nav" >
                    
@@ -91,8 +91,8 @@
                     <% end %>
                     <!-- Search Block -->
                     <li>
-                        <i class="search fa fa-search search-btn" style="background: #2F3236; color: #fff;"></i>
-                        <div class="search-open">
+                        <i class="search fa fa-search search-btn" style="background: #2F3236; color: #fff;" ></i>
+                        <div class="search-open" style=" z-index:9999">
                             <div class="input-group animated fadeInDown">
                                 <input type="text" class="form-control" placeholder="Search">
                                 <span class="input-group-btn">

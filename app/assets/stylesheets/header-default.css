@@ -174,10 +174,10 @@ body.header-fixed-space-default {
 	height: 100%;
 	min-height: 40px;
 	min-width: 100px;
-	/*display: table-cell;*/
-	display: inline-block;
-	/*vertical-align: middle;*/
-	vertical-align: bottom;
+	display: table-cell;
+	/*display: inline-block;*/
+	vertical-align: middle;
+	/*vertical-align: bottom;*/
 
 }
 
