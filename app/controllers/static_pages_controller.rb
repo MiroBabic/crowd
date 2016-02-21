@@ -15,4 +15,6 @@ class StaticPagesController < ApplicationController
 		@projects=Project.all
   end
 
+  def faq
+  end
 end
