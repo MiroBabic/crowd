@@ -11,7 +11,23 @@
         
            <ul class="loginbar pull-right">
 
-                  
+                    <li class="hoverSelector">
+                        <i class="fa fa-globe"></i>
+                        <a>Jazyky/Languages</a>
+                        <ul class="languages hoverSelectorBlock">
+                            <li class="active">
+                                <a href="#">Slovenský <i class="fa fa-check"></i></a>
+                            </li>
+                            <li><a href="#">English</a></li>
+                            <li><a href="#">Český</a></li>
+                            <li><a href="#">Poľský</a></li>
+                            <li><a href="#">Magyar</a></li>
+                        </ul>
+                    </li>
+                    <li class="topbar-devider"></li>
+                    <%= content_tag(:li, link_to('O nás', about_url)) %>
+                    <!--<li><a href="static">O nás</a></li>-->
+                    <li class="topbar-devider"></li>
                     <% if user_signed_in? %>
                     <li class="hoverSelector">
                         <a>
@@ -24,7 +40,7 @@
                     </ul>
                     </li>
                     <% else %>
-                    <li class="cd-log_reg"><a class="cd-signin" href="#">Login/Register</a></li>
+                    <li class="cd-log_reg"><a class="cd-signin" href="#">Login</a></li>
                     <% end %>
                 </ul>
     </div>
@@ -60,8 +76,6 @@
                         </ul>
                     </li>
                     <%= content_tag(:li, link_to('Najčastejšie otázky', faq_path)) %>
-                    <%= content_tag(:li, link_to('O nás', about_url)) %>
-
                     <% if user_signed_in? && current_user.admin? %>
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">
@@ -75,18 +89,19 @@
                     </li>
                    
                     <% end %>
-                     <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                           <i class="fa fa-globe"></i> 
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.html">Slovenský</a></li>
-                            <li><a href="index.html">English</a></li>
-                            <li><a href="index.html">Český</a></li>
-                            <li><a href="index.html">Polsky</a></li>
-                            <li><a href="index.html">Magyar</a></li>
-                        </ul>
+                    <!-- Search Block -->
+                    <li>
+                        <i class="search fa fa-search search-btn" style="background: #2F3236; color: #fff;"></i>
+                        <div class="search-open">
+                            <div class="input-group animated fadeInDown">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                    <button class="btn-u" type="button">Go</button>
+                                </span>
+                            </div>
+                        </div>
                     </li>
+                    <!-- End Search Block -->
                 </ul>
           </div>
     </div>
