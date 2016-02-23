@@ -1,5 +1,5 @@
 <div class="row" >
-  
+
 <%= form_for(@payment, html: {:class => "sky-form"}) do |f| %>
   <% if @payment.errors.any? %>
     <div id="error_explanation">
@@ -17,11 +17,17 @@
   <div class="col-md-3" >
   </div>
   <div class="col-md-6" style="height:450px;">
+    <% if Reward.where('project_id=?',params[:project_id]).all.present? %>
+    <label class="select">
+  <%= f.select :reward_id, Reward.where('project_id=?',params[:project_id]).all.collect { |r| [ r.name, r.id ] }, {include_blank: 'Nechcem odmenu za príspevok'},{:class => 'form-control m-b', data: {remote: true,url: url_for( action: :show_reward_desc, id: params[:reward_id]) } } %>
+      </label>
+      <% end %>
   <label class="input">
               <%= f.number_field :amount, :placeholder=>'Suma ktorou chceš prispieť' %>
               <b class="tooltip tooltip-bottom-right">Zvoľ si sumu, ktorou chceš prispieť na tento projekt </b>
         </label>
  
+ <p>Pre projekt <%= findProject(params[:project_id]).name %></p>
  <div class="headline"><h2>Kontakt</h2></div>
                 <ul class="list-unstyled who margin-bottom-30">
 					<li><a href="#"><i class="fa fa-user"></i><%= current_user.name %></a></li>

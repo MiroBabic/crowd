@@ -2,6 +2,12 @@ class PaymentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
+  def show_reward_desc
+    @reward=Reward.find(params[:payment][:reward_id])
+    respond_to do |format|
+        format.js {render :reward_desc}      
+      end
+  end
   # GET /payments
   # GET /payments.json
   def index

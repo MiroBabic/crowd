@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/showproject/:id' => 'projects#showproject', :as => 'showproject'
   post '/submitproject/:id' => 'projects#submitproject', :as => 'submitproject'
   post '/enableproject/:id' => 'projects#enableproject', :as => 'enableproject'
+  get '/show_reward_desc' => 'payments#show_reward_desc', :as => 'show_reward_desc'
 
   resources :projects do
     resources :pictures, :only => [:create, :destroy]
