@@ -22,6 +22,7 @@
   <%= f.select :reward_id, Reward.where('project_id=?',params[:project_id]).all.collect { |r| [ r.name, r.id ] }, {include_blank: 'Nechcem odmenu za príspevok'},{:class => 'form-control m-b', data: {remote: true,url: url_for( action: :show_reward_desc, id: params[:reward_id]) } } %>
       </label>
       <% end %>
+      <div class="col-md-3" id="about_reward_div"></div>
   <label class="input">
               <%= f.number_field :amount, :placeholder=>'Suma ktorou chceš prispieť' %>
               <b class="tooltip tooltip-bottom-right">Zvoľ si sumu, ktorou chceš prispieť na tento projekt </b>
@@ -39,7 +40,11 @@
                 </ul>  
     
 
-      
+<%= f.hidden_field :project_id, :value => params[:project_id] %>
+<%= f.hidden_field :user_id, :value => current_user.id %>      
+<%= f.hidden_field :confirmed, :value => '0' %>
+
+
 <div class="control-group">
  <div class="actions">
     <center><%= f.submit "Pokračuj", :class=> 'btn-u' %></center>

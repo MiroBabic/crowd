@@ -1,1 +1,7 @@
-$('body').append('<%= @reward.about %>');
+<% if @reward.nil? %>
+$('#about_reward_div').empty();
+$('#about_reward_div').append('Žiadna odmena');
+<% else %>
+$('#about_reward_div').empty();
+$('#about_reward_div').append('<%= @reward.about %>');
+<% end %>

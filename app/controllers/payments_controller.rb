@@ -3,10 +3,18 @@ class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
   def show_reward_desc
-    @reward=Reward.find(params[:payment][:reward_id])
+    value = params[:payment][:reward_id]
+    if value.blank?
+      @reward=nil
+      respond_to do |format|
+        format.js {render :reward_desc}      
+      end
+    else
+    @reward=Reward.find(value)
     respond_to do |format|
         format.js {render :reward_desc}      
       end
+    end
   end
   # GET /payments
   # GET /payments.json
