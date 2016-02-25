@@ -148,7 +148,7 @@
 	-webkit-user-select: none;
 }
 .da-arrows span{
-	background: transparent url('slider/arrows.png') no-repeat;
+	background: transparent url('arrows.png') no-repeat;
 	position: absolute;
 	top: 50%;
 	height: 50px;

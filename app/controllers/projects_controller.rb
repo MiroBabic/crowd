@@ -15,7 +15,9 @@ class ProjectsController < ApplicationController
 
     @p=Project.find(params[:id])
     @p.requested=true
-
+    @p.confirmdate = Time.now
+    @p.enddate = Time.now+(@p.duration).to_i.days
+    
     respond_to do |format|
     if @p.save
        

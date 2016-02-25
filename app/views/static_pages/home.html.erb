@@ -31,7 +31,7 @@
                                 </div>
                                 <h3 class="heading-xs">Ostáva do konca projektu <span class="pull-right"><%= daysToEnd(p.id) %> dní</span></h3>
                                 <div class="progress progress-u progress-xxs">
-                                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="<%= daysToEnd(p.id) %>" aria-valuemin="0" aria-valuemax="<%= p.duration.to_i %>" style="width: <%= p.duration.to_i %>%">
+                                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="<%= p.duration.to_i - daysToEnd(p.id) %>" aria-valuemin="0" aria-valuemax="<%= p.duration.to_i %>" style="width: <%= 100-(( daysToEnd(p.id) / p.duration.to_f)*100) %>%">
                                     </div>
                                 </div>
                                 <ul class="list-inline blog-info-v2">
@@ -93,7 +93,7 @@
                                 </div>
                                 <h3 class="heading-xs">Ostáva do konca projektu <span class="pull-right"><%= daysToEnd(p.id) %> dní</span></h3>
                                 <div class="progress progress-u progress-xxs">
-                                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="<%= daysToEnd(p.id) %>" aria-valuemin="0" aria-valuemax="<%= p.duration.to_i %>" style="width: <%= p.duration.to_i %>%">
+                                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="<%= p.duration.to_i - daysToEnd(p.id) %>" aria-valuemin="0" aria-valuemax="<%= p.duration.to_i %>" style="width: <%= 100-(( daysToEnd(p.id) / p.duration.to_f)*100) %>%">
                                     </div>
                                 </div>
                                 <ul class="list-inline blog-info-v2">
