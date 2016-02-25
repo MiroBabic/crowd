@@ -19,10 +19,14 @@
      	<div class="projects">
                                 <h2><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></h2>
                                 <ul class="list-unstyled list-inline blog-info-v2">
-                                    <li>By: <a class="color-green" href="#"><%= p.user.name %></a></li>
-                                    <li><i class="fa fa-clock-o"></i> <%= p.confirmdate %></li>
+                                    <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li><br>
+                                    <li><i class="fa fa-clock-o"></i> <%= p.enddate %></li>
                                 </ul>
+                                <annotation>
+                                <div style="width:100%;min-height:70px;overflow:hidden;">
                                 <p><%= p.annotation %></p>
+                                </div>
+                                </annotation>
                                 <br>
                                 <h3 class="heading-xs">Projekt zatiaľ vyzbieral <span class="pull-right"><%= projectCollectedMoneyPerc(p.id) %>%</span></h3>
                                 <div class="progress progress-u progress-xxs">
@@ -79,12 +83,16 @@
                     <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
               </div>
      	<div class="projects">
-                                <h2><a class="color-dark" href="/projects/<%= p.id %>"><%= p.name %></a></h2>
+                                <h2><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></h2>
                                 <ul class="list-unstyled list-inline blog-info-v2">
-                                    <li>By: <a class="color-green" href="#"><%= p.user.name %></a></li>
-                                    <li><i class="fa fa-clock-o"></i> <%= p.confirmdate %></li>
+                                    <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li><br>
+                                    <li><i class="fa fa-clock-o"></i> <%= p.enddate %></li>
                                 </ul>
+                                <annotation>
+                                <div style="width:100%;min-height:70px;overflow:hidden;">
                                 <p><%= p.annotation %></p>
+                                </div>
+                                </annotation>
                                 <br>
                                 <h3 class="heading-xs">Projekt zatiaľ vyzbieral <span class="pull-right"><%= projectCollectedMoneyPerc(p.id) %>%</span></h3>
                                 <div class="progress progress-u progress-xxs">
@@ -119,5 +127,14 @@
      </div>
   </div>
 </div>
+<script>
+$('annotation').readmore({
+  speed: 75,
+  collapsedHeight: 60,
+  moreLink: '<a href="#">Ukáž viac</a>',
+  embedCSS: true,
+  lessLink: '<a href="#">Schovaj</a>'
+});
+</script>
    <!-- end most successful projects -->
 

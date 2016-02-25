@@ -1,3 +1,4 @@
+<div class ="alert alert-success fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>Uprav svoj projekt do želanej podoby a potom ho pošli na schválenie administrátorom</div>
 <% if (@project.user_id == current_user.id) || (current_user.admin?) %>
     <div class="job-description">
         <div class="container content">
@@ -72,8 +73,9 @@
                         <button class="btn-u btn-u-default btn-block" type="button" disabled><i class="fa fa-envelope-o"></i> Projekt odoslaný na schválenie</button>                        
                         <% else %>
                         <%= link_to "Uprav/Doplň projekt", edit_project_path(@project), :class=>"btn-u btn-block" %>
+                        <%= link_to "Zmaž projekt", project_path(@project), :class=>"btn-u btn-block", method: :delete, :data => {:confirm => 'Naozaj chceš tento projekt zmazať?'} %>
                         <%= link_to "Pridaj odmeny", new_reward_path(:project_id=>@project.id), :class=>"btn-u btn-block" %>
-                        <%= link_to "Pošli projekt na schválenie", submitproject_path(@project), :class=>"btn-u btn-block", method: :post %>
+                        <%= link_to "Pošli projekt na schválenie", submitproject_path(@project), :class=>"btn-u btn-block", :data => {:confirm =>'Je tento projekt kompletne vyplnený aby ho mohol administrátor schváliť?'}, method: :post %>
                         <% end %>
                         </hr>
                         <% end %>

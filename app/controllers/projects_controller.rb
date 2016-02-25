@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     @p.requested=true
     @p.confirmdate = Time.now
     @p.enddate = Time.now+(@p.duration).to_i.days
-    
+
     respond_to do |format|
     if @p.save
        
@@ -33,6 +33,23 @@ class ProjectsController < ApplicationController
   def enableproject
     @p=Project.find(params[:id])
     @p.enabled = true
+
+    respond_to do |format|
+    if @p.save
+       
+        format.html { redirect_to "/adminpage", notice: 'Project was successfully enabled.' }
+        format.json { render :show, status: :created, location: @p }
+      else
+        format.html { render :new }
+        format.json { render json: @p.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+   def returnproject
+    @p=Project.find(params[:id])
+    @p.requested = false
+    @p.enabled = false
 
     respond_to do |format|
     if @p.save
@@ -79,7 +96,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
        
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to @project, notice: 'Projekt je vytvorený a čaká na pridanie obsahu' }
         #format.html { redirect_to new_reward_path, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
@@ -108,7 +125,11 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      if current_user.admin?
+      format.html { redirect_to adminpage_path , notice: 'Projekt bol  vymazaný.' }
+    else
+      format.html { redirect_to root_path, notice: 'Projekt bol  vymazaný.' }
+    end
       format.json { head :no_content }
     end
   end

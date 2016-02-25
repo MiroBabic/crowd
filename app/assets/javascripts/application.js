@@ -21,6 +21,7 @@
 //= require dataTables/datatables.min.js
 //= require modernizr
 //= require jquery.cslider
+//= require readmore
 //= require turbolinks
 //= require_tree .
 

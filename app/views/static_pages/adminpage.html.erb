@@ -18,6 +18,8 @@
       <th>Beží</th>
       <th>Schválené dňa</th>
       <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -33,6 +35,9 @@
         <td><%if p.enabled %>Áno<% else %> Nie<% end %></td>
         <td><%= p.confirmdate %></td>
         <td><% if (p.requested == true) && (p.enabled==false) %><%= link_to "Naštartuj projekt", "/enableproject/#{p.id}", method: :post %><% elsif (p.requested == true) && (p.enabled==true) %>Projekt beží<% else %> Rozpracovaný projekt<%end%></td>
+        <td><% if (p.requested == true) && (p.enabled==false) %><%= link_to "Vráť projekt", "/returnproject/#{p.id}",data: { confirm: 'Si si naozaj istý, že chceš vrátiť tento projekt na prepracovanie?' }, method: :post %><% elsif (p.requested == true) && (p.enabled==true) %>Projekt už beží<% else %> Rozpracovaný projekt<%end%></td>
+        <td><%= link_to "Zmaž projekt", p, method: :delete, data: { confirm: 'Si si naozaj istý, že chceš zmazať tento projekt?' } %></td>
+
       </tr>
     <% end %>
   </tbody>

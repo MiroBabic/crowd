@@ -23,7 +23,7 @@
           <div class="col-sm-6">
              <div class="easy-block-v1">
                     <% if p.pictures.present? %>
-                        <%= image_tag p.pictures.first.url, :class=>"img-responsive" %>
+                        <%= image_tag p.pictures.first.url(:resized), :class=>"img-responsive" %>
                         <% else %>
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
                         <% end %>

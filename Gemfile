@@ -48,6 +48,8 @@ gem "jquery-fileupload-rails"
 gem 'modernizr-rails', '~> 2.7', '>= 2.7.1'
 gem 'parallaxslider-rails'
 
+#readmore plugin
+gem 'readmorejs-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
