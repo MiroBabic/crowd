@@ -2464,6 +2464,10 @@ ul.blog-tags a:hover {
   background: #79d5b3;
 }
 
+.progress-bar-u-yellow {
+  background: #F1C40F;
+}
+
 /* Job Inner Page
 ------------------------------------*/
 .job-description .save-job a:hover,
@@ -8373,7 +8377,8 @@ a.read-more:hover {
 ------------------------------------*/
 /* Main Parallax Sldier */
 .da-slide h2 i {
-	background-color: rgba(52, 152, 219, 0.8);
+	/*background-color: rgba(52, 152, 219, 0.8);*/
+	background-color:  #F1C40F;
 }
 
 /* Sequence Parallax Sldier */

@@ -56,6 +56,7 @@
 .ie8 .rgba-purple {background: #9b6bcc;}
 .ie8 .rgba-aqua {background: #27d7e7;}
 .ie8 .rgba-yellow {background: #f1c40f;}
+.ie8 .rgba-green {background: #26B89D;}
 
 /*Sky-Forms*/
 .ie8 .sky-form .icon-append {
@@ -6048,6 +6049,10 @@ blockquote.hero.hero-default small {
 	background: #3498db;
 }
 
+.progress-bar-yellow {
+  background:  #F1C40F;
+}
+
 .progress-bar-orange {
 	background: #e67e22;
 }
@@ -6580,6 +6585,7 @@ img.image-md {
 .rgba-yellow { background-color: rgba(241,196,15,0.8);}
 .rgba-default { background-color: rgba(114,192,44,0.8);}
 .rgba-purple { background-color: rgba(155,107,204,0.8);}
+.rgba-green { background-color: rgba(38,184,157,0.8);}
 
 /*Grey Backroud*/
 .bg-grey {

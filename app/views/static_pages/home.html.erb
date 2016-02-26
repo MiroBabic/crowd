@@ -16,10 +16,10 @@
                         
                         
                     
-                    <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
               </div>
      	<div class="projects">    <div id="header" style="height:70px;">
-                                <h2><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></h2>
+                                <h4><strong><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></strong></h4>
                               </div>
                                 <ul class="list-unstyled list-inline blog-info-v2">
                                     <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li><br>
@@ -34,16 +34,12 @@
                                 <div style="height:11px"></div>
                                 <% end %>
                                 <br>
-                                <h3 class="heading-xs">Projekt zatiaľ vyzbieral <span class="pull-right"><%= projectCollectedMoneyPerc(p.id) %>%</span></h3>
+                                <h5 class="heading-xs">Projekt zatiaľ vyzbieral <span class="pull-right"><%= projectCollectedMoneyPerc(p.id) %>%</span></h5>
                                 <div class="progress progress-u progress-xxs">
-                                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(p.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(p.id) %>%">
+                                    <div class="progress-bar progress-bar-u-yellow" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(p.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(p.id) %>%">
                                     </div>
                                 </div>
-                                <h3 class="heading-xs">Ostáva do konca projektu <span class="pull-right"><%= daysToEnd(p.id) %> dní</span></h3>
-                                <div class="progress progress-u progress-xxs">
-                                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="<%= p.duration.to_i - daysToEnd(p.id) %>" aria-valuemin="0" aria-valuemax="<%= p.duration.to_i %>" style="width: <%= 100-(( daysToEnd(p.id) / p.duration.to_f)*100) %>%">
-                                    </div>
-                                </div>
+                               
                                 <ul class="list-inline blog-info-v2">
                                     <li>
                                         <span>Zatiaľ vyzbieraných</span>
@@ -88,11 +84,11 @@
                         
                         
                     
-                    <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
               </div>
      	<div class="projects">
                                 <div id="header" style="height:70px;">
-                                <h2><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></h2>
+                                <h4><strong><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></strong></h4>
                               </div>
                                 <ul class="list-unstyled list-inline blog-info-v2">
                                     <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li><br>
@@ -107,16 +103,12 @@
                                 <div style="height:11px"></div>
                                 <% end %>
                                 <br>
-                                <h3 class="heading-xs">Projekt zatiaľ vyzbieral <span class="pull-right"><%= projectCollectedMoneyPerc(p.id) %>%</span></h3>
+                                <h5 class="heading-xs">Projekt zatiaľ vyzbieral <span class="pull-right"><%= projectCollectedMoneyPerc(p.id) %>%</span></h5>
                                 <div class="progress progress-u progress-xxs">
-                                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(p.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(p.id) %>%">
+                                    <div class="progress-bar progress-bar-u-yellow" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(p.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(p.id) %>%">
                                     </div>
                                 </div>
-                                <h3 class="heading-xs">Ostáva do konca projektu <span class="pull-right"><%= daysToEnd(p.id) %> dní</span></h3>
-                                <div class="progress progress-u progress-xxs">
-                                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="<%= p.duration.to_i - daysToEnd(p.id) %>" aria-valuemin="0" aria-valuemax="<%= p.duration.to_i %>" style="width: <%= 100-(( daysToEnd(p.id) / p.duration.to_f)*100) %>%">
-                                    </div>
-                                </div>
+                                
                                 <ul class="list-inline blog-info-v2">
                                     <li>
                                         <span>Zatiaľ vyzbieraných</span>
