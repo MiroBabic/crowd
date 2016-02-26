@@ -27,3 +27,15 @@
 	color: #777;
 }
 
+.projectborder {
+	margin-top:10px;
+	border: #D9D9DE medium solid;
+	border-width: 1px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.projects {
+	padding: 5px;
+}

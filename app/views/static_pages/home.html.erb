@@ -5,6 +5,8 @@
       <!-- first -->
       <% get4new.each do |p| %>
      	<div class="col-sm-3">
+        <div class="projectborder">
+
      		<div class="easy-block-v1">
                     	 <% if p.pictures.present? %>
                         <%= image_tag p.pictures.first.url(:resized), :class=>"img-responsive", :height=>"120" %>
@@ -61,6 +63,7 @@
                                 </ul>
                             </div> 
             </div>
+          </div>
           <% end %>  
     </div>
   </div>
@@ -75,6 +78,7 @@
       <!-- first -->
       <% get4best.each do |p| %>
      	<div class="col-sm-3">
+        <div class="projectborder">
      		<div class="easy-block-v1">
                     	 <% if p.pictures.present? %>
                         <%= image_tag p.pictures.first.url(:resized), :class=>"img-responsive", :height=>"120" %>
@@ -132,6 +136,7 @@
                                 </ul>
                             </div> 
             </div>
+          </div>
           <% end %>  
      </div>
   </div>
