@@ -5,7 +5,7 @@
                 <div class="col-md-7">
                     <div class="left-inner">
                         <% if @project.pictures.present? %>
-                        <%= image_tag @project.pictures.first.url, size: "140", :style=>"max-height: 100px" %>
+                        <%= image_tag @project.pictures.first.url, size: "180", :style=>"max-height: 100px" %>
                         <% else %>
                         <img src="<%= asset_path( 'thumbnail-default.jpg' ) %>" alt="">
                         

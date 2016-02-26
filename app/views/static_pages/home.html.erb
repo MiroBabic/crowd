@@ -7,7 +7,7 @@
      	<div class="col-sm-3">
      		<div class="easy-block-v1">
                     	 <% if p.pictures.present? %>
-                        <%= image_tag p.pictures.first.url, :class=>"img-responsive", :height=>"120" %>
+                        <%= image_tag p.pictures.first.url(:resized), :class=>"img-responsive", :height=>"120" %>
                         <% else %>
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
                         <% end %>
@@ -16,8 +16,9 @@
                     
                     <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
               </div>
-     	<div class="projects">
+     	<div class="projects">    <div id="header" style="height:70px;">
                                 <h2><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></h2>
+                              </div>
                                 <ul class="list-unstyled list-inline blog-info-v2">
                                     <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li><br>
                                     <li><i class="fa fa-clock-o"></i> <%= p.enddate %></li>
@@ -27,6 +28,9 @@
                                 <p><%= p.annotation %></p>
                                 </div>
                                 </annotation>
+                                <% if p.annotation.length < 90 %>
+                                <div style="height:11px"></div>
+                                <% end %>
                                 <br>
                                 <h3 class="heading-xs">Projekt zatiaľ vyzbieral <span class="pull-right"><%= projectCollectedMoneyPerc(p.id) %>%</span></h3>
                                 <div class="progress progress-u progress-xxs">
@@ -73,7 +77,7 @@
      	<div class="col-sm-3">
      		<div class="easy-block-v1">
                     	 <% if p.pictures.present? %>
-                        <%= image_tag p.pictures.first.url, :class=>"img-responsive", :height=>"120" %>
+                        <%= image_tag p.pictures.first.url(:resized), :class=>"img-responsive", :height=>"120" %>
                         <% else %>
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
                         <% end %>
@@ -83,7 +87,9 @@
                     <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
               </div>
      	<div class="projects">
+                                <div id="header" style="height:70px;">
                                 <h2><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></h2>
+                              </div>
                                 <ul class="list-unstyled list-inline blog-info-v2">
                                     <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li><br>
                                     <li><i class="fa fa-clock-o"></i> <%= p.enddate %></li>
@@ -93,6 +99,9 @@
                                 <p><%= p.annotation %></p>
                                 </div>
                                 </annotation>
+                                 <% if p.annotation.length < 90 %>
+                                <div style="height:11px"></div>
+                                <% end %>
                                 <br>
                                 <h3 class="heading-xs">Projekt zatiaľ vyzbieral <span class="pull-right"><%= projectCollectedMoneyPerc(p.id) %>%</span></h3>
                                 <div class="progress progress-u progress-xxs">
