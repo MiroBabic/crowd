@@ -75,7 +75,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
      #devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
      #devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :street, :city, :zip, :altemail, :phone, :fbprofile, :twitterprofile, :gplusprofile, :picture, :personalweb, :aboutme, :email, :password, :password_confirmation, :current_password) }
      devise_parameter_sanitizer.for(:sign_up).push(:name, :street, :city, :zip, :altemail, :phone, :fbprofile, :twitterprofile, :gplusprofile, :picture, :personalweb, :aboutme)
-     devise_parameter_sanitizer.for(:account_update).push(:name, :street, :city, :zip, :altemail, :phone, :fbprofile, :twitterprofile, :gplusprofile, :picture, :personalweb, :aboutme)
+     devise_parameter_sanitizer.for(:account_update).push(:name, :street, :city, :zip, :country, :altemail, :phone, :fbprofile, :twitterprofile, :gplusprofile, :picture, :personalweb, :aboutme)
   end
 
 

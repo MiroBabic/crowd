@@ -2,6 +2,10 @@ class PaymentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
+  def invoice
+    @payment = Payment.find(params[:id])
+  end
+
   def show_reward_desc
     value = params[:payment][:reward_id]
     if value.blank?
@@ -40,10 +44,12 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
+    @project = Project.find(payment_params[:project_id])
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
+        format.html { redirect_to invoice_url(id: @payment.id), notice: 'Payment was successfully created.' }
+        #format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new }
