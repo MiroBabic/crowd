@@ -1,6 +1,8 @@
 <div class="col-md-12">
   <div class="row">
+       <div class="headline">
 	<h2>Najnovšie projekty </h2>
+</div>
      <div class="profile-body">
       <!-- first -->
       <% get4new.each do |p| %>
@@ -34,29 +36,40 @@
                                 <div style="height:11px"></div>
                                 <% end %>
                                 <br>
-                                <h5 class="heading-xs">Projekt zatiaľ vyzbieral <span class="pull-right"><%= projectCollectedMoneyPerc(p.id) %>%</span></h5>
+                                
                                 <div class="progress progress-u progress-xxs">
                                     <div class="progress-bar progress-bar-u-yellow" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(p.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(p.id) %>%">
                                     </div>
                                 </div>
-                               
-                                <ul class="list-inline blog-info-v2">
-                                    <li>
-                                        <span>Zatiaľ vyzbieraných</span>
-                                        <strong><%= projectCollectedMoney(p.id) %> <i class="fa fa-eur"></i></strong>
+                               <ul class="list-inline blog-info-v2">
+                                    <li style=" width: 33%; text-align:center">
+                                        <strong><%= projectCollectedMoneyPerc(p.id) %>%</strong>
                                         
                                     </li>
-                                    <li>
-                                        <span>Cieľová suma</span>
-                                        <strong><%= p.amount %> <i class="fa fa-eur"></i></strong>
+                                    <li style = "width: 30%;text-align:center">
+                                        <strong><%= projectCollectedMoney(p.id) %><i class="fa fa-eur"></i></strong>
                                         
                                     </li>
-                                    <li>
-                                        <span>Ostáva do konca</span>
-                                        <strong><%= TotalToEnd(p.id) %> </strong>
+                                    <li style="float:right;width: 33%;text-align:center;">
+                                        <strong><%= daysToEnd(p.id) %> dní</strong>
                                         
                                     </li>
                                 </ul>
+                               <ul class="list-inline blog-info-v2">
+                                   <li style=" width: 33%; text-align:center">
+                                        <span style="font-size:10px">Splnených</span>
+                                    </li>
+                                    <li style = "width: 30%;text-align:center">
+                                        <span style="font-size:10px">Získaných</span>
+                                    </li>
+                                   <li style="float:right;width: 33%;text-align:center;">
+                                        <span style="font-size:10px">Do konca</span>
+                                    </li>
+                                </ul>
+                                  
+                                  
+                                   
+                               
                             </div> 
             </div>
           </div>
@@ -64,12 +77,15 @@
     </div>
   </div>
 </div>
+
 <hr class="devider devider-dotted"></hr>
     <!-- end of new projects -->
     <!-- most successful projects -->
-   <div class="col-md-12">
+   <div class="col-md-12" style="padding-top: 50px">
     <div class="row">
+      <div class="headline">
     <h2>Najúspešnejšie projekty </h2>
+  </div>
      <div class="profile-body">
       <!-- first -->
       <% get4best.each do |p| %>
@@ -103,29 +119,36 @@
                                 <div style="height:11px"></div>
                                 <% end %>
                                 <br>
-                                <h5 class="heading-xs">Projekt zatiaľ vyzbieral <span class="pull-right"><%= projectCollectedMoneyPerc(p.id) %>%</span></h5>
                                 <div class="progress progress-u progress-xxs">
                                     <div class="progress-bar progress-bar-u-yellow" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(p.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(p.id) %>%">
                                     </div>
                                 </div>
-                                
-                                <ul class="list-inline blog-info-v2">
-                                    <li>
-                                        <span>Zatiaľ vyzbieraných</span>
-                                        <strong><%= projectCollectedMoney(p.id) %> <i class="fa fa-eur"></i></strong>
+                               <ul class="list-inline blog-info-v2">
+                                    <li style=" width: 33%; text-align:center">
+                                        <strong><%= projectCollectedMoneyPerc(p.id) %>%</strong>
                                         
                                     </li>
-                                    <li>
-                                        <span>Cieľová suma</span>
-                                        <strong><%= p.amount %> <i class="fa fa-eur"></i></strong>
+                                    <li style = "width: 30%;text-align:center">
+                                        <strong><%= projectCollectedMoney(p.id) %><i class="fa fa-eur"></i></strong>
                                         
                                     </li>
-                                    <li>
-                                        <span>Ostáva do konca</span>
-                                        <strong><%= TotalToEnd(p.id) %> </strong>
+                                    <li style="float:right;width: 33%;text-align:center;">
+                                        <strong><%= daysToEnd(p.id) %> dní</strong>
                                         
                                     </li>
                                 </ul>
+                               <ul class="list-inline blog-info-v2">
+                                   <li style=" width: 33%; text-align:center">
+                                        <span style="font-size:10px">Splnených</span>
+                                    </li>
+                                    <li style = "width: 30%;text-align:center">
+                                        <span style="font-size:10px">Získaných</span>
+                                    </li>
+                                   <li style="float:right;width: 33%;text-align:center;">
+                                        <span style="font-size:10px">Do konca</span>
+                                    </li>
+                                </ul>
+                                
                             </div> 
             </div>
           </div>
