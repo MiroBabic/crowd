@@ -1,72 +1,61 @@
     <div class="job-description">
-        <div class="container content">
-           <div class="row">
+        <div class="row">
+           
                 <!-- Left Inner -->
-                <div class="col-md-7">
+                <div class="col-md-8">
                     <div class="left-inner">
                         <% if @project.pictures.present? %>
-                        <%= image_tag @project.pictures.first.url, size: "180", :style=>"max-height: 100px" %>
+                        <%= image_tag @project.pictures.first.url, size: "140", :style=>"max-height: 100px" %>
                         <% else %>
                         <img src="<%= asset_path( 'thumbnail-default.jpg' ) %>" alt="">
-                        
                         <% end %>
                         <h3><%= @project.name %></h3>
                         <p class="hex">Cieľová suma: <%= @project.amount %></p>
-                        <p class="hex">Trvanie projektu: <%= @project.duration %></p>
+                        <p class="hex">Ostáva: <%= TotalToEnd(@project.id) %></p>
                         <p class="hex">Kategória: <%= @project.category.name %></p>
                         <hr>
 
                         <div class="progression">
-                            <span>Vyzbieraných</span>
-                            <div class="progress progress-u progress-xs">
-                                <div style="width: 88%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="88" role="progressbar" class="progress-bar progress-bar-u">
+                            <h5>Vyzbieraných <span class="pull-right"><%= projectCollectedMoneyPerc(@project.id) %>%</span></h5>
+                            <div class="progress progress-u progress-xxs">
+                                    <div class="progress-bar progress-bar-u-yellow" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(@project.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(@project.id) %>%">
+                                    </div>
                                 </div>
-                            </div>
-
-                            <span>Ostáva do konca</span>
-                            <div class="progress progress-u progress-xs">
-                                <div style="width: 76%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="76" role="progressbar" class="progress-bar progress-bar-u">
-                                </div>
-                            </div>
-                          
                         </div>
 
                         <hr>
 
-                        <h2>Sumár projektu</h2>
+                        <h4>Sumár projektu</h4>
                         <p><%= @project.annotation %></p>
 
                         <hr>
 
-                        <h2>Detailne o projekte</h2>
+                        <h4>Detailne o projekte</h4>
                         <p><%= @project.about %></p>
                         
 
                         <hr>
-                    </div>    
-                    <div>
-                    <h2>Galéria ku projektu</h2>
+                        
+                    <div class="gallery">
+                    <h4>Galéria ku projektu</h4>
                         <% @project.pictures.each_with_index do |pic, index| %>
-                        <%= link_to image_tag(pic.url(:resized).to_s), pic.url, class: "fancybox" %>
+                        <%= link_to image_tag(pic.url(:resized).to_s), pic.url %>
                         <% end %>
                         </div>
-                    	</br>
-                        <hr>
-
-                    
                 </div>
+            </div>
                 <!-- End Left Inner -->
 
                 <!-- Right Inner -->
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <div class="right-inner">
                     	
-                        <h3>Autor projektu</h3>
+                        <h4>Autor projektu</h4>
                         <% if @project.user.picture.url(:resized).present? %>
-      							<%= image_tag @project.user.picture.url(:resized).to_s %>
-      						<% else %>
-      							<img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
-      					<% end %>
+                                <%= image_tag @project.user.picture.url(:resized).to_s %>
+                            <% else %>
+                                <img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
+                        <% end %>
                         <div class="overflow-h">
                             <span class="font-s"><%= @project.user.name %></span>
 
@@ -86,26 +75,39 @@
                         </ul>
 
                         <hr>
-                	
-                		<%= link_to "Podpor projekt", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block fa fa-eur" %>
+                
                          
-                        <h3>Odmeny</h3>
+                        <h4>Odmeny</h4>
                         <% if @project.rewards.any? %>
                         <% @project.rewards.each do |p| %>
                         <div class="people-say margin-bottom-20">
                             <div class="overflow-h">
                                 <span><%= p.name %></span>
-                                <small class="hex pull-right">suma: <%= p.amount %></small>
+                                <span class="hex pull-right" style="padding-right:3px">hodnota: <%= p.amount %> <i class="fa fa-eur"></i></span>
                                 <p><%= p.about %></p>
                             </div>
                         </div>
-                     	<% end %>
+                        <% end %>
                         
                         <% else %>
                         <p> Projekt nemá žiadne odmeny </p>
                         <% end %>
                         <hr>
-                        
+                        <h4>Darcovia</h4>
+                        <% if @project.payments.any? %>
+                        <% @project.payments.each do |pay| %>
+                        <div class="people-say margin-bottom-20">
+                                <% if pay.user.name.empty? %>
+                                <span>Anonym</span>
+                                <% else %>
+                                <span><%= pay.user.name %></span>
+                                <% end %>
+                                <span class="hex pull-right" style="padding-right:3px">prispel: <%= pay.amount %> <i class="fa fa-eur"></i></span>
+                            
+                        </div>
+                        <% end %>
+                        <% end %>
+
                     </div>
                 </div>
                 <!-- End Right Inner -->

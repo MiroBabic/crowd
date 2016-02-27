@@ -43,11 +43,22 @@
 
 .job-description .left-inner img {
 	float: left;
-	width: 80px;
+	width: 150px;
 	height: auto;
 	padding: 3px;
 	margin: 0 10px 10px 0;
 	border: 1px solid #eee;
+}
+
+.job-description .left-inner .gallery img {
+	float: center;
+	width: 550px;
+	height: auto;
+	padding: 3px;
+	margin: 0 10px 10px 0;
+	border: 1px solid #eee;
+	position: relative;
+
 }
 
 .job-description .left-inner h3 {
