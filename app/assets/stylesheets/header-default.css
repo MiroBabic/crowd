@@ -244,8 +244,9 @@ body.header-fixed-space-default {
 .header .navbar-nav > li > a {
 	/*color: #687074;*/
 	color: #FFFFFF;
-	font-size: 15px;
-	font-weight:400;
+	/*font-size: 15px;*/
+	font-size: 20px;
+	font-weight:200;
 	text-transform: uppercase;
 
 }
