@@ -97,10 +97,10 @@
                         <% if @project.payments.any? %>
                         <% @project.payments.each do |pay| %>
                         <div class="people-say margin-bottom-20">
-                                <% if pay.user.name.empty? %>
-                                <span>Anonym</span>
-                                <% else %>
+                                <% if pay.user.name? %>
                                 <span><%= pay.user.name %></span>
+                                <% else %>
+                                <span>Anonym</span>
                                 <% end %>
                                 <span class="hex pull-right" style="padding-right:3px">prispel: <%= pay.amount %> <i class="fa fa-eur"></i></span>
                             
