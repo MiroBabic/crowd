@@ -29,7 +29,7 @@
     <% @payments.each do |p| %>
       <tr>
         <td><% if p.project.name.empty? %>Projektu chýba meno <% else %><%= link_to p.project.name, "/showproject/#{p.project.id}" %><% end %></td>
-        <td><%= p.user.name %></td>
+        <td><%= p.user.email %></td>
         <td><%= p.amount %></td>
         <td><%= p.created_at.strftime("%Y") %><%= p.id %></td>
         <td><% if p.reward.nil? %>Žiadna odmena<% else %> <%= p.reward.name %><% end %></td>
