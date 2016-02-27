@@ -11,6 +11,23 @@ class PaymentsController < ApplicationController
     @payments=Payment.where("user_id=?",@user)
   end
 
+  def confirmpayment
+    @payment=Payment.find(params[:id])
+    @payment.confirmed = true
+
+    respond_to do |format|
+    if @payment.save
+       
+        format.html { redirect_to payments_path, notice: 'Platba bola potvrdená.' }
+        format.json { render :show, status: :created, location: @p }
+      else
+        format.html { render :new }
+        format.json { render json: @p.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
   def show_reward_desc
     value = params[:payment][:reward_id]
     if value.blank?

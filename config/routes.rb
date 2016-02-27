@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :payments
-  resources :rewards
- # get 'static_pages/home'
+   # get 'static_pages/home'
 
   #get 'static_pages/help'
 
@@ -18,11 +16,14 @@ Rails.application.routes.draw do
   get '/show_reward_desc' => 'payments#show_reward_desc', :as => 'show_reward_desc'
   get '/invoice/:id' => 'payments#invoice', :as => 'invoice'
   get '/userpayments' => 'payments#userpayments', :as => 'userpayments'
+  post '/confirmpayment/:id' => 'payments#confirmpayment', :as => 'confirmpayment'
 
   resources :projects do
     resources :pictures, :only => [:create, :destroy]
   end
 
+  resources :payments
+  resources :rewards
   
 
   devise_for :users, :controllers => {:registrations => "users/registrations"}

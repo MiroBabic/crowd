@@ -11,13 +11,13 @@ module StaticPagesHelper
 
 	def projectCollectedMoney(id)
 		@project= Project.find(id)
-		@collected = Payment.where('project_id = ?', @project.id)
+		@collected = Payment.where('project_id = ? and confirmed = true', @project.id)
 		@collected.sum(:amount)
 	end
 
 	def projectCollectedMoneyPerc(id)
 		@project= Project.find(id)
-		@collected = Payment.where('project_id = ?', @project.id)
+		@collected = Payment.where('project_id = ? and confirmed = true', @project.id)
 		if @collected.nil?
 			@col=0
 		else

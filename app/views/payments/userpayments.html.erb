@@ -33,6 +33,7 @@
       <th>Projekt</th>
       <th>Moj príspevok</th>
       <th>Odmena</th>
+      <th>Prijatá platba</th>
       <th></th>
     </tr>
   </thead>
@@ -43,6 +44,7 @@
         <td><%= link_to p.project.name, "/showproject/#{p.project.id}" %></td>
         <td><%= p.amount %> <i class="fa fa-eur"></i></td>
         <td><% if p.reward.nil? %>Žiadna odmena<% else %> <%= p.reward.name %><% end %></td>
+        <td><% if p.confirmed? %>Áno<% else %> Nie<% end %></td>
         <td><%= link_to "Detaily príspevku", "/invoice/#{p.id}"  %></td>
 
       </tr>
