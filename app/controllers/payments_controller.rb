@@ -6,6 +6,11 @@ class PaymentsController < ApplicationController
     @payment = Payment.find(params[:id])
   end
 
+  def userpayments
+    @user=current_user
+    @payments=Payment.where("user_id=?",@user)
+  end
+
   def show_reward_desc
     value = params[:payment][:reward_id]
     if value.blank?

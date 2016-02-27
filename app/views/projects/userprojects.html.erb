@@ -11,12 +11,16 @@
                   
                     <%= link_to '<i class="fa fa-cog"></i> Nastavenia profilu'.html_safe, edit_user_registration_path, :class=>"list-group-item" %>
                     <%= link_to '<i class="fa fa-cubes"></i> Moje projekty'.html_safe, userprojects_path, :class=>"list-group-item" %>
+                     <%= link_to '<i class="fa fa-cubes"></i> Moje príspevky'.html_safe, userpayments_path, :class=>"list-group-item" %>
                     
                     
               </ul>
     </div>
     <div class="col-md-9">
      <div class="profile-body">
+       <% if @projects.empty? %>
+        <p>Nemáš žiaden vytvorený projekt</p>
+        <% else %>
       <% @projects.all.each_slice(2) do |slice_of_two| %>
         <div class="row">
           <% slice_of_two.each do |p| %>
@@ -61,6 +65,7 @@
                         </div>
             <% end %>
           </div>
+       <%end %>
        <%end %>
      </div>
 

@@ -1,3 +1,5 @@
+<% if (@payment.user_id == current_user.id) || (current_user.admin?) %>
+<div class ="alert alert-success fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>Toto potvrdenie o príspevku s údajmi o platbe nájdeš vo svojom profile v kategórii "Moje príspevky"</div>
 <!--Invoice Header-->
         <div class="row invoice-header">
             <div class="col-xs-6">
@@ -23,18 +25,18 @@
                         <li><strong>Adresa:</strong> <%= @payment.user.street %>, <%= @payment.user.city %></li>
                         <li><strong>PSČ:</strong> <%= @payment.user.zip %></li>
                         <li><strong>Krajina:</strong> <%= @payment.user.country %></li>
-                        <li><strong>Email:</strong> <%= @payment.user.email %></li>
+
                     </ul>
                 </div>
             </div>
             <div class="col-xs-6">
                 <div class="tag-box tag-box-v3">
-                    <h2>Peyment Details:</h2>
+                    <h2>Prijímajúci platbu:</h2>
                     <ul class="list-unstyled">
-                        <li><strong>Bank Name:</strong> 123456789012</li>
-                        <li><strong>Account Number:</strong> 123456789012</li>
-                        <li><strong>SWIFT Code:</strong> 123DEMO45DEMO</li>
-                        <li><strong>V.A.T Reg #:</strong> 678DEMO45545</li>
+                        <li><strong>Support Your Dream</strong></li>
+                        <li><strong>Meno:</strong> Občianske združenie Help4People</li>
+                        <li><strong>IBAN#:</strong> SK00900001452648470251</li>
+                        <li><strong>Variabilný symbol#:</strong> <%= @payment.created_at.strftime("%Y") %><%= @payment.id %></li>
                     </ul>
                 </div>
             </div>
@@ -44,63 +46,32 @@
         <!--Invoice Table-->
         <div class="panel panel-default margin-bottom-40">
             <div class="panel-heading">
-                <h3 class="panel-title">Invoice Details</h3>
+                <h3 class="panel-title">Detaily príspevku</h3>
             </div>
             <div class="panel-body">
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                <p>Ďakujeme za tvoj príspevok na projekt <strong><%= @payment.project.name %></strong> v sume <strong><%= @payment.amount %></strong>. Po uhradení platby na náš účet s variabilným symbolom <strong><%= @payment.created_at.strftime("%Y") %><%= @payment.id %></strong> bude príspevok pripísaný ku projektu a zároveň zaznamenaný na tvojom profile. </p>
             </div>
             <table class="table table-striped invoice-table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Item</th>
-                        <th class="hidden-sm">Description</th>
-                        <th>Quantity</th>
-                        <th>Unit Cost</th>
-                        <th>Total</th>
+                       
+                        <th>Projekt</th>
+                        <th class="hidden-sm">Popis</th>
+                        <th>Odmena</th>
+                        <th>Suma</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Keyboard</td>
-                        <td class="hidden-sm">At vero eos et accusamus etofficia mollitia</td>
-                        <td>252</td>
-                        <td>$52</td>
-                        <td>$18476</td>
+                        
+                        <td><%= @payment.project.name %></td>
+                        <td class="hidden-sm"><%= @payment.project.annotation %></td>
+                        <td><% if @payment.reward.nil? %>Žiadna odmena<% else %> <%= @payment.reward.name %><% end %></td>
+                        <td><%= @payment.amount %></td>
+                        
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Displays</td>
-                        <td class="hidden-sm">Verode eoset accusamus etofficia deserunt</td>
-                        <td>78</td>
-                        <td>$128</td>
-                        <td>$12047</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Phones</td>
-                        <td class="hidden-sm">Etquas molestias deexcepturi dasint</td>
-                        <td>16</td>
-                        <td>$450</td>
-                        <td>$7968</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Software</td>
-                        <td class="hidden-sm">Atofficia droeos etofficia taccusamus</td>
-                        <td>191</td>
-                        <td>$24</td>
-                        <td>$4099</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Speakers</td>
-                        <td class="hidden-sm">Dacusamus deserunt veroeoset vero eos</td>
-                        <td>65</td>
-                        <td>$119</td>
-                        <td>$9456</td>
-                    </tr>
+                   
                 </tbody>
             </table>
         </div>
@@ -111,23 +82,25 @@
             <div class="col-xs-6">
                 <div class="tag-box tag-box-v3 no-margin-bottom">
                     <address class="no-margin-bottom">
-                        25, Lorem Lis Street, Orange <br>
-                        California, US <br>
-                        Phone: 800 123 3456 <br>
-                        Fax: 800 123 3456 <br>
-                        Email: <a href="mailto:info@example.com">info@example.com</a>
+                        OZ Help4People <br>
+                        Riazanská 46 <br>
+                        831 03 Bratislava <br>
+                        Slovensko <br>
+                        Email: <a href="mailto:mail@help4people.sk">mail@help4people.sk</a>
                     </address>
                 </div>
             </div>
             <div class="col-xs-6 text-right">
                 <ul class="list-unstyled invoice-total-info">
-                    <li><strong>Sub - Total Amount:</strong> $109365</li>
-                    <li><strong>Discount:</strong> 14.8%</li>
-                    <li><strong>VAT ($6):</strong> $8371</li>
-                    <li><strong>Grand Total:</strong> $101486</li>
+                  </br>
+                  <li><strong>Príspevok:</strong> <%= @payment.amount %> <i class="fa fa-eur"></i></li>
+                  </br></br></br>
                 </ul>
-                <button class="btn-u sm-margin-bottom-10" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print</button>
-                <button class="btn-u">Submit The Invoice</button>
+                <button class="btn-u sm-margin-bottom-10" onclick="javascript:window.print();"><i class="fa fa-print"></i> Vytlač</button>
+                
             </div>
         </div>
         <!--End Invoice Footer-->
+<% else %>
+<% controller.redirect_to root_path %>
+<% end %>
