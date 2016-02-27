@@ -24,6 +24,8 @@
   </thead>
 
   <tbody>
+    <% if @payments.empty? %><p>Žiadne platby evidované </p>
+    <% else %>
     <% @payments.each do |p| %>
       <tr>
         <td><% if p.project.name.empty? %>Projektu chýba meno <% else %><%= link_to p.project.name, "/showproject/#{p.project.id}" %><% end %></td>
@@ -39,6 +41,7 @@
         <td><%= link_to "Zmaž platbu", p, method: :delete, data: { confirm: 'Si si naozaj istý, že chceš zmazať túto platbu?' } %></td>
 
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
