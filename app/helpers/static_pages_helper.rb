@@ -5,8 +5,22 @@ module StaticPagesHelper
 	end
 
 	def get4best
-		@projects = Project.where('enddate > ?', Time.now)
-		@projects.order(enddate: :desc).limit(4)
+	@projects =	Project.joins(:payments).where('enabled = true and enddate > ?', Time.now)
+	.group('projects.id')
+	.order('(SUM(payments.amount)) / projects.amount')
+	.limit(4)
+	end
+
+	def get4best2
+	@projects=Project.where('enabled = true and enddate > ?', Time.now)
+       .sort_by(&:collected_money_percentage).reverse.first(4)
+   
+	end
+
+	def get4paylast
+		@projects =	Project.joins(:payments).where('enabled = true and enddate > ? and payments.confirmed = true', Time.now)
+		.order('payments.created_at DESC')
+	.limit(4)
 	end
 
 	def projectCollectedMoney(id)
@@ -18,11 +32,9 @@ module StaticPagesHelper
 	def projectCollectedMoneyPerc(id)
 		@project= Project.find(id)
 		@collected = Payment.where('project_id = ? and confirmed = true', @project.id)
-		if @collected.nil?
-			@col=0
-		else
+		
 		@col = @collected.sum(:amount)
-		end
+		
 		@perc = ((@col.to_f / @project.amount) * 100).round(0)
 	end
 

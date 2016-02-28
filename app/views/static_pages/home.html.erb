@@ -57,13 +57,13 @@
                                 </ul>
                                <ul class="list-inline blog-info-v2">
                                    <li style=" width: 33%; text-align:center">
-                                        <span style="font-size:10px">Splnených</span>
+                                        <span style="font-size:10px">SPLNENÝCH</span>
                                     </li>
                                     <li style = "width: 30%;text-align:center">
-                                        <span style="font-size:10px">Získaných</span>
+                                        <span style="font-size:10px">ZÍSKANÝCH</span>
                                     </li>
                                    <li style="float:right;width: 33%;text-align:center;">
-                                        <span style="font-size:10px">Do konca</span>
+                                        <span style="font-size:10px">DO KONCA</span>
                                     </li>
                                 </ul>
                                   
@@ -88,7 +88,7 @@
   </div>
      <div class="profile-body">
       <!-- first -->
-      <% get4best.each do |p| %>
+      <% get4best2.each do |p| %>
      	<div class="col-sm-3">
         <div class="projectborder">
      		<div class="easy-block-v1">
@@ -139,13 +139,13 @@
                                 </ul>
                                <ul class="list-inline blog-info-v2">
                                    <li style=" width: 33%; text-align:center">
-                                        <span style="font-size:10px">Splnených</span>
+                                        <span style="font-size:10px">SPLNENÝCH</span>
                                     </li>
                                     <li style = "width: 30%;text-align:center">
-                                        <span style="font-size:10px">Získaných</span>
+                                        <span style="font-size:10px">ZÍSKANÝCH</span>
                                     </li>
                                    <li style="float:right;width: 33%;text-align:center;">
-                                        <span style="font-size:10px">Do konca</span>
+                                        <span style="font-size:10px">DO KONCA</span>
                                     </li>
                                 </ul>
                                 
@@ -156,6 +156,87 @@
      </div>
   </div>
 </div>
+
+<!-- latest funded -->
+<hr class="devider devider-dotted"></hr>
+    <!-- end of new projects -->
+    <!-- most successful projects -->
+   <div class="col-md-12" style="padding-top: 50px">
+    <div class="row">
+      <div class="headline">
+    <h2>Naposledy podporené projekty </h2>
+  </div>
+     <div class="profile-body">
+      <!-- first -->
+      <% get4paylast.each do |p| %>
+      <div class="col-sm-3">
+        <div class="projectborder">
+        <div class="easy-block-v1">
+                       <% if p.pictures.present? %>
+                        <%= image_tag p.pictures.first.url(:resized), :class=>"img-responsive", :height=>"120" %>
+                        <% else %>
+                        <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
+                        <% end %>
+                        
+                        
+                    
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+              </div>
+      <div class="projects">
+                                <div id="header" style="height:50px;">
+                                <h4><strong><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></strong></h4>
+                              </div>
+                                <ul class="list-unstyled list-inline blog-info-v2">
+                                    <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li><br>
+                                    
+                                </ul>
+                                <annotation>
+                                <div style="width:100%;min-height:70px;overflow:hidden;">
+                                <p><%= p.annotation %></p>
+                                </div>
+                                </annotation>
+                                 <% if p.annotation.length < 90 %>
+                                <div style="height:11px"></div>
+                                <% end %>
+                                <br>
+                                <div class="progress progress-u progress-xxs">
+                                    <div class="progress-bar progress-bar-u-yellow" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(p.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(p.id) %>%">
+                                    </div>
+                                </div>
+                               <ul class="list-inline blog-info-v2">
+                                    <li style=" width: 33%; text-align:center">
+                                        <strong><%= projectCollectedMoneyPerc(p.id) %>%</strong>
+                                        
+                                    </li>
+                                    <li style = "width: 30%;text-align:center">
+                                        <strong><%= projectCollectedMoney(p.id) %><i class="fa fa-eur"></i></strong>
+                                        
+                                    </li>
+                                    <li style="float:right;width: 33%;text-align:center;">
+                                        <strong><%= daysToEnd(p.id) %> dní</strong>
+                                        
+                                    </li>
+                                </ul>
+                               <ul class="list-inline blog-info-v2">
+                                   <li style=" width: 33%; text-align:center">
+                                        <span style="font-size:10px">SPLNENÝCH</span>
+                                    </li>
+                                    <li style = "width: 30%;text-align:center">
+                                        <span style="font-size:10px">ZÍSKANÝCH</span>
+                                    </li>
+                                   <li style="float:right;width: 33%;text-align:center;">
+                                        <span style="font-size:10px">DO KONCA</span>
+                                    </li>
+                                </ul>
+                                
+                            </div> 
+            </div>
+          </div>
+          <% end %>  
+     </div>
+  </div>
+</div>
+
 <script>
 $('annotation').readmore({
   speed: 75,
