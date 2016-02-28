@@ -55,6 +55,9 @@ gem 'readmorejs-rails'
 ###client side validations
 gem 'html5_validators'
 
+###html textarea
+gem 'bootstrap-wysihtml5-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

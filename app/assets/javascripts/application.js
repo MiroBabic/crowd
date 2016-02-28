@@ -22,6 +22,8 @@
 //= require modernizr
 //= require jquery.cslider
 //= require readmore
+//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/locales
 //= require jquery-validation/jquery.validate.min.js
 //= require jquery-validation/additional-methods.min.js
 //= require jquery-validation/localization/messages_sk.min.js

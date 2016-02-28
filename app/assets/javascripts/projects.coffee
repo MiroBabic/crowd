@@ -23,3 +23,9 @@ jQuery ->
     		$(element).parent().removeClass 'state-error'
     		return
 	);
+
+jQuery ->
+  $('.wysihtml5').each (i, elem) ->
+    $(elem).wysihtml5()
+    return
+  return
