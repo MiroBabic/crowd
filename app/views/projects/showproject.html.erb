@@ -1,3 +1,4 @@
+    <% if @project.enabled? %>
     <div class="job-description">
         <div class="row">
            
@@ -118,4 +119,6 @@
         </div>
     </div>
 
-
+<% else %>
+<% controller.redirect_to root_path %>
+<% end %>
