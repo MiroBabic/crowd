@@ -1,20 +1,10 @@
 module StaticPagesHelper
 
-	def getAllNew
-		@projects=Project.where('enabled = true and enddate > ?', Time.now )
-		@projects.order(confirmdate: :desc)
-	end
-
 	def get4new
 		@projects=Project.where('enabled = true and enddate > ?', Time.now )
 		@projects.order(confirmdate: :desc).limit(4)
 	end
 
-	def getAllBest
-	@projects=Project.where('enabled = true and enddate > ?', Time.now)
-       .sort_by(&:collected_money_percentage).reverse
-   
-	end
 	
 	def get4best
 	@projects =	Project.joins(:payments).where('enabled = true and enddate > ?', Time.now)
@@ -29,11 +19,7 @@ module StaticPagesHelper
    
 	end
 
-	def getAllPaylast
-		@projects =	Project.joins(:payments).where('enabled = true and enddate > ? and payments.confirmed = true', Time.now)
-		.order('payments.created_at DESC')
-	end
-
+	
 	def get4paylast
 		@projects =	Project.joins(:payments).where('enabled = true and enddate > ? and payments.confirmed = true', Time.now)
 		.order('payments.created_at DESC')
