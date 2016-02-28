@@ -112,3 +112,6 @@ address {
 
 /* custom float center */
 
+.margin10minus {
+	margin-top: -10px;
+}

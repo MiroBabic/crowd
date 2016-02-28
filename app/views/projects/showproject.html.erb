@@ -75,7 +75,7 @@
                         </ul>
 
                         <hr>
-                
+                        <%= link_to " Podpor projekt", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block fa fa-eur" %>
                          
                         <h4>Odmeny</h4>
                         <% if @project.rewards.any? %>

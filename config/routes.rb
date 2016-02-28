@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get '/project_terms' => 'static_pages#project_terms'
   get '/adminpage' => 'static_pages#adminpage'
   get '/faq' => 'static_pages#faq'
+  get '/listall/:id' => 'static_pages#listall', :as => 'listall'
 
 
   # Example of regular route:
