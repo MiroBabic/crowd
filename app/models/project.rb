@@ -10,4 +10,7 @@ class Project < ActiveRecord::Base
 	  (100.0 * sum / amount ).round(3)
    end
 
+   include ActiveModel::Validations
+  	validates_presence_of :name, :category_id, :amount
+
 end

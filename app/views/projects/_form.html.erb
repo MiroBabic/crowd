@@ -1,5 +1,4 @@
 <div class="row">
-  
 <%= form_for(@project, html: {:class => "sky-form"}) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -19,13 +18,13 @@
     <dd>
      <section>
          <label class="input">
-              <%= f.text_field :name, :placeholder=>'Názov projektu' %>
+              <%= f.text_field :name, :placeholder=>'Názov projektu',:required => true %>
               <b class="tooltip tooltip-bottom-right">Vymysli meno, ktoré zarezonuje a pritiahne pozornosť na tvoj projekt </b>
         </label>
         </section>
    </dd>
     <label class="select">
-  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: 'Vyber kategóriu'},{:class => 'form-control m-b'} %>
+  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {:class => 'form-control m-b', :required => true} %>
       </label>
     </br>
     <!--<dt>Cieľová suma </dt>-->
@@ -33,7 +32,7 @@
      <section>
        <label class="input">
               <i class="icon-append fa fa-eur"></i>
-              <%= f.number_field :amount, :placeholder=>"Cieľová suma" %>
+              <%= f.number_field :amount, :placeholder=>"Cieľová suma", :required => true %>
               <b class="tooltip tooltip-bottom-right">Zvoľ cieľovú sumu </b>
        </label>
      </section>
@@ -61,7 +60,7 @@
   
 
   <div class="actions">
-    <%= f.submit "Uprav projekt", :class=> 'btn-u' %>
+    <%= f.submit "Ulož zmeny", :class=> 'btn-u' %>
     <%= link_to "Späť", @project, :class=> 'btn-u btn-u-red' %>
   </div>
 </br>

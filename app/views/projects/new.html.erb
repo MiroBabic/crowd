@@ -1,6 +1,6 @@
 <div class="row" >
-  
-<%= form_for(@project, html: {:class => "sky-form"}) do |f| %>
+  <center><h1> Založ nový projekt </h1></center>
+<%= form_for(@project, html: {:class => "sky-form"}, validate: true) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -12,22 +12,23 @@
       </ul>
     </div>
   <% end %>
+
   <div class="col-md-12" style="height:150px;">
-  </div>
+     </div>
   <div class="col-md-3" >
   </div>
   <div class="col-md-6" style="height:450px;">
   <label class="input">
-              <%= f.text_field :name, :placeholder=>'Názov projektu' %>
+              <%= f.text_field :name, :placeholder=>'Názov projektu',:required => true %>
               <b class="tooltip tooltip-bottom-right">Vymysli meno, ktoré zarezonuje a pritiahne pozornosť na tvoj projekt </b>
         </label>
     <label class="select">
-  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: 'Vyber kategóriu'},{:class => 'form-control m-b'} %>
+  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: 'Vyber kategóriu'},{:class => 'form-control m-b', :required => true} %>
       </label>
 
       <label class="input">
               <i class="icon-append fa fa-eur"></i>
-              <%= f.number_field :amount, :placeholder=>"Cieľová suma" %>
+              <%= f.number_field :amount, :placeholder=>"Cieľová suma",:required => true %>
               <b class="tooltip tooltip-bottom-right">Zvoľ cieľovú sumu </b>
        </label>
 

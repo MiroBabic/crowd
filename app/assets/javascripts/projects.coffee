@@ -10,3 +10,16 @@ $(document).ready ->
       # $('input:submit').removeAttr('disabled'); 
     return
   return
+
+jQuery -> 
+	$('#new_project').validate(
+		 lang: 'sk'
+		 rules:
+		 	'project[amount]': min: 1
+		 highlight: (element) ->
+    		$(element).parent().addClass 'state-error'
+    		return
+  		 unhighlight: (element) ->
+    		$(element).parent().removeClass 'state-error'
+    		return
+	);
