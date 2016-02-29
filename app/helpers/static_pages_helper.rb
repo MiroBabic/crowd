@@ -56,4 +56,11 @@ module StaticPagesHelper
 		@total=format("%02d dní %02d hodín a %02d minút", @daysleft, @hoursleft, @minleft)
 	end
 
+	def countSupporters(id)
+		Payment.where('project_id = ?', id).count
+	end
+
+	def countUserProjects(id)
+		Project.where('user_id = ?', id).count
+	end
 end

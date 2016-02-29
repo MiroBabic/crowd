@@ -488,16 +488,20 @@
 ----------------------------------------------------*/
 .pie-progress-charts .inner-pchart {
   text-align: center;
+  /*added custom margin for pie chart */
+  margin-left: 50px;
 }
 
 .pie-progress-charts .circle {
   color: #555;
   font-weight: 200;
   margin-bottom: 20px;
+
 }
 
 .pie-progress-charts .circle-title {
   font-size: 22px;
+  margin-left: 25px;
 }
 
 @media (max-width: 767px) {

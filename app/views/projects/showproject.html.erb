@@ -45,34 +45,36 @@
                             <br />
                         </div>
                     	<div class="row">
-                             <p class="hex">Cieľová suma: <%= @project.amount %></p>
-                        <p class="hex">Ostáva: <%= TotalToEnd(@project.id) %></p>
-                        <p class="hex">Kategória: <%= @project.category.name %></p>
-                        <hr>
-
-                        <div class="progression">
-                            <h5>Vyzbieraných <span class="pull-right"><%= projectCollectedMoneyPerc(@project.id) %>%</span></h5>
-                            <div class="progress progress-u progress-xxs">
-                                    <div class="progress-bar progress-bar-u-yellow" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(@project.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(@project.id) %>%">
-                                    </div>
-                                </div>
+                         
+                        <div class="row pie-progress-charts">
+                        <div class="inner-pchart col-md-3">
+                            <div class="circle" id="circle-1"></div>
+                            <h3 class="circle-title" >Splnených</h3>
+                            
                         </div>
-                    </div>
-                        <h4>Autor projektu</h4>
+                        </div>
+                        <h3 style="margin-left:25px"><%= projectCollectedMoneyPerc(@project.id) %> <i class="fa fa-eur"></i></h3>
+                        <p style="margin-left:25px">z <%= @project.amount %> <i class="fa fa-eur"></i></p>
+                        <br />
+                        <h3 style="margin-left:25px; margin-top:-25px;"><%= daysToEnd(@project.id) %> dní</h3>
+                        <p style="margin-left:25px">do konca</p>
+                        <br />
+                        <h3 style="margin-left:25px; margin-top:-25px;"><%= countSupporters(@project.id) %></h3>
+                        <p style="margin-left:25px">prispievateľov</p>
+                        <%= link_to " Podpor projekt", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block fa fa-eur" %>
+                        <br />
+                        </div>
+                        <div class="row" style="margin-top:60px">
                         <% if @project.user.picture.url(:resized).present? %>
-                                <%= image_tag @project.user.picture.url(:resized).to_s %>
+                                <%= image_tag @project.user.picture.url(:resized).to_s, style=>"width:120px" %>
                             <% else %>
                                 <img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
                         <% end %>
                         <div class="overflow-h">
-                            <span class="font-s"><%= @project.user.name %></span>
+                            <span><%= @project.user.name %></span>
 
                             <p class="color-green"><span class="hex"><%=raw %(#{link_to(@project.user.personalweb, url_with_protocol(@project.user.personalweb), :target => '_blank')}) %></span></p>
-                            <ul class="social-icons">
-                                <li><a class="social_facebook" data-original-title="Facebook" href="#"></a></li>
-                                <li><a class="social_googleplus" data-original-title="Google Plus" href="#"></a></li>
-                                <li><a class="social_twitter" data-original-title="Twitter" href="#"></a></li>
-                            </ul>
+                           <p><span class="hex"><%= countUserProjects(@project.user_id) %> projektov</span></p>
                         </div>
 
                         <hr>
@@ -83,7 +85,7 @@
                         </ul>
 
                         <hr>
-                        <%= link_to " Podpor projekt", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block fa fa-eur" %>
+                        
                          
                         <h4>Odmeny</h4>
                         <% if @project.rewards.any? %>
@@ -122,6 +124,18 @@
             </div>
         </div>
     </div>
+    <script>
+    Circles.create({
+                id:         'circle-1',
+                percentage: <%= projectCollectedMoneyPerc(@project.id) %>,
+                radius:     80,
+                width:      8,
+                number:     <%= projectCollectedMoneyPerc(@project.id) %>,
+                text:       '%',
+                colors:     ['#eee', '#1ABC9C'],
+                duration:   2000
+            })
+    </script>
 
 <% else %>
 <% controller.redirect_to root_path %>

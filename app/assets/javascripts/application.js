@@ -27,6 +27,7 @@
 //= require jquery-validation/jquery.validate.min.js
 //= require jquery-validation/additional-methods.min.js
 //= require jquery-validation/localization/messages_sk.min.js
+//= require circles/circles.js
 //= require turbolinks
 //= require_tree .
 
