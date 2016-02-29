@@ -32,7 +32,7 @@
                                 <p><%= p.annotation %></p>
                                 </div>
                                 </annotation>
-                                <% if p.annotation.length < 90 %>
+                               <% if p.annotation.present? && p.annotation.length < 90 %>
                                 <div style="height:11px"></div>
                                 <% end %>
                                 <br>
@@ -115,7 +115,7 @@
                                 <p><%= p.annotation %></p>
                                 </div>
                                 </annotation>
-                                 <% if p.annotation.length < 90 %>
+                                 <% if p.annotation.present? && p.annotation.length < 90 %>
                                 <div style="height:11px"></div>
                                 <% end %>
                                 <br>
@@ -195,7 +195,7 @@
                                 <p><%= p.annotation %></p>
                                 </div>
                                 </annotation>
-                                 <% if p.annotation.length < 90 %>
+                                 <% if p.annotation.present? && p.annotation.length < 90 %>
                                 <div style="height:11px"></div>
                                 <% end %>
                                 <br>
