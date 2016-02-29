@@ -3,16 +3,49 @@
         <div class="row">
            
                 <!-- Left Inner -->
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="left-inner">
                         <div class="row">
+                            <h1 ><%= @project.name %></h1>
+                            <br />
+                        </div>
+                        <div class="row">
                         <% if @project.pictures.present? %>
-                        <%= image_tag @project.pictures.first.url, size: "140", :style=>"max-height: 100px" %>
+                        <%= image_tag @project.pictures.first.url, size: "600", :style=>"max-height: 400px" %>
                         <% else %>
                         <img src="<%= asset_path( 'thumbnail-default.jpg' ) %>" alt="">
                         <% end %>
-                        <h3><%= @project.name %></h3>
-                        <p class="hex">Cieľová suma: <%= @project.amount %></p>
+                        </div>
+                        <div class="row">
+                            <p><%= @project.annotation %></p>
+                        </div>
+                        <div class="row gallery">
+                        <h4>Detailne o projekte</h4>
+                        <p><%= raw @project.about %></p>
+                        </div>
+
+                       
+                        </div>
+                                                
+                    <div class="row gallery">
+                    <h4>Galéria ku projektu</h4>
+                        <% @project.pictures.each_with_index do |pic, index| %>
+                        <%= link_to image_tag(pic.url(:resized).to_s), pic.url %>
+                        <% end %>
+                        </div>
+               
+            </div>
+                <!-- End Left Inner -->
+
+                <!-- Right Inner -->
+                <div class="col-md-3">
+                    <div class="right-inner">
+                        <div class="row">
+                            <h1 style="color:white">Detaily</h1>
+                            <br />
+                        </div>
+                    	<div class="row">
+                             <p class="hex">Cieľová suma: <%= @project.amount %></p>
                         <p class="hex">Ostáva: <%= TotalToEnd(@project.id) %></p>
                         <p class="hex">Kategória: <%= @project.category.name %></p>
                         <hr>
@@ -24,36 +57,7 @@
                                     </div>
                                 </div>
                         </div>
-                        </div>
-                        <hr>
-
-                        <div class="row">
-                        <h4>Sumár projektu</h4>
-                        <p><%= @project.annotation %></p>
-                        </div>
-
-                        <hr>
-                        <div class="row gallery">
-                        <h4>Detailne o projekte</h4>
-                        <p><%= raw @project.about %></p>
-                        </div>
-
-                        <hr>
-                        
-                    <div class="row gallery">
-                    <h4>Galéria ku projektu</h4>
-                        <% @project.pictures.each_with_index do |pic, index| %>
-                        <%= link_to image_tag(pic.url(:resized).to_s), pic.url %>
-                        <% end %>
-                        </div>
-                </div>
-            </div>
-                <!-- End Left Inner -->
-
-                <!-- Right Inner -->
-                <div class="col-md-4">
-                    <div class="right-inner">
-                    	
+                    </div>
                         <h4>Autor projektu</h4>
                         <% if @project.user.picture.url(:resized).present? %>
                                 <%= image_tag @project.user.picture.url(:resized).to_s %>

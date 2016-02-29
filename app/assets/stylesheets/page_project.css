@@ -43,7 +43,8 @@
 
 .job-description .left-inner img {
 	float: left;
-	width: 150px;
+	/*width: 150px;*/
+	width: auto;
 	height: auto;
 	padding: 3px;
 	margin: 0 10px 10px 0;
