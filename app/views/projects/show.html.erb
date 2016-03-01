@@ -1,39 +1,58 @@
 <div class ="alert alert-success fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>Uprav svoj projekt do želanej podoby a potom ho pošli na schválenie administrátorom</div>
 <% if (@project.user_id == current_user.id) || (current_user.admin?) %>
+<style>
+.cropit-preview {
+  /* You can specify preview size in CSS */
+  width: 800px;
+  height: 506px;
+}
+
+</style>
     <div class="job-description">
         <div class="row">
            
                 <!-- Left Inner -->
-                <div class="col-md-8">
+                
+                <div class="col-md-9">
                     <div class="left-inner">
                         <div class="row">
+                            <h1 ><%= @project.name %></h1>
+                            <br />
+                        </div>
+                    
+
+                        <% if @project.enabled == false %>
+                        <div id="image-cropper">
+                             <%= form_for @project, method: :put do |f| %>
+                          <div class="cropit-preview"></div>
+                          <div class="rotation-btns"><span class="icon icon-rotate-left rotate-ccw-btn"><i class="fa fa-arrow-left"></i>
+                        </span><span class="icon icon-rotate-right rotate-cw-btn"><i class="fa fa-arrow-right"></i>
+                        </span></div>
+                          <input type="range" class="cropit-image-zoom-input " />
+                          <%= f.file_field :profile_pic, accept: "image/jpeg, image/jpg, image/gif, image/png", :class=> "cropit-image-input" %> 
+                         <!-- <input type="file" class="cropit-image-input" />-->
+                          <%= f.submit "Pridaj obrázok", :class=> 'btn-u'%>
+                          <% end %>
+                        </div>
+                        <% end %>
+                        <div class="row">
                         <% if @project.pictures.present? %>
-                        <%= image_tag @project.pictures.first.url, size: "140", :style=>"max-height: 100px" %>
+                        <%= image_tag @project.pictures.first.url, size: "600", :style=>"max-height: 400px" %>
                         <% else %>
                         <img src="<%= asset_path( 'thumbnail-default.jpg' ) %>" alt="">
                         <% end %>
-                        <h3><%= @project.name %></h3>
-                        <p class="hex">Cieľová suma: <%= @project.amount %></p>
-                        <p class="hex">Trvanie projektu: <%= @project.duration %></p>
-                        <p class="hex">Kategória: <%= @project.category.name %></p>
                         </div>
-
-                        <br>
-                        <hr>
                         <div class="row">
-                        <h4>Sumár projektu</h4>
-                        <p><%= @project.annotation %></p>
+                            <p><%= @project.annotation %></p>
                         </div>
-                        <hr>
-
                         <div class="row gallery">
                         <h4>Detailne o projekte</h4>
                         <p><%= raw @project.about %></p>
                         </div>
-                        
 
-                        <hr>
-                        
+                       
+                        </div>
+                                                
                     <div class="row gallery">
                     <h4>Galéria ku projektu</h4>
                         <% @project.pictures.each_with_index do |pic, index| %>
@@ -42,7 +61,11 @@
                         <%= link_to content_tag(:i,nil,class: 'fa fa-trash-o'),project_picture_path(@project, index), :method => :delete, data: { confirm: "Naozaj chceš zmazať tento obrázok?" } %>
                         <% end %>
                         <% end %>
-                    </div>
+                        </div>
+               
+            
+                
+                     <div class="row gallery">   
                     <% if @project.enabled == false %>
                     <div class="actions" style="float:left;">
                     <%= form_for @project, url: project_pictures_path(@project), method: :post do |f| %>
@@ -57,7 +80,7 @@
                 <!-- End Left Inner -->
 
                 <!-- Right Inner -->
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="right-inner">
                     	<% if @project.user_id == current_user.id %>
                         <% if @project.requested %>
@@ -70,34 +93,46 @@
                         <% end %>
                         </hr>
                         <% end %>
-                        <h3>Autor projektu</h3>
+                       <div class="row">
+                            <h1 style="color:white">Detaily</h1>
+                            <br />
+                        </div>
+                        <div class="row">
+                         
+                        <div class="row pie-progress-charts">
+                        <div class="inner-pchart col-md-3">
+                            <div class="circle" id="circle-1"></div>
+                            <h3 class="circle-title" >Splnených</h3>
+                            
+                        </div>
+                        </div>
+                        <h3 style="margin-left:25px">0 <i class="fa fa-eur"></i></h3>
+                        <p style="margin-left:25px">z <%= @project.amount %> <i class="fa fa-eur"></i></p>
+                        <br />
+                        <h3 style="margin-left:25px; margin-top:-25px;">0 dní</h3>
+                        <p style="margin-left:25px">do konca</p>
+                        <br />
+                        <h3 style="margin-left:25px; margin-top:-25px;">0</h3>
+                        <p style="margin-left:25px">prispievateľov</p>
+                        <br />
+                        </div>
+                        <div class="row" style="margin-top:60px">
                         <% if @project.user.picture.url(:resized).present? %>
-                                <%= image_tag @project.user.picture.url(:resized).to_s %>
-      						<% else %>
-      							<img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
-      					<% end %>
+                                <%= image_tag @project.user.picture.url(:resized).to_s, style=>"width:120px" %>
+                            <% else %>
+                                <img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
+                        <% end %>
                         <div class="overflow-h">
-                            <span class="font-s"><%= @project.user.name %></span>
+                            <span><%= @project.user.name %></span>
 
                             <p class="color-green"><span class="hex"><%=raw %(#{link_to(@project.user.personalweb, url_with_protocol(@project.user.personalweb), :target => '_blank')}) %></span></p>
-                            <ul class="social-icons">
-                                <li><a class="social_facebook" data-original-title="Facebook" href="#"></a></li>
-                                <li><a class="social_googleplus" data-original-title="Google Plus" href="#"></a></li>
-                                <li><a class="social_twitter" data-original-title="Twitter" href="#"></a></li>
-                            </ul>
+                           <p><span class="hex"><%= countUserProjects(@project.user_id) %> projektov</span></p>
                         </div>
-
-                        <hr>
-
-                        <ul class="list-unstyled save-job">
-                            <li><i class="fa fa-eye"></i> <a href="#">Pozri autorove dalsie projekty</a></li>
-                            <li><i class="fa fa-plus"></i> <a href="#">Sleduj projekt</a></li>
-                        </ul>
 
                         <hr>
                 
                          
-                        <h3>Odmeny</h3>
+                        <h4>Odmeny</h4>
                         <% if @project.rewards.any? %>
                         <% @project.rewards.each do |p| %>
                         <div class="people-say margin-bottom-20">
@@ -107,7 +142,7 @@
                                 <p><%= p.about %></p>
                             </div>
                         </div>
-                     	<% end %>
+                        <% end %>
                         
                         <% else %>
                         <p> Projekt nemá žiadne odmeny </p>
@@ -120,6 +155,43 @@
             </div>
         </div>
     </div>
+
+    <script>
+    Circles.create({
+                id:         'circle-1',
+                percentage: 75 ,
+                radius:     80,
+                width:      8,
+                number:     75 ,
+                text:       '%',
+                colors:     ['#eee', '#F1C40F'],
+                duration:   2000
+            })
+    </script>
+
+    <script>
+    $('#image-cropper').cropit({
+        imageState: {src: "<%= asset_path( 'img_empty_800.jpg' ) %>" }});
+
+        // When user clicks select image button,
+        // open select file dialog programmatically
+        $('.select-image-btn').click(function() {
+          $('.cropit-image-input').click();
+        });
+
+        // Handle rotation
+        $('.rotate-cw-btn').click(function() {
+          $('#image-cropper').cropit('rotateCW');
+        });
+        $('.rotate-ccw-btn').click(function() {
+          $('#image-cropper').cropit('rotateCCW');
+        });
+        $imageCropper.cropit('export', {
+              type: 'image/jpeg',
+              quality: .9,
+              originalSize: true
+            });
+    </script>
 <% else %>
 <% controller.redirect_to root_path %>
 <% end %>
