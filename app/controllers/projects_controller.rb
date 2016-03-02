@@ -11,10 +11,21 @@ class ProjectsController < ApplicationController
     @projects=Project.where("user_id=?",@user)
   end
 
-  def saveprofilepic(data)
+  def saveprofilepic
     @p=Project.find(params[:id])
-    @p.profile_pic = data
-    @p.save
+    @p.profile_pic = (params[:data])
+    @p.annotation = (params[:annot])
+    respond_to do |format|
+    if @p.save
+       
+        format.html { redirect_to @p, notice: 'Project was successfully updated.' }
+        format.json { render :show, status: :created, location: @p }
+      else
+        format.html { render :new }
+        format.json { render json: @p.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   def submitproject

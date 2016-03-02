@@ -4,7 +4,8 @@ class Project < ActiveRecord::Base
   has_many :rewards, :dependent => :destroy
   has_many :payments, :dependent => :destroy
   mount_uploaders :pictures, ProjectImageUploader
-  mount_uploader :profile_pic, ProjectProfileUploader 
+  mount_uploader :profile_pic, ProfilePicUploader 
+  
 
   def collected_money_percentage
 	  sum = payments.where(confirmed: true).sum(:amount)

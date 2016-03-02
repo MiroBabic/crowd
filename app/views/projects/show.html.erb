@@ -195,16 +195,26 @@
               quality: .9,
               originalSize: true
             });
-        
-        $('#cropit-preview').empty();
-         var $img = $("<img/>");
-        $img.attr("src", "data:image/png;base64," + $cropedimage);
-                
-        $('#cropit-preview').prepend($img);
-            
-            };
 
-       
+        var fd = new FormData();
+        fd.append('data', $cropedimage);
+        fd.append('id', <%= @project.id %>);
+        fd.append('annot', 'skuska');
+
+         $.ajax({
+                    type: "POST",
+                    url: "/saveprofilepic",
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    cache: false                   
+                        })
+                    .done(function (msg) {
+                    alert("Obrázok bol nahratý na server" );
+                     });
+
+            };
+                   
         
     </script>
 <% else %>

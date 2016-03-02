@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post '/submitproject/:id' => 'projects#submitproject', :as => 'submitproject'
   post '/returnproject/:id' => 'projects#returnproject', :as => 'returnproject'
   post '/enableproject/:id' => 'projects#enableproject', :as => 'enableproject'
+  post '/saveprofilepic' => 'projects#saveprofilepic', :as => 'saveprofilepic'
   get '/show_reward_desc' => 'payments#show_reward_desc', :as => 'show_reward_desc'
   get '/invoice/:id' => 'payments#invoice', :as => 'invoice'
   get '/userpayments' => 'payments#userpayments', :as => 'userpayments'
