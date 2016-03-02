@@ -11,6 +11,12 @@ class ProjectsController < ApplicationController
     @projects=Project.where("user_id=?",@user)
   end
 
+  def saveprofilepic(data)
+    @p=Project.find(params[:id])
+    @p.profile_pic = data
+    @p.save
+  end
+
   def submitproject
 
     @p=Project.find(params[:id])

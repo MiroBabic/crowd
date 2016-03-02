@@ -24,13 +24,14 @@
                         <% if @project.enabled == false %>
                         <div id="image-cropper">
                              <%= form_for @project, method: :put do |f| %>
-                          <div class="cropit-preview"></div>
+                          <div class="cropit-preview" id="cropit-preview"></div>
                           <div class="rotation-btns"><span class="icon icon-rotate-left rotate-ccw-btn"><i class="fa fa-arrow-left"></i>
                         </span><span class="icon icon-rotate-right rotate-cw-btn"><i class="fa fa-arrow-right"></i>
                         </span></div>
                           <input type="range" class="cropit-image-zoom-input " />
                           <%= f.file_field :profile_pic, accept: "image/jpeg, image/jpg, image/gif, image/png", :class=> "cropit-image-input" %> 
                          <!-- <input type="file" class="cropit-image-input" />-->
+                         <%= button_tag "Potvrd obrazok", :class=>'btn-u', :onclick=>"getimage()",:type => 'button' %>
                           <%= f.submit "Pridaj obrázok", :class=> 'btn-u'%>
                           <% end %>
                         </div>
@@ -170,6 +171,7 @@
     </script>
 
     <script>
+    
     $('#image-cropper').cropit({
         imageState: {src: "<%= asset_path( 'img_empty_800.jpg' ) %>" }});
 
@@ -186,11 +188,24 @@
         $('.rotate-ccw-btn').click(function() {
           $('#image-cropper').cropit('rotateCCW');
         });
-        $imageCropper.cropit('export', {
+
+        function getimage(){
+        var $cropedimage = $('#image-cropper').cropit('export', {
               type: 'image/jpeg',
               quality: .9,
               originalSize: true
             });
+        
+        $('#cropit-preview').empty();
+         var $img = $("<img/>");
+        $img.attr("src", "data:image/png;base64," + $cropedimage);
+                
+        $('#cropit-preview').prepend($img);
+            
+            };
+
+       
+        
     </script>
 <% else %>
 <% controller.redirect_to root_path %>
