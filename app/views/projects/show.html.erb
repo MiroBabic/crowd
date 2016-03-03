@@ -31,19 +31,14 @@
                           <input type="range" class="cropit-image-zoom-input " />
                           <%= f.file_field :profile_pic, accept: "image/jpeg, image/jpg, image/gif, image/png", :class=> "cropit-image-input" %> 
                          <!-- <input type="file" class="cropit-image-input" />-->
+                         
                          <%= button_tag "Potvrd obrazok", :class=>'btn-u', :onclick=>"getimage()",:type => 'button' %>
-                          <%= f.submit "Pridaj obrázok", :class=> 'btn-u'%>
-                          <% end %>
+                            <% end %>
                         </div>
                         <% end %>
+                       
                         <div class="row">
-                        <% if @project.pictures.present? %>
-                        <%= image_tag @project.pictures.first.url, size: "600", :style=>"max-height: 400px" %>
-                        <% else %>
-                        <img src="<%= asset_path( 'thumbnail-default.jpg' ) %>" alt="">
-                        <% end %>
-                        </div>
-                        <div class="row">
+                            <h4>V skratke</h4>
                             <p><%= @project.annotation %></p>
                         </div>
                         <div class="row gallery">
@@ -173,7 +168,7 @@
     <script>
     
     $('#image-cropper').cropit({
-        imageState: {src: "<%= asset_path( 'img_empty_800.jpg' ) %>" }});
+        imageState: {src: <% if @project.profile_pic.url.present? %> "<%= @project.profile_pic.url(:resized).to_s %>" <% else %> "<%= asset_path( 'img_empty_800.jpg' ) %>" <% end %> }});
 
         // When user clicks select image button,
         // open select file dialog programmatically
@@ -195,13 +190,35 @@
               quality: .9,
               originalSize: true
             });
+        
+
+        function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
+
+    var filedata=dataURItoBlob($cropedimage);
+
 
         var fd = new FormData();
-        fd.append('data', $cropedimage);
+        fd.append('data', filedata, "project-" + <%= @project.id %> + "-profile-pic.jpg" );
         fd.append('id', <%= @project.id %>);
-        fd.append('annot', 'skuska');
-
-         $.ajax({
+           $.ajax({
                     type: "POST",
                     url: "/saveprofilepic",
                     data: fd,
@@ -212,8 +229,10 @@
                     .done(function (msg) {
                     alert("Obrázok bol nahratý na server" );
                      });
-
             };
+       
+
+            
                    
         
     </script>

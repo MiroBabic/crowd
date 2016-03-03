@@ -14,7 +14,6 @@ class ProjectsController < ApplicationController
   def saveprofilepic
     @p=Project.find(params[:id])
     @p.profile_pic = (params[:data])
-    @p.annotation = (params[:annot])
     respond_to do |format|
     if @p.save
        
