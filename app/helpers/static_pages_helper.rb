@@ -57,7 +57,7 @@ module StaticPagesHelper
 	end
 
 	def countSupporters(id)
-		Payment.where('project_id = ?', id).count
+		Payment.where('project_id = ? and confirmed = true', id).count
 	end
 
 	def countUserProjects(id)

@@ -26,8 +26,8 @@
           <% slice_of_two.each do |p| %>
           <div class="col-sm-6">
              <div class="easy-block-v1">
-                    <% if p.pictures.present? %>
-                        <%= image_tag p.pictures.first.url(:resized), :class=>"img-responsive" %>
+                    <% if p.profile_pic.present? %>
+                        <%= image_tag p.profile_pic.url(:resized), :class=>"img-responsive" %>
                         <% else %>
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
                         <% end %>

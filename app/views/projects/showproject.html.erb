@@ -105,7 +105,7 @@
                         <hr>
                         <h4>Darcovia</h4>
                         <% if @project.payments.any? %>
-                        <% @project.payments.each do |pay| %>
+                        <% @project.payments.where('confirmed = true').each do |pay| %>
                         <div class="people-say margin-bottom-20">
                                 <% if pay.user.name? %>
                                 <span><%= pay.user.name %></span>
