@@ -35,7 +35,7 @@ gem 'will_paginate'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-gem 'omniauth-google'
+gem 'omniauth-google-oauth2'
 
 #carrierwave for images
 gem 'carrierwave', github:'carrierwaveuploader/carrierwave'

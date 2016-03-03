@@ -241,7 +241,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
    #Add your ID and secret here
   #ID first, secret second
-  config.omniauth :google, "259561031399-lro3abpdkgibd6kvo7ct6mpjcdbpo5ck.apps.googleusercontent.com", "RxpiIkr3nTIgMGNm50fV3k2F", :scope => "email, public_profile"
+  config.omniauth :google_oauth2, "259561031399-lro3abpdkgibd6kvo7ct6mpjcdbpo5ck.apps.googleusercontent.com", "RxpiIkr3nTIgMGNm50fV3k2F"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
