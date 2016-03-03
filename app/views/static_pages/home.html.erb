@@ -10,8 +10,8 @@
         <div class="projectborder">
 
      		<div class="easy-block-v1">
-                    	 <% if p.pictures.present? %>
-                        <%= image_tag p.pictures.first.url(:resized), :class=>"img-responsive", :height=>"120" %>
+                    	 <% if p.profile_pic.present? %>
+                        <%= image_tag p.profile_pic.url(:resized), :class=>"img-responsive", :height=>"120" %>
                         <% else %>
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
                         <% end %>
@@ -92,8 +92,8 @@
      	<div class="col-md-3 col-sm-6">
         <div class="projectborder">
      		<div class="easy-block-v1">
-                    	 <% if p.pictures.present? %>
-                        <%= image_tag p.pictures.first.url(:resized), :class=>"img-responsive", :height=>"120" %>
+                    	 <% if p.profile_pic.present? %>
+                        <%= image_tag p.profile_pic.url(:resized), :class=>"img-responsive", :height=>"120" %>
                         <% else %>
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
                         <% end %>
@@ -172,8 +172,8 @@
       <div class="col-md-3 col-sm-6">
         <div class="projectborder">
         <div class="easy-block-v1">
-                       <% if p.pictures.present? %>
-                        <%= image_tag p.pictures.first.url(:resized), :class=>"img-responsive", :height=>"120" %>
+                       <% if p.profile_pic.present? %>
+                        <%= image_tag p.profile_pic.url(:resized), :class=>"img-responsive", :height=>"120" %>
                         <% else %>
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
                         <% end %>

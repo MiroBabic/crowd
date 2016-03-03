@@ -10,10 +10,10 @@
                             <br />
                         </div>
                         <div class="row">
-                        <% if @project.pictures.present? %>
-                        <%= image_tag @project.pictures.first.url, size: "600", :style=>"max-height: 400px" %>
+                        <% if @project.profile_pic.present? %>
+                        <%= image_tag @project.profile_pic.url(:resized).to_s, size: "800" %>
                         <% else %>
-                        <img src="<%= asset_path( 'thumbnail-default.jpg' ) %>" alt="">
+                        <img src="<%= asset_path( 'img_empty_800.jpg' ) %>" alt="">
                         <% end %>
                         </div>
                         <div class="row">
