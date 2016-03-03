@@ -234,9 +234,9 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   modernizr-rails (~> 2.7, >= 2.7.1)
-  omniauth
   omniauth-facebook
   omniauth-google-oauth2
+  omniauth-oauth2
   omniauth-twitter
   parallaxslider-rails
   pg
