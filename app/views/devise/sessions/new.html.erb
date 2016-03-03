@@ -17,19 +17,19 @@
 
                     <div class="row">
                         <div class="col-md-6 checkbox">
-                          <%= f.label :remember_me, "Ostať prihlásený" %>
+                         <%= f.check_box :remember_me, :class => "checkbox-inline" %> <%= f.label  "Ostať prihlásený" %> 
                             <!--<label><input type="checkbox"> </label>-->
                         </div>
                         <div class="col-md-6">
-                          <%= f.submit "Log in", :class=> 'btn-u pull-right' %>
+                          <%= f.submit "Prihlás sa", :class=> 'btn-u pull-right' %>
                            <!-- <button class="btn-u pull-right" type="submit">Login</button>-->
                         </div>
                     </div>
 
                     <hr>
 
-                    <h4>Forget your Password ?</h4>
-                    <p>no worries, <a class="color-green" href="#">click here</a> to reset your password.</p>
+                    <h4>Zabudol si heslo ?</h4>
+                    <p>nevadí, <a class="color-green" href="#">klikni sem</a> na reset hesla.</p>
                 <% end %>
             </div>
         </div><!--/row-->

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:google]
 
          def update_with_password(params={})
         current_password = params.delete(:current_password)
@@ -28,4 +28,6 @@ class User < ActiveRecord::Base
       end
 
   mount_uploader :picture, PictureUploader    
+
+ 
 end

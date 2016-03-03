@@ -66,7 +66,7 @@
                         </div>
                         <div class="row" style="margin-top:60px">
                         <% if @project.user.picture.url(:resized).present? %>
-                                <%= image_tag @project.user.picture.url(:resized).to_s, style=>"width:120px" %>
+                                <%= image_tag @project.user.picture.url(:resized).to_s, :style=>"width:120px" %>
                             <% else %>
                                 <img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
                         <% end %>
