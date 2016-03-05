@@ -30,3 +30,14 @@ jQuery ->
     return
   return
 
+jQuery ->       
+  $('#finisheddetail').DataTable(
+    'order': [0,'asc']
+    'language': 'url': 'datatables_slovak.json'
+  );
+
+jQuery ->       
+  $('#finished').DataTable(
+    'order': [0,'asc']
+    'language': 'url': 'datatables_slovak.json'
+  );

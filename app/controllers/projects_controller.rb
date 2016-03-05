@@ -6,6 +6,14 @@ class ProjectsController < ApplicationController
     @project=Project.find(params[:id])
   end
 
+  def finished_projects
+    @projects=Project.where('enabled=true and enddate < ?', Time.now)
+  end
+
+  def finished_detail
+    @project=Project.find(params[:id])
+  end
+
   def userprojects
     @user=current_user
     @projects=Project.where("user_id=?",@user)
@@ -53,7 +61,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
     if @p.save
        
-        format.html { redirect_to "/adminpage", notice: 'Project was successfully enabled.' }
+        format.html { redirect_to projects_path, notice: 'Project was successfully enabled.' }
         format.json { render :show, status: :created, location: @p }
       else
         format.html { render :new }
@@ -70,7 +78,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
     if @p.save
        
-        format.html { redirect_to "/adminpage", notice: 'Project was successfully enabled.' }
+        format.html { redirect_to projects_path, notice: 'Project was successfully enabled.' }
         format.json { render :show, status: :created, location: @p }
       else
         format.html { render :new }
@@ -142,7 +150,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     respond_to do |format|
       if current_user.admin?
-      format.html { redirect_to adminpage_path , notice: 'Projekt bol  vymazaný.' }
+      format.html { redirect_to projects_path , notice: 'Projekt bol  vymazaný.' }
     else
       format.html { redirect_to root_path, notice: 'Projekt bol  vymazaný.' }
     end

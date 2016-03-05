@@ -1,0 +1,62 @@
+<% if current_user.admin? %>
+
+<div class="row">
+  <div class="profile-bio">
+                        <div class="row">
+                            <div class="col-md-5">
+                              
+                                <% if @project.profile_pic.present? %>
+                                <%= image_tag @project.profile_pic.url(:resized).to_s, :style=>"width:400px;height:253px;" %>
+                                <% else %>
+                                <img src="<%= asset_path( 'img_empty_800.jpg' ) %>" alt="", style="width:400px;height:253px;">
+                                <% end %>
+                            
+                          </div>
+                            <div class="col-md-7">
+                                <h2><%= @project.name %></h2>
+                                <span><strong>Cieľová suma:</strong> <%= @project.amount %></span>
+                                <span><strong>Vyzbieraná suma:</strong> <%= collected(@project.id) %></span>
+                                <p><strong>Počet prispievateľov:</strong> <%= payment_count(@project.id) %></p>
+                                <hr>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget massa nec turpis congue bibendum. Integer nulla felis, porta suscipit nulla et, dignissim commodo nunc. Morbi a semper nulla.</p>
+                                <p>Proin mauris odio, pharetra quis ligula non, vulputate vehicula quam. Nunc in libero vitae nunc ultricies tincidunt ut sed leo. Sed luctus dui ut congue consequat. Cras consequat nisl ante, nec malesuada velit pellentesque ac. Pellentesque nec arcu in ipsum iaculis convallis.</p>
+                            </div>
+                        </div>
+                    </div><!--/end row-->
+
+<div class="panel panel-sea margin-bottom-40">
+   <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-edit"></i> Detaily ukončeného projektu</h3>
+    </div>
+  
+    <table id="finisheddetail" class="table table-striped table-bordered table-hover dataTable">
+  <thead>
+    <tr>
+      <th>Podporovateľ</th>
+      <th>Suma</th>
+      <th>Odmena</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+    <% payments_detail(@project.id).each do |p| %>
+      <tr>
+        <td><%= p.user.email %></td>
+        <td><%= p.amount %></td>
+        <td><% if p.reward.present? %><%= p.reward.name %><% else %>Bez odmeny<% end %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>
+
+</div>
+
+<br>
+</div>
+
+  <% else %>
+    <% controller.redirect_to root_path %>
+  <% end %>

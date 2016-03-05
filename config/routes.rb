@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get '/userprojects' => 'projects#userprojects', :as => 'userprojects'
   get '/showproject/:id' => 'projects#showproject', :as => 'showproject'
+  get '/finishedprojects' => 'projects#finished_projects', :as => 'finishedprojects'
+  get '/finisheddetail/:id' => 'projects#finished_detail', :as => 'finisheddetail'
   post '/submitproject/:id' => 'projects#submitproject', :as => 'submitproject'
   post '/returnproject/:id' => 'projects#returnproject', :as => 'returnproject'
   post '/enableproject/:id' => 'projects#enableproject', :as => 'enableproject'
@@ -40,7 +42,6 @@ Rails.application.routes.draw do
   get '/about' => 'static_pages#about'
   get '/contact' => 'static_pages#contact'
   get '/project_terms' => 'static_pages#project_terms'
-  get '/adminpage' => 'static_pages#adminpage'
   get '/success' => 'static_pages#success'
   get '/faq' => 'static_pages#faq'
   get '/listall/:id' => 'static_pages#listall', :as => 'listall'

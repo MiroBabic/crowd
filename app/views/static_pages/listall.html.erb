@@ -18,8 +18,8 @@
         <div class="projectborder">
 
      		<div class="easy-block-v1">
-                    	 <% if p.pictures.present? %>
-                        <%= image_tag p.pictures.first.url(:resized), :class=>"img-responsive", :height=>"120" %>
+                    	 <% if p.profile_pic.present? %>
+                        <%= image_tag p.profile_pic.url(:resized), :class=>"img-responsive", :height=>"120" %>
                         <% else %>
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
                         <% end %>
@@ -31,11 +31,7 @@
      	<div class="projects">    <div id="header" style="height:50px;">
                                 <h4><strong><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></strong></h4>
                               </div>
-                                <ul class="list-unstyled list-inline blog-info-v2">
-                                    <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li><br>
-                                    
-                                </ul>
-                                <annotation>
+                                 <annotation>
                                 <div style="width:100%;min-height:70px;overflow:hidden;">
                                 <p><%= p.annotation %></p>
                                 </div>

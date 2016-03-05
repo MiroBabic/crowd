@@ -20,13 +20,14 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edituj', edit_category_path(category) %></td>
+        <td><%= link_to 'Zmaž', category, method: :delete, data: { confirm: 'Skontroloval si, či k tejto kategórii nepatrí nejaký projekt?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
+<%= link_to 'Vytvor novú kategóriu', new_category_path, :class=>"btn-u btn-block" %>
 </div>
 </div>
-<%= link_to 'New Category', new_category_path %>
+
