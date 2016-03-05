@@ -127,9 +127,10 @@
     <script>
     Circles.create({
                 id:         'circle-1',
-                percentage: <%= projectCollectedMoneyPerc(@project.id) %>,
+                percentage: <% if projectCollectedMoneyPerc(@project.id) > 100 %> 100 <% else %><%= projectCollectedMoneyPerc(@project.id) %><% end %>,
                 radius:     80,
                 width:      8,
+                maxValue:  100, 
                 number:     <%= projectCollectedMoneyPerc(@project.id) %>,
                 text:       '%',
                 colors:     ['#eee', '#F1C40F'],

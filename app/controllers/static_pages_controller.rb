@@ -18,6 +18,12 @@ class StaticPagesController < ApplicationController
   def faq
   end
 
+  def success
+    @projects=Project.select("projects.*").joins(:payments).group("projects.id").where('enabled = true and enddate < ?', Time.now)
+    .having("sum(payments.amount) > projects.amount")
+    @projects.sort_by(&:collected_money_percentage).reverse
+  end
+
   def listall
     @param=params[:id]
 
