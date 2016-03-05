@@ -242,6 +242,7 @@ Devise.setup do |config|
    #Add your ID and secret here
   #ID first, secret second
   config.omniauth :google_oauth2, "259561031399-lro3abpdkgibd6kvo7ct6mpjcdbpo5ck.apps.googleusercontent.com", "RxpiIkr3nTIgMGNm50fV3k2F"
+  config.omniauth :facebook, "1705238533091376", "e45fbe8494769c4122ca6cbe6d54792f", :scope => "email, public_profile"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

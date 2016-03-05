@@ -9,11 +9,12 @@
                 
                     <%= form_for(:user, :url => session_path(:user), :html => { :class => "cd-form"}) do |f| %>
                     <p class="social-login">
-                        <span class="social-login-facebook"><a href="#"><i class="fa fa-facebook"></i> Facebook</a></span>
+                        <span class="social-login-facebook"><%= link_to user_omniauth_authorize_path(:facebook) do %><i class="fa fa-facebook"></i> Facebook<% end %></span>
                        
                         <span class="social-login-google"><%= link_to user_omniauth_authorize_path(:google_oauth2) do %><i class="fa fa-google"></i> Google<% end %></span>
+
                         
-                        <span class="social-login-twitter"><a href="#"><i class="fa fa-twitter"></i> Twitter</a></span>
+                        
                     </p>
                     <div class="lined-text"><span>Alebo použi svoj účet na Support Your Dream</span><hr></div>
 
@@ -38,9 +39,9 @@
 
                 <%= form_for(:user, :url => registration_path(:user), :html => { :class => "cd-form"}) do |f| %>
                     <p class="social-login">
-                        <span class="social-login-facebook"><a href="#"><i class="fa fa-facebook"></i> Facebook</a></span>
-                        <span class="social-login-google"><a href="#"><i class="fa fa-google"></i> Google</a></span>
-                        <span class="social-login-twitter"><a href="#"><i class="fa fa-twitter"></i> Twitter</a></span>
+                        <span class="social-login-facebook"><%= link_to user_omniauth_authorize_path(:facebook) do %><i class="fa fa-facebook"></i> Facebook<% end %></span>
+                        <span class="social-login-google"><%= link_to user_omniauth_authorize_path(:google_oauth2) do %><i class="fa fa-google"></i> Google<% end %></span>
+                        
                     </p>
                     <div class="lined-text"><span>Alebo vytvor svoj účet na Support Your Dream</span><hr></div>
 
