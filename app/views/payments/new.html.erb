@@ -1,4 +1,8 @@
 <div class="row" >
+  <div class="col-md-12" style="padding-bottom:20px; margin-top:-30px">
+    <h3><center> <%= findProject(params[:project_id]).name %></center></h3>
+
+  </div>
 
 <%= form_for(@payment, html: {:class => "sky-form"}) do |f| %>
   <% if @payment.errors.any? %>
@@ -12,32 +16,32 @@
       </ul>
     </div>
   <% end %>
-  <div class="col-md-12" style="height:150px;">
+  <div class="col-md-12" >
+
   </div>
   <div class="col-md-3" >
-  </div>
-  <div class="col-md-6" style="height:450px;">
-    <% if Reward.where('project_id=?',params[:project_id]).all.present? %>
-    <label class="select">
-  <%= f.select :reward_id, Reward.where('project_id=?',params[:project_id]).all.collect { |r| [ r.name, r.id ] }, {include_blank: 'Nechcem odmenu za príspevok'},{:class => 'form-control m-b', data: {remote: true,url: url_for( action: :show_reward_desc, id: params[:reward_id]) } } %>
-      </label>
-      <% end %>
-      <div class="col-md-3" id="about_reward_div"></div>
-  <label class="input">
-              <%= f.number_field :amount, :placeholder=>'Suma ktorou chceš prispieť' %>
-              <b class="tooltip tooltip-bottom-right">Zvoľ si sumu, ktorou chceš prispieť na tento projekt </b>
-        </label>
- 
- <p>Pre projekt <%= findProject(params[:project_id]).name %></p>
- <div class="headline"><h2>Kontakt</h2></div>
+    <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
+    <div class="headline"><h2>Podporovateľ</h2></div>
                 <ul class="list-unstyled who margin-bottom-30">
-					<li><a href="#"><i class="fa fa-user"></i><%= current_user.name %></a></li>
+          <li><a href="#"><i class="fa fa-user"></i><%= current_user.name %></a></li>
                     <li><a href="#"><i class="fa fa-home"></i><%= current_user.street %></a></li>
                     <li><a href="#"><i class="fa fa-home"></i><%= current_user.city %>, <%= current_user.zip %></a></li>
                     <li><a href="#"><i class="fa fa-envelope"></i><%= current_user.email %></a></li>
                     
                     
-                </ul>  
+                </ul> 
+      </div>
+  </div>
+  <div class="col-md-6" style="height:450px;">
+    <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
+   
+  <label class="input" id="pamount">
+              <%= f.number_field :amount, :placeholder=>'Suma ktorou chceš prispieť', :style=>"-moz-appearance:textfield;", :required=> true %>
+              <b class="tooltip tooltip-bottom-right">Zvoľ si sumu, ktorou chceš prispieť na tento projekt </b>
+        </label>
+ 
+ 
+  
     
 
 <%= f.hidden_field :project_id, :value => params[:project_id] %>
@@ -47,10 +51,62 @@
 
 <div class="control-group">
  <div class="actions">
-    <center><%= f.submit "Pokračuj", :class=> 'btn-u' %></center>
+    <center><%= f.submit "Podpor", :class=> 'btn-u', data: {confirm: 'Naozaj chceš podporiť tento projekt?'} %></center>
   </div>
 <% end %>
 </div>
 </div>
+</div>
+<div class="col-md-3" >
+      <div class="tag-box tag-box-v1 box-shadow shadow-effect-2" >
+        <a href="#" style="text-decoration:none">
+        <rewardbox>
+        <h4>Žiadna odmena</h4>
+        <p>chcem len podporiť projekt bez nároku na odmenu</p>
+      </rewardbox>
+    </a>
+      </div>
+      <% if @project.rewards.present? %>
+    <% @project.rewards.each do |r| %>
+      <div class="tag-box tag-box-v1 box-shadow shadow-effect-2" id="reward_box" >
+        <a href="#" style="text-decoration:none">
+        <rewardbox>
+        <h4><%= r.name %></h4>
+        <p><%= r.about %></p>
+        <amount><h4 style="color:#F1C40F"><%= r.amount %> <i class="fa fa-eur"></i></h4></amount>
+        <rewardbox>
+        </a>
+      </div>
+    <% end %>
+    <% end %>
+</div>
+
 
 </div>
+
+<script>
+
+jQuery(function() {
+$('#payment_amount').validate({
+    lang: 'sk',
+   
+    highlight: function(element) {
+      $(element).parent().addClass('state-error');
+    },
+    unhighlight: function(element) {
+      $(element).parent().removeClass('state-error');
+    }
+  });
+});
+
+$( "rewardbox" ).click(function() {
+  $val = $( this ).children("amount").text();
+  $num = parseInt($val);
+  $("#payment_amount").val($num);
+  $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+  
+  
+});
+
+</script>
