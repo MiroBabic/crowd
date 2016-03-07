@@ -36,7 +36,7 @@
     <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
    
   <label class="input" id="pamount">
-              <%= f.number_field :amount, :placeholder=>'Suma ktorou chceš prispieť', :style=>"-moz-appearance:textfield;", :required=> true %>
+              <%= f.number_field :amount, :placeholder=>'Suma ktorou chceš prispieť', :style=>"-moz-appearance:textfield;", :required=> true, :value =>  getRewardAmount(params[:reward_id])  %>
               <b class="tooltip tooltip-bottom-right">Zvoľ si sumu, ktorou chceš prispieť na tento projekt </b>
         </label>
  
@@ -47,39 +47,54 @@
 <%= f.hidden_field :project_id, :value => params[:project_id] %>
 <%= f.hidden_field :user_id, :value => current_user.id %>      
 <%= f.hidden_field :confirmed, :value => '0' %>
+<% if params[:reward_id].present? %>
+<%= f.hidden_field :reward_id, :value => params[:reward_id] %>
+<% end %>
 
 
 <div class="control-group">
  <div class="actions">
-    <center><%= f.submit "Podpor", :class=> 'btn-u', data: {confirm: 'Naozaj chceš podporiť tento projekt?'} %></center>
+    <center><%= f.submit "Podpor", :class=> 'btn-u', data: {confirm: 'Naozaj chceš podporiť tento projekt?'} %>
+    <%= link_to "Rozmyslel som si to", :back, :class=> 'btn-u btn-u-red' %></center>
   </div>
 <% end %>
 </div>
 </div>
 </div>
-<div class="col-md-3" >
-      <div class="tag-box tag-box-v1 box-shadow shadow-effect-2" >
-        <a href="#" style="text-decoration:none">
-        <rewardbox>
-        <h4>Žiadna odmena</h4>
-        <p>chcem len podporiť projekt bez nároku na odmenu</p>
-      </rewardbox>
-    </a>
-      </div>
-      <% if @project.rewards.present? %>
-    <% @project.rewards.each do |r| %>
-      <div class="tag-box tag-box-v1 box-shadow shadow-effect-2" id="reward_box" >
-        <a href="#" style="text-decoration:none">
-        <rewardbox>
-        <h4><%= r.name %></h4>
-        <p><%= r.about %></p>
-        <amount><h4 style="color:#F1C40F"><%= r.amount %> <i class="fa fa-eur"></i></h4></amount>
-        <rewardbox>
-        </a>
-      </div>
-    <% end %>
-    <% end %>
-</div>
+
+<% if @reward.present? %>
+<div class="col-md-3 col-sm-6">
+<div class="pricing">
+                    <div class="pricing-head"  style="min-height: 50px">
+                        <h3><%= @reward.name %> </h3>
+                        <h4><i class="fa fa-eur"></i><%= @reward.amount %> </h4>
+                    </div>
+                    <ul class="pricing-content list-unstyled">
+                        <li><i class="fa fa-shopping-cart"></i> Počet zakúpení: <%= countRewardsBought(@reward.id) %></li>
+                        <li><i class="fa fa-inbox"></i> 24 hour support</li>
+                        <li><i class="fa fa-globe"></i> 10 GB Disckspace</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <p ><%= @reward.about %></p>
+                        
+                  </div>
+                </div>
+              </div>
+<% else %>
+<div class="col-md-3 col-sm-6">
+<div class="pricing">
+                    <div class="pricing-head"  style="min-height: 50px">
+                        <h3>Príspevok bez odmeny </h3>
+                        <p>Prispej koľko uznáš za vhodné </p>
+                    </div>
+                   
+                    <div class="pricing-footer">
+                   
+                        
+                  </div>
+                </div>
+              </div>
+<% end %>
 
 
 </div>
@@ -90,7 +105,7 @@ $('form').validate({
     lang: 'sk',
     rules: {
       'payment[amount]': {
-        min: 1
+        min: <%= getRewardAmount(params[:reward_id]) %>
       }
     },
     highlight: function(element) {
@@ -101,14 +116,5 @@ $('form').validate({
     }
   });
 
-$( "rewardbox" ).click(function() {
-  $val = $( this ).children("amount").text();
-  $num = parseInt($val);
-  $("#payment_amount").val($num);
-  $('html, body').animate({ scrollTop: 0 }, 'slow');
-
-  
-  
-});
 
 </script>

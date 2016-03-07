@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/show_reward_desc' => 'payments#show_reward_desc', :as => 'show_reward_desc'
   get '/invoice/:id' => 'payments#invoice', :as => 'invoice'
   get '/userpayments' => 'payments#userpayments', :as => 'userpayments'
+  get '/payments/selectreward/:id' => 'payments#selectreward', :as=> 'selectreward'
   post '/confirmpayment/:id' => 'payments#confirmpayment', :as => 'confirmpayment'
 
   resources :projects do

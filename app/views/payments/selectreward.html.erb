@@ -1,0 +1,38 @@
+<% if @project.rewards.present? %>
+ <div class="tag-box tag-box-v1 box-shadow shadow-effect-2" style="padding-bottom: 50px">
+    <span class="pull-left">Nechcem žiadnu odmenu, len prispieť na projekt</span>
+      <span class="pull-right"><%= link_to " Pokračuj", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block" %></span>
+
+</div>
+
+<% @project.rewards.each_slice(4) do |slice_of_four| %>
+ <div class="row no-space-pricing pricing-zoom">
+          <% slice_of_four.each do |r| %>
+
+ 
+            <div class="col-md-4 col-sm-6">
+                <div class="pricing">
+                    <div class="pricing-head"  style="min-height: 50px">
+                        <h3><%= r.name %> </h3>
+                        <h4><i class="fa fa-eur"></i><%= r.amount %> </h4>
+                    </div>
+                    <ul class="pricing-content list-unstyled">
+                        <li><i class="fa fa-shopping-cart"></i> Počet zakúpení: <%= countRewardsBought(r.id) %></li>
+                        <li><i class="fa fa-inbox"></i> 24 hour support</li>
+                        <li><i class="fa fa-globe"></i> 10 GB Disckspace</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <p class="footer-120"><%= r.about %></p>
+                        <%= link_to  new_payment_path(:project_id=>@project.id, :reward_id=>r.id), :class=>"btn-u" do %>
+                        <i class="fa fa-gift"> Pokračuj </i>
+                        <% end %>
+                  </div>
+                </div>
+            </div>
+            <% end %>
+       </div><!--/row-->
+       <% end %>
+<% else %>
+<% controller.redirect_to new_payment_path(:project_id=>@project.id) %>
+
+<% end %>

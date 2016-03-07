@@ -28,6 +28,10 @@ class PaymentsController < ApplicationController
 
   end
 
+  def selectreward
+    @project = Project.find(params[:id])
+  end
+
   def show_reward_desc
     value = params[:payment][:reward_id]
     if value.blank?
@@ -67,7 +71,9 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
     @project = Project.find(payment_params[:project_id])
-
+    if params[:reward_id].present?
+    @reward = Reward.find(params[:reward_id])
+    end
     respond_to do |format|
       if @payment.save
         format.html { redirect_to invoice_url(id: @payment.id), notice: 'Payment was successfully created.' }

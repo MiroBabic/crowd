@@ -62,7 +62,8 @@
                         <h3 style="margin-left:25px; margin-top:-25px;"><%= countSupporters(@project.id) %></h3>
                         <p style="margin-left:25px">prispievateľov</p>
                         <% if @project.enddate > Time.now %>
-                        <%= link_to " Podpor projekt", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block fa fa-eur" %>
+                        <!--<%= link_to " Podpor projekt", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block fa fa-eur" %>-->
+                        <%= link_to " Podpor projekt", selectreward_path, :class=>"btn-u btn-block fa fa-eur" %>
                         <% end %>
                         <br />
                         </div>
