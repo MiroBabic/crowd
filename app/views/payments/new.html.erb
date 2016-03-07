@@ -86,10 +86,13 @@
 
 <script>
 
-jQuery(function() {
-$('#payment_amount').validate({
+$('form').validate({
     lang: 'sk',
-   
+    rules: {
+      'payment[amount]': {
+        min: 1
+      }
+    },
     highlight: function(element) {
       $(element).parent().addClass('state-error');
     },
@@ -97,7 +100,6 @@ $('#payment_amount').validate({
       $(element).parent().removeClass('state-error');
     }
   });
-});
 
 $( "rewardbox" ).click(function() {
   $val = $( this ).children("amount").text();
