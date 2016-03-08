@@ -63,7 +63,7 @@
                         <p style="margin-left:25px">prispievateľov</p>
                         <% if @project.enddate > Time.now %>
                         <!--<%= link_to " Podpor projekt", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block fa fa-eur" %>-->
-                        <%= link_to " Podpor projekt", selectreward_path, :class=>"btn-u btn-block fa fa-eur" %>
+                        <%= link_to selectreward_path, :class=>"btn-u btn-block" do %><i class="fa fa-eur"></i>  Podpor projekt <% end %>
                         <% end %>
                         <br />
                         </div>
@@ -92,7 +92,7 @@
                          
                         <h4>Odmeny</h4>
                         <% if @project.rewards.any? %>
-                        <% @project.rewards.each do |p| %>
+                        <% @project.rewards.order(:amount).each do |p| %>
                         <div class="people-say margin-bottom-20">
                             <div class="overflow-h">
                                 <span><%= p.name %></span>

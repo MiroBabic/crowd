@@ -5,12 +5,12 @@
 
 </div>
 
-<% @project.rewards.each_slice(4) do |slice_of_four| %>
- <div class="row no-space-pricing pricing-zoom">
-          <% slice_of_four.each do |r| %>
+<% @project.rewards.order(:amount).each_slice(4) do |slice| %>
+ <div class="row no-space-pricing pricing-zoom" style="padding-bottom: 50px">
+          <% slice.each do |r| %>
 
  
-            <div class="col-md-4 col-sm-6">
+            <div class="col-md-3 col-sm-6">
                 <div class="pricing">
                     <div class="pricing-head"  style="min-height: 50px">
                         <h3><%= r.name %> </h3>
@@ -22,7 +22,7 @@
                         <li><i class="fa fa-globe"></i> 10 GB Disckspace</li>
                     </ul>
                     <div class="pricing-footer">
-                        <p class="footer-120"><%= r.about %></p>
+                        <p ><%= r.about %></p>
                         <%= link_to  new_payment_path(:project_id=>@project.id, :reward_id=>r.id), :class=>"btn-u" do %>
                         <i class="fa fa-gift"> Pokračuj </i>
                         <% end %>

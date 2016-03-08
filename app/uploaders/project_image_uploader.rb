@@ -21,7 +21,7 @@ class ProjectImageUploader < CarrierWave::Uploader::Base
     # while maintaining the aspect ratio
     # 10000 is used to tell CW that the height is free 
     # and so that it will hit the 100 px width first
-    process :resize_to_fill => [600, 379]
+    process :resize_to_fit => [750, 10000]
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
