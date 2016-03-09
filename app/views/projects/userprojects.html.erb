@@ -18,13 +18,22 @@
     </div>
     <div class="col-md-9">
      <div class="profile-body">
+      <div class="tab-v1">
+          <ul class="nav nav-justified nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#activeprojects">Aktívne projekty</a></li>
+              <li><a data-toggle="tab" href="#workingprojects">Rozpracované projekty</a></li>
+              <li><a data-toggle="tab" href="#finishedprojects">Ukončené projekty</a></li>
+          </ul>
+          <div class="tab-content">
+                <div id="activeprojects" class="profile-edit tab-pane fade in active">
        <% if @projects.empty? %>
         <p>Nemáš žiaden vytvorený projekt</p>
         <% else %>
-      <% @projects.all.each_slice(2) do |slice_of_two| %>
+      <% @projects.where('enabled = true and enddate > ?', Time.now).each_slice(2) do |slice_of_two| %>
         <div class="row">
           <% slice_of_two.each do |p| %>
           <div class="col-sm-6">
+            <div class="projectborder">
              <div class="easy-block-v1">
                     <% if p.profile_pic.present? %>
                         <%= image_tag p.profile_pic.url(:resized), :class=>"img-responsive" %>
@@ -37,38 +46,152 @@
             <div class="projects">
                                 <h2><a class="color-dark" href="/projects/<%= p.id %>"><%= p.name %></a></h2>
                                 <ul class="list-unstyled list-inline blog-info-v2">
-                                    <li>By: <a class="color-green" href="#"><%= p.user.name %></a></li>
+                                    <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li>
                                     <li><i class="fa fa-clock-o"></i> <%= p.created_at %></li>
                                 </ul>
-                                <p><%= p.annotation %>.</p>
+                                <p><%= p.annotation %></p>
                                 <br>
-                                <h3 class="heading-xs">Project Completeness <span class="pull-right">77%</span></h3>
+                                
                                 <div class="progress progress-u progress-xxs">
-                                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%">
+                                    <div class="progress-bar progress-bar-u-yellow" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(p.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(p.id) %>%">
                                     </div>
                                 </div>
-                                <ul class="list-inline blog-info-v2">
-                                    <li>
-                                        <strong>12%</strong>
-                                        <span>Funded</span>
+                               <ul class="list-inline blog-info-v2">
+                                    <li style=" width: 33%; text-align:center">
+                                        <strong><%= projectCollectedMoneyPerc(p.id) %>%</strong>
+                                        
                                     </li>
-                                    <li>
-                                        <strong>17%</strong>
-                                        <span>Pludged</span>
+                                    <li style = "width: 30%;text-align:center">
+                                        <strong><%= projectCollectedMoney(p.id) %><i class="fa fa-eur"></i></strong>
+                                        
                                     </li>
-                                    <li>
-                                        <strong>25</strong>
-                                        <span>days to go</span>
+                                    <li style="float:right;width: 33%;text-align:center;">
+                                        <strong><%= daysToEnd(p.id) %> dní</strong>
+                                        
+                                    </li>
+                                </ul>
+                               <ul class="list-inline blog-info-v2 margin10minus">
+                                   <li style=" width: 33%; text-align:center">
+                                        <span style="font-size:10px">SPLNENÝCH</span>
+                                    </li>
+                                    <li style = "width: 30%;text-align:center">
+                                        <span style="font-size:10px">ZÍSKANÝCH</span>
+                                    </li>
+                                   <li style="float:right;width: 33%;text-align:center;">
+                                        <span style="font-size:10px">DO KONCA</span>
                                     </li>
                                 </ul>
                             </div> 
+                          </div>
                         </div>
             <% end %>
           </div>
        <%end %>
        <%end %>
+        </div>
+        <div id="workingprojects" class="profile-edit tab-pane fade">
+          <% if @projects.empty? %>
+        <p>Nemáš žiaden vytvorený projekt</p>
+        <% else %>
+      <% @projects.where('enabled = false').each_slice(2) do |slice_of_two| %>
+        <div class="row">
+          <% slice_of_two.each do |p| %>
+          <div class="col-sm-6">
+            <div class="projectborder">
+             <div class="easy-block-v1">
+                    <% if p.profile_pic.present? %>
+                        <%= image_tag p.profile_pic.url(:resized), :class=>"img-responsive" %>
+                        <% else %>
+                        <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
+                        <% end %>
+                    
+                    <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
+              </div>
+            <div class="projects">
+                                <h2><a class="color-dark" href="/projects/<%= p.id %>"><%= p.name %></a></h2>
+                                <ul class="list-unstyled list-inline blog-info-v2">
+                                    <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li>
+                                    <li><i class="fa fa-clock-o"></i> <%= p.created_at %></li>
+                                </ul>
+                                <p><%= p.annotation %></p>
+                                <br>
+                                </div> 
+                          </div>
+                        </div>
+            <% end %>
+          </div>
+       <%end %>
+       <%end %>
+        </div>
+        <div id="finishedprojects" class="profile-edit tab-pane fade">
+           <% if @projects.empty? %>
+        <p>Nemáš žiaden vytvorený projekt</p>
+        <% else %>
+      <% @projects.where('enabled = true and enddate < ?', Time.now).each_slice(2) do |slice_of_two| %>
+        <div class="row">
+          <% slice_of_two.each do |p| %>
+          <div class="col-sm-6">
+            <div class="projectborder">
+             <div class="easy-block-v1">
+                    <% if p.profile_pic.present? %>
+                        <%= image_tag p.profile_pic.url(:resized), :class=>"img-responsive" %>
+                        <% else %>
+                        <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
+                        <% end %>
+                    
+                    <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
+              </div>
+            <div class="projects">
+                                <h2><a class="color-dark" href="/projects/<%= p.id %>"><%= p.name %></a></h2>
+                                <ul class="list-unstyled list-inline blog-info-v2">
+                                    <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li>
+                                    <li><i class="fa fa-clock-o"></i> <%= p.created_at %></li>
+                                </ul>
+                                <p><%= p.annotation %></p>
+                                <br>
+                                
+                                <div class="progress progress-u progress-xxs">
+                                    <div class="progress-bar progress-bar-u-yellow" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(p.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(p.id) %>%">
+                                    </div>
+                                </div>
+                               <ul class="list-inline blog-info-v2">
+                                    <li style=" width: 33%; text-align:center">
+                                        <strong><%= projectCollectedMoneyPerc(p.id) %>%</strong>
+                                        
+                                    </li>
+                                    <li style = "width: 30%;text-align:center">
+                                        <strong><%= projectCollectedMoney(p.id) %><i class="fa fa-eur"></i></strong>
+                                        
+                                    </li>
+                                    <li style="float:right;width: 33%;text-align:center;">
+                                        <strong><%= daysToEnd(p.id) %> dní</strong>
+                                        
+                                    </li>
+                                </ul>
+                               <ul class="list-inline blog-info-v2 margin10minus">
+                                   <li style=" width: 33%; text-align:center">
+                                        <span style="font-size:10px">SPLNENÝCH</span>
+                                    </li>
+                                    <li style = "width: 30%;text-align:center">
+                                        <span style="font-size:10px">ZÍSKANÝCH</span>
+                                    </li>
+                                   <li style="float:right;width: 33%;text-align:center;">
+                                        <span style="font-size:10px">DO KONCA</span>
+                                    </li>
+                                </ul>
+                            </div> 
+                          </div>
+                        </div>
+            <% end %>
+          </div>
+       <%end %>
+       <%end %>
+        </div>
+
      </div>
 
     </div>
   </div>
+</div>
+ </div>
 </div>

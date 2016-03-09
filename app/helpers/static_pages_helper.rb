@@ -45,6 +45,11 @@ module StaticPagesHelper
 		@project=Project.find(id)
 		@secleft = @project.enddate-Time.now
 		@daysleft = (@secleft / 86400).to_i
+		if @daysleft > 0 
+			return @daysleft
+		else
+			return 0
+		end
 	end
 
 	def TotalToEnd(id)
