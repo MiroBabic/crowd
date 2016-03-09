@@ -36,6 +36,10 @@
 	-webkit-border-radius: 5px;
 }
 
+.borderpadding {
+	padding: 3px;
+}
+
 .projects {
 	padding: 5px;
 }

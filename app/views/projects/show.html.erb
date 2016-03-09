@@ -1,4 +1,5 @@
 <div class ="alert alert-success fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>Uprav svoj projekt do želanej podoby a potom ho pošli na schválenie administrátorom</div>
+<div class ="alert alert-danger fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>Profilový obrázok projektu musí mať rozmery aspoň 850x550 aby ho bolo možné vložiť do projektu. Pre zmenu stačí vložiť nový a starý bude prepísaný </div>
 <% if (@project.user_id == current_user.id) || (current_user.admin?) %>
 <style>
 .cropit-preview {
@@ -25,7 +26,7 @@
 
                         <% if @project.enabled == false %>
                         <div id="image-cropper">
-                            <div class ="alert alert-danger fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>Profilový obrázok projektu musí mať rozmery aspoň 850x550 aby ho bolo možné vložiť do projektu. Pre zmenu stačí vložiť nový a starý bude prepísaný </div>
+                            
                              <%= form_for @project, method: :put do |f| %>
                           <div class="cropit-preview" id="cropit-preview"></div>
                           <div class="rotation-btns"><span class="icon icon-rotate-left rotate-ccw-btn"><i class="fa fa-arrow-left"></i>
@@ -41,11 +42,11 @@
                         </div>
                         <% end %>
                        
-                        <div class="row">
+                        <div class="row projectborder borderpadding">
                             <h4>V skratke</h4>
                             <p><%= @project.annotation %></p>
                         </div>
-                        <div class="row gallery">
+                        <div class="row gallery projectborder borderpadding">
                         <h4>Detailne o projekte</h4>
                         <p><%= raw @project.about %></p>
                         </div>
@@ -53,7 +54,7 @@
                        
                        
                                                 
-                    <div class="row gallery">
+                    <div class="row gallery projectborder borderpadding">
                     <h4>Galéria ku projektu</h4>
                         <% @project.pictures.each_with_index do |pic, index| %>
                         <div class="col-md-12">
@@ -67,7 +68,7 @@
                
             
                 
-                     <div class="row gallery">   
+                     <div class="row gallery projectborder borderpadding">   
                     <% if @project.enabled == false %>
                     <div class="actions" style="float:left;">
                     <%= form_for @project, url: project_pictures_path(@project), method: :post do |f| %>

@@ -5,35 +5,35 @@
                 <!-- Left Inner -->
                 <div class="col-md-9">
                     <div class="left-inner">
-                        <div class="row">
+                        <div class="row ">
                             <h1 ><%= @project.name %></h1>
                             <br />
                         </div>
-                        <div class="row">
+                        <div class="row " >
                         <% if @project.profile_pic.present? %>
                         <%= image_tag @project.profile_pic.url(:resized).to_s, size: "800" %>
                         <% else %>
                         <img src="<%= asset_path( 'img_empty_800.jpg' ) %>" alt="">
                         <% end %>
                         </div>
-                        <div class="row">
+                        <div class="row projectborder borderpadding">
                             <p><%= @project.annotation %></p>
                         </div>
-                        <div class="row gallery">
+                        <div class="row gallery projectborder borderpadding">
                         <h4>Detailne o projekte</h4>
                         <p><%= raw @project.about %></p>
                         </div>
 
                        
-                        </div>
+                       
                                                 
-                    <div class="row gallery">
+                    <div class="row gallery projectborder borderpadding">
                     <h4>Galéria ku projektu</h4>
                         <% @project.pictures.each_with_index do |pic, index| %>
                         <%= link_to image_tag(pic.url(:resized).to_s), pic.url %>
                         <% end %>
                         </div>
-               
+                </div>
             </div>
                 <!-- End Left Inner -->
 
