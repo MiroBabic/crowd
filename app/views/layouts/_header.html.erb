@@ -98,14 +98,18 @@
                         <i class="search fa fa-search search-btn" style="background: #2F3236; color: #fff;" ></i>
                         <div class="search-open" style=" z-index:9999">
                             <div class="input-group animated fadeInDown">
-                                <input type="text" class="form-control" placeholder="Hľadaj">
+                               <form method="get" action="/search" class="button_to">
                                 <span class="input-group-btn">
-                                    <button class="btn-u" type="button"><i class="fa fa-search"></i></button>
+                                <input id="q" name="q" type="text" class="form-control" placeholder="Hľadaj">
+                                <button class="btn-u" type="submit"><i class="fa fa-search"></i></button>
                                 </span>
+                            </form>
                             </div>
                         </div>
                     </li>
                     <!-- End Search Block -->
+
+
                 </ul>
           </div>
     </div>

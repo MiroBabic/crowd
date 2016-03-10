@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   get '/success' => 'static_pages#success'
   get '/faq' => 'static_pages#faq'
   get '/listall/:id' => 'static_pages#listall', :as => 'listall'
+  get '/search' => 'static_pages#search', :as => 'search'
 
 
   # Example of regular route:

@@ -36,5 +36,9 @@ class StaticPagesController < ApplicationController
     end
   end
   
+  def search
+    @projects=Project.basic_search(params[:q]).where('enabled=true')
+  end
+
   
 end

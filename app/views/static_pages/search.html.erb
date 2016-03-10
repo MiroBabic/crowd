@@ -1,0 +1,106 @@
+<% if @projects.present? %>
+<div class="col-md-12">
+  <div class="row">
+       <div class="headline">
+      
+</div>
+     <div class="profile-body">
+      <!-- first -->
+      
+      <% @projects.each do |p| %>
+     	<div class="col-md-3 col-sm-6">
+        <div class="projectborder">
+
+     		<div class="easy-block-v1">
+                    	 <% if p.profile_pic.present? %>
+                        <%= image_tag p.profile_pic.url(:resized), :class=>"img-responsive", :height=>"120" %>
+                        <% else %>
+                        <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
+                        <% end %>
+                        
+                        
+                    
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+              </div>
+     	<div class="projects">    <div id="header" style="height:50px;">
+                                <h4><strong><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></strong></h4>
+                              </div>
+                                 <annotation>
+                                <div style="width:100%;min-height:70px;overflow:hidden;">
+                                <p><%= p.annotation %></p>
+                                </div>
+                                </annotation>
+                                <% if p.annotation.length < 90 %>
+                                <div style="height:11px"></div>
+                                <% end %>
+                                <br>
+                                
+                                <div class="progress progress-u progress-xxs">
+                                    <div class="progress-bar progress-bar-u-yellow" role="progressbar" aria-valuenow="<%= projectCollectedMoneyPerc(p.id) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= projectCollectedMoneyPerc(p.id) %>%">
+                                    </div>
+                                </div>
+                               <ul class="list-inline blog-info-v2">
+                                    <li style=" width: 33%; text-align:center">
+                                        <strong><%= projectCollectedMoneyPerc(p.id) %>%</strong>
+                                        
+                                    </li>
+                                    <li style = "width: 30%;text-align:center">
+                                        <strong><%= projectCollectedMoney(p.id) %><i class="fa fa-eur"></i></strong>
+                                        
+                                    </li>
+                                    <li style="float:right;width: 33%;text-align:center;">
+                                        <strong><%= daysToEnd(p.id) %> dní</strong>
+                                        
+                                    </li>
+                                </ul>
+                               <ul class="list-inline blog-info-v2 margin10minus">
+                                   <li style=" width: 33%; text-align:center">
+                                        <span style="font-size:10px">SPLNENÝCH</span>
+                                    </li>
+                                    <li style = "width: 30%;text-align:center">
+                                        <span style="font-size:10px">ZÍSKANÝCH</span>
+                                    </li>
+                                   <li style="float:right;width: 33%;text-align:center;">
+                                        <span style="font-size:10px">DO KONCA</span>
+                                    </li>
+                                </ul>
+                                  
+                                  
+                                   
+                               
+                            </div> 
+            </div>
+          </div>
+          <% end %>  
+          
+    </div>
+  </div>
+</div>
+
+<% else %>
+           <div class="search-block-v2">
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+                <h2>Nenájdené, skús znova</h2>
+                
+                  <form method="get" action="/search" class="button_to">
+                    <span class="input-group-btn">
+                    <input type="text" id="q" name="q" class="form-control" placeholder="Zadaj hľadaný text (vyhľadáva sa v názve aj popise projektov)">
+                    <center><button class="btn-u" type="submit" >Hľadaj <i class="fa fa-search"></i></button></center>
+                    </span>
+                  </form>
+                
+            </div>
+        </div>
+    </div><!--/container-->
+          <% end %>
+
+<script>
+$('annotation').readmore({
+  speed: 75,
+  collapsedHeight: 60,
+  moreLink: '<a href="#">Ukáž viac</a>',
+  embedCSS: true,
+  lessLink: '<a href="#">Schovaj</a>'
+});
+</script>

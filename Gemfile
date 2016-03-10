@@ -48,6 +48,8 @@ gem "jquery-fileupload-rails"
 gem 'modernizr-rails', '~> 2.7', '>= 2.7.1'
 gem 'parallaxslider-rails'
 
+#fulltextsearch
+gem 'textacular', '~> 3.0'
 
 #readmore plugin
 gem 'readmorejs-rails'
