@@ -246,6 +246,7 @@
 
               </div>
                <div id="profilePicTab" class="profile-edit tab-pane fade">
+                <div class ="alert alert-danger fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>Profilová fotka musí mať rozmery aspoň 400x400 aby ju bolo možné vložiť. </div>
                  <div id="image-cropper" align="center">
                             
                              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put) do |f| %>
