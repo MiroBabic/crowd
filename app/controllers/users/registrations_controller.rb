@@ -66,6 +66,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+
+  private
+
+  def after_inactive_sign_up_path_for(resource)
+    sign_up_success_path
+  end
+
  before_filter :configure_permitted_parameters
 
   protected

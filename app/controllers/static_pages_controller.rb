@@ -11,6 +11,8 @@ class StaticPagesController < ApplicationController
   def project_terms
   end
 
+  def sign_up_success
+  end
 
   def faq
   end
