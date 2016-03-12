@@ -17,7 +17,9 @@
       <center><img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt=""></center>
       <% end %>
       <br />
+      <% if @user.picture.url(:thumb).present? %>
       <div class="btn-u btn-u-red btn-block" onclick="deleteimage();"><i class="fa fa-trash-o"></i> Zmaž Obrázok</div>
+      <% end %>
       </br></br>
               <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
                   
