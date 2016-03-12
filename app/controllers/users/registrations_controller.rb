@@ -26,6 +26,39 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @project = Project.user_id(@user)
    end
 
+
+  def saveuserpic
+    @u=User.find(params[:id])
+    @u.picture = (params[:data])
+    respond_to do |format|
+    if @u.save
+       
+        format.html { redirect_to edit_user_registration_path, notice: 'Image was uploaded.' }
+        format.json { render :show, status: :created, location: edit_user_registration_path }
+      else
+        format.html { render :new }
+        format.json { render json: edit_user_registration_path.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
+   def deluserpic
+    @u=User.find(params[:id])
+    @u.remove_picture!
+    respond_to do |format|
+    if @u.save
+       
+        format.html { redirect_to edit_user_registration_path, notice: 'Image was uploaded.' }
+        format.json { render :show, status: :created, location: edit_user_registration_path }
+      else
+        format.html { render :new }
+        format.json { render json: edit_user_registration_path.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
   # PUT /resource
   # def update
   #   super
@@ -84,6 +117,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
      #devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :street, :city, :zip, :altemail, :phone, :fbprofile, :twitterprofile, :gplusprofile, :picture, :personalweb, :aboutme, :email, :password, :password_confirmation, :current_password) }
      devise_parameter_sanitizer.for(:sign_up).push(:name, :street, :city, :zip, :altemail, :phone, :fbprofile, :twitterprofile, :gplusprofile, :picture, :personalweb, :aboutme)
      devise_parameter_sanitizer.for(:account_update).push(:name, :street, :city, :zip, :country, :altemail, :phone, :fbprofile, :twitterprofile, :gplusprofile, :picture, :personalweb, :aboutme)
+
   end
 
 

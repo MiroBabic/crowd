@@ -29,8 +29,16 @@ Rails.application.routes.draw do
   resources :payments
   resources :rewards
   
+  devise_scope :user do
+    post '/saveuserpic' => 'users/registrations#saveuserpic', :as => 'saveuserpic'
+    post '/deluserpic' => 'users/registrations#deluserpic', :as => 'deluserpic'
+  end
+ 
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/callbacks", :registrations => "users/registrations" }
+
+
+  
 
   #devise_for :users, :controllers => {:registrations => "users/registrations"}
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,11 +1,23 @@
+<style>
+.cropit-preview {
+  /* You can specify preview size in CSS */
+  width: 400px;
+  height: 400px;
+}
+.hidden {
+    display:none;
+}
+</style>
 <div class="container content profile">
   <div class="row">
     <div class="col-md-3 md-margin-bottom-40">
-      <% if @user.picture.url(:resized).present? %>
-      <center><%= image_tag @user.picture.url(:resized).to_s %></center>
+      <% if @user.picture.url(:thumb).present? %>
+      <center><%= image_tag @user.picture.url(:thumb).to_s %></center>
       <% else %>
       <center><img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt=""></center>
       <% end %>
+      <br />
+      <div class="btn-u btn-u-red btn-block" onclick="deleteimage();"><i class="fa fa-trash-o"></i> Zmaž Obrázok</div>
       </br></br>
               <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
                   
@@ -22,6 +34,7 @@
           <ul class="nav nav-justified nav-tabs">
               <li class="active"><a data-toggle="tab" href="#profile">Profil</a></li>
               <li><a data-toggle="tab" href="#passwordTab">Zmena Hesla</a></li>
+              <li><a data-toggle="tab" href="#profilePicTab">Zmena Profilovej fotky</a></li>
           </ul>
           <div class="tab-content">
                 <div id="profile" class="profile-edit tab-pane fade in active">
@@ -30,10 +43,7 @@
                                 <br>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name),  html: {:class => "sky-form", id: "profile_#{resource.email}_edit", namespace: "profile_#{resource.email}", method: :put }) do |f| %>
  
-    <div class="field">
-    <%= f.label :name, 'Profilový obrázok' %><br>
-    <%= f.file_field :picture, :class=>'input' %>
-  </div>
+    
 <dt>Meno </dt>
     <dd>
      <section>
@@ -233,6 +243,25 @@
 <!--<%= link_to "Back", :back %>-->
 
               </div>
+               <div id="profilePicTab" class="profile-edit tab-pane fade">
+                 <div id="image-cropper" align="center">
+                            
+                             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put) do |f| %>
+                          <div class="cropit-preview" id="cropit-preview"></div>
+                          <div class="rotation-btns"><span class="icon icon-rotate-left rotate-ccw-btn"><i class="fa fa-arrow-left"></i>
+                        </span><span class="icon icon-rotate-right rotate-cw-btn"><i class="fa fa-arrow-right"></i>
+                        </span></div>
+                          <input type="range" class="cropit-image-zoom-input " />
+                          <%= f.file_field :picture, accept: "image/jpeg, image/jpg, image/gif, image/png", :class=> "cropit-image-input hidden" %> 
+                      
+                         <div class="btn-u btn-u-yellow" id="uploadTrigger"><i class="fa fa-upload"></i> Vyber Obrázok</div>
+                         <%= button_tag :class=>'btn-u', :onclick=>"getimage()",:type => 'button' do %>
+                         <i class="fa fa-check"></i>  Potvrď <% end %>
+                            <% end %>
+                        
+                      
+                        </div>
+               </div>
             </div>
           </div>
         </div>
@@ -240,3 +269,100 @@
     </div>
   </div>
 </div>
+<script>
+ $("#uploadTrigger").click(function(){
+   $("#user_picture").click();
+        });
+
+  
+    $('#image-cropper').cropit({
+        imageState: {src: <% if @user.picture.url(:resized).present? %> "<%= @user.picture.url(:resized).to_s %>" <% else %> "<%= asset_path( 'user-avatar-big.png' ) %>" <% end %> }});
+
+        // When user clicks select image button,
+        // open select file dialog programmatically
+        $('.select-image-btn').click(function() {
+          $('.cropit-image-input').click();
+        });
+
+        // Handle rotation
+        $('.rotate-cw-btn').click(function() {
+          $('#image-cropper').cropit('rotateCW');
+        });
+        $('.rotate-ccw-btn').click(function() {
+          $('#image-cropper').cropit('rotateCCW');
+        });
+
+         function getimage(){
+        var $cropedimage = $('#image-cropper').cropit('export', {
+              type: 'image/jpeg',
+              quality: .9,
+              originalSize: true
+            });
+        
+
+        function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
+
+    var filedata=dataURItoBlob($cropedimage);
+
+
+        var fd = new FormData();
+        fd.append('data', filedata, "user" + <%= @user.id %> + "profile-pic.jpg" );
+        fd.append('id', <%= @user.id %>);
+           $.ajax({
+                    type: "POST",
+                    url: "/saveuserpic",
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    cache: false                   
+                        })
+                    .done(function (msg) {
+                    alert("Obrázok bol nahratý na server" );
+                    location.reload();
+                     });
+            };
+
+      function deleteimage(){
+
+      var c = confirm("Naozaj chceš zmazať svoju profilovú fotku?");
+      if (c) {
+        var fd = new FormData();
+        fd.append('id', <%= @user.id %>);
+
+          $.ajax({
+                    type: "POST",
+                    url: "/deluserpic",
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    cache: false                   
+                        })
+                    .done(function (msg) {
+                    alert("Obrázok bol zmazaný" );
+                    location.reload();
+                     });
+                  }
+
+            };
+
+       
+
+</script>
