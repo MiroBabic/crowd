@@ -29,7 +29,8 @@
                     <hr>
 
                     <h4>Zabudol si heslo ?</h4>
-                    <p>nevadí, <a class="color-green" href="#">klikni sem</a> na reset hesla.</p>
+                    <p>nevadí, <%= link_to "klikni sem", new_password_path(resource_name), class: 'color-green' %> na reset hesla.</p>
+                    <!--<p>nevadí, <a class="color-green" href="#">klikni sem</a> na reset hesla.</p>-->
                 <% end %>
             </div>
         </div><!--/row-->
