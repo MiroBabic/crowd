@@ -16,16 +16,25 @@
                         <img src="<%= asset_path( 'img_empty_800.jpg' ) %>" alt="">
                         <% end %>
                         </div>
-                        <div class="row projectborder borderpadding">
-                            <p><%= @project.annotation %></p>
-                        </div>
-                        <div class="row gallery projectborder borderpadding">
-                        <h4>Detailne o projekte</h4>
-                        <p><%= raw @project.about %></p>
-                        </div>
 
-                       
-                       
+                         <div class="tab-v1">
+                              <ul class="nav nav-justified nav-tabs">
+                                  <li class="active"><a data-toggle="tab" href="#tababout">O projekte</a></li>
+                                  <li><a data-toggle="tab" href="#tabgallery">Galéria</a></li>
+                                  <li><a data-toggle="tab" href="#tabrewards">Odmeny</a></li>
+                                  <li><a data-toggle="tab" href="#tabsupporters">Prispievatelia</a></li>
+                              </ul>
+                              <div class="tab-content">
+                                    <div id="tababout" class="profile-edit tab-pane fade in active">
+                                        <div class="row projectborder borderpadding">
+                                            <p><%= @project.annotation %></p>
+                                        </div>
+                                        <div class="row gallery projectborder borderpadding">
+                                        <h4>Detailne o projekte</h4>
+                                        <p><%= raw @project.about %></p>
+                                        </div>
+                            </div>
+                        <div id="tabgallery" class="profile-edit tab-pane fade">
                                                 
                     <div class="row projectborder borderpadding">
                     <h4>Galéria ku projektu</h4>
@@ -39,6 +48,45 @@
                         </div>
                         <% end %>
                         </div>
+                    </div>
+
+                    <div id="tabsupporters" class="profile-edit tab-pane fade">
+                        <br />
+                        <% if @project.payments.any? %>
+                        <% @project.payments.where('confirmed = true').each do |pay| %>
+                        <div class="people-say margin-bottom-20">
+                                <% if pay.user.name? %>
+                                <span><%= pay.user.name %></span>
+                                <% else %>
+                                <span>Anonym</span>
+                                <% end %>
+                                <span class="hex pull-right" style="padding-right:3px">prispel: <%= pay.amount %> <i class="fa fa-eur"></i></span>
+                            
+                        </div>
+                        <hr>
+                        <% end %>
+                        <% end %>
+                    </div>
+                    <div id="tabrewards" class="profile-edit tab-pane fade">
+                        
+                        <% if @project.rewards.any? %>
+                        <% @project.rewards.order(:amount).each do |p| %>
+                        <div class="people-say margin-bottom-20">
+                            <div class="overflow-h">
+                                <span><%= p.name %></span>
+                                <span class="hex pull-right" style="padding-right:3px">hodnota: <%= p.amount %> <i class="fa fa-eur"></i></span>
+                                <p><%= p.about %></p>
+                            </div>
+                            <hr>
+                        </div>
+                        <% end %>
+                        
+                        <% else %>
+                        <p> Projekt nemá žiadne odmeny </p>
+                        <% end %>
+                    </div>
+                </div>
+                    </div>
                 </div>
             </div>
                 <!-- End Left Inner -->
@@ -100,36 +148,9 @@
                         <hr>
                         </div>
                          
-                        <h4>Odmeny</h4>
-                        <% if @project.rewards.any? %>
-                        <% @project.rewards.order(:amount).each do |p| %>
-                        <div class="people-say margin-bottom-20">
-                            <div class="overflow-h">
-                                <span><%= p.name %></span>
-                                <span class="hex pull-right" style="padding-right:3px">hodnota: <%= p.amount %> <i class="fa fa-eur"></i></span>
-                                <p><%= p.about %></p>
-                            </div>
-                        </div>
-                        <% end %>
                         
-                        <% else %>
-                        <p> Projekt nemá žiadne odmeny </p>
-                        <% end %>
-                        <hr>
-                        <h4>Darcovia</h4>
-                        <% if @project.payments.any? %>
-                        <% @project.payments.where('confirmed = true').each do |pay| %>
-                        <div class="people-say margin-bottom-20">
-                                <% if pay.user.name? %>
-                                <span><%= pay.user.name %></span>
-                                <% else %>
-                                <span>Anonym</span>
-                                <% end %>
-                                <span class="hex pull-right" style="padding-right:3px">prispel: <%= pay.amount %> <i class="fa fa-eur"></i></span>
-                            
-                        </div>
-                        <% end %>
-                        <% end %>
+                        
+                        
 
                     </div>
                 </div>
