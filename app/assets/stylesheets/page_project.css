@@ -62,6 +62,18 @@
 
 }
 
+.job-description .left-inner .picgal img {
+	float: center;
+	max-width: 400px;
+	width: 100%;
+	height: auto;
+	padding: 3px;
+	margin: 0 10px 10px 0;
+	border: 1px solid #eee;
+	position: relative;
+
+}
+
 .job-description .left-inner h3 {
 	margin: 0 0 5px;
 }

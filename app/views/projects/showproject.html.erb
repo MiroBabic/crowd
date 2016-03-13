@@ -11,7 +11,7 @@
                         </div>
                         <div class="row " >
                         <% if @project.profile_pic.present? %>
-                        <%= image_tag @project.profile_pic.url(:resized).to_s, size: "800" %>
+                        <%= image_tag @project.profile_pic.url(:resized).to_s, :style=>"width:100%; max-width:800px" %>
                         <% else %>
                         <img src="<%= asset_path( 'img_empty_800.jpg' ) %>" alt="">
                         <% end %>
@@ -27,10 +27,16 @@
                        
                        
                                                 
-                    <div class="row gallery projectborder borderpadding">
+                    <div class="row projectborder borderpadding">
                     <h4>Galéria ku projektu</h4>
-                        <% @project.pictures.each_with_index do |pic, index| %>
-                        <%= link_to image_tag(pic.url(:resized).to_s), pic.url %>
+                        <% @project.pictures.each_slice(2) do |slice_of_two| %>
+                       <div class="col-md-12">
+                        <% slice_of_two.each_with_index do |pic, index| %>
+                        <div class="col-md-6 picgal">
+                        <%= link_to image_tag(pic.url(:resized).to_s), pic.url,class: :fancybox %>
+                        </div>
+                        <% end %>
+                        </div>
                         <% end %>
                         </div>
                 </div>

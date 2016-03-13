@@ -47,6 +47,7 @@ gem "jquery-fileupload-rails"
 #modernizr and slider and fancybox
 gem 'modernizr-rails', '~> 2.7', '>= 2.7.1'
 gem 'parallaxslider-rails'
+gem 'fancybox-rails'
 
 #fulltextsearch
 gem 'textacular', '~> 3.0'

@@ -41,3 +41,9 @@ jQuery ->
     'order': [0,'asc']
     'language': 'url': 'datatables_slovak.json'
   );
+
+$(document).ready ->
+  $('.fancybox').fancybox
+    openEffect: 'elastic'
+    closeEffect: 'none'
+  return

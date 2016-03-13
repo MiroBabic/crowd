@@ -1,8 +1,8 @@
 <div class="container content profile">
   <div class="row">
     <div class="col-md-3 md-margin-bottom-40">
-      <% if @user.picture.url(:resized).present? %>
-      <center><%= image_tag @user.picture.url(:resized).to_s %></center>
+      <% if @user.picture.url(:thumb).present? %>
+      <center><%= image_tag @user.picture.url(:thumb).to_s %></center>
       <% else %>
       <center><img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt=""></center>
       <% end %>

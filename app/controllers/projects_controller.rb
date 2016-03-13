@@ -40,11 +40,13 @@ class ProjectsController < ApplicationController
     @p=Project.find(params[:id])
     @p.requested=true
     @p.confirmdate = Time.now
-    @p.enddate = Time.now+(@p.duration).to_i.days
+    
 
     respond_to do |format|
     if @p.save
        
+        ProjectMailer.projectSubmit(@p.id).deliver_now
+
         format.html { redirect_to @p, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @p }
       else
@@ -57,10 +59,14 @@ class ProjectsController < ApplicationController
   def enableproject
     @p=Project.find(params[:id])
     @p.enabled = true
+    @p.started = Time.now
+    @p.enddate = Time.now+(@p.duration).to_i.days
 
     respond_to do |format|
     if @p.save
        
+        ProjectMailer.projectEnable(@p.id).deliver_now
+
         format.html { redirect_to projects_path, notice: 'Project was successfully enabled.' }
         format.json { render :show, status: :created, location: @p }
       else
@@ -77,8 +83,10 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
     if @p.save
-       
-        format.html { redirect_to projects_path, notice: 'Project was successfully enabled.' }
+        
+        ProjectMailer.projectReturn(@p.id).deliver_now
+
+        format.html { redirect_to projects_path, notice: 'Project was successfully returned.' }
         format.json { render :show, status: :created, location: @p }
       else
         format.html { render :new }
