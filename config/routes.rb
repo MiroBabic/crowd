@@ -118,4 +118,7 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  ### if not found redirect to root
+  get '*path' => redirect('/404')
 end
