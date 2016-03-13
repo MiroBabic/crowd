@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   get '/success' => 'static_pages#success'
   get '/faq' => 'static_pages#faq'
   get '/listall/:id' => 'static_pages#listall', :as => 'listall'
+  get '/listup/:id' => 'static_pages#listup', :as => 'listup'
   get '/search' => 'static_pages#search', :as => 'search'
   get '/sign_up_success' => 'static_pages#sign_up_success', :as => 'sign_up_success'
 

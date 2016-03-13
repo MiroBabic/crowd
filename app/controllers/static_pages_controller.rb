@@ -37,6 +37,10 @@ class StaticPagesController < ApplicationController
       .order('payments.created_at DESC')
     end
   end
+
+  def listup
+      @projects=Project.where(user_id: params[:id], enabled: true)
+  end
   
   def search
     @projects=Project.basic_search(params[:q]).where('enabled=true')

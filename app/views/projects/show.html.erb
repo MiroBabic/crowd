@@ -29,6 +29,7 @@
                             
                              <%= form_for @project, method: :put do |f| %>
                           <div class="cropit-preview" id="cropit-preview"></div>
+                          <% if @project.requested == false  %>
                           <div class="rotation-btns"><span class="icon icon-rotate-left rotate-ccw-btn"><i class="fa fa-arrow-left"></i>
                         </span><span class="icon icon-rotate-right rotate-cw-btn"><i class="fa fa-arrow-right"></i>
                         </span></div>
@@ -39,29 +40,38 @@
                          <%= button_tag :class=>'btn-u', :onclick=>"getimage()",:type => 'button' do %>
                          <i class="fa fa-check"></i>  Potvrď <% end %>
                             <% end %>
+                            <% end %>
                         </div>
                         <% end %>
                        
-                        <div class="row projectborder borderpadding">
+                        <div class="row projectborder borderpadding" style="margin-bottom:30px; margin-top: 20px">
                             <h4>V skratke</h4>
                             <p><%= @project.annotation %></p>
                         </div>
-                        <div class="row gallery projectborder borderpadding">
-                        <h4>Detailne o projekte</h4>
-                        <p><%= raw @project.about %></p>
-                        </div>
-
-                       
-                       
+                         <div class="tab-v1">
+                              <ul class="nav nav-justified nav-tabs">
+                                  <li class="active"><a data-toggle="tab" href="#tababout">O projekte</a></li>
+                                  <li><a data-toggle="tab" href="#tabgallery">Galéria</a></li>
+                                  <li><a data-toggle="tab" href="#tabrewards">Odmeny</a></li>
+                                  </ul>
+                              <div class="tab-content">
+                                    <div id="tababout" class="profile-edit tab-pane fade in active">
+                                        
+                                        <div class="row gallery projectborder borderpadding">
+                                        
+                                        <p><%= raw @project.about %></p>
+                                        </div>
+                            </div>
+                        <div id="tabgallery" class="profile-edit tab-pane fade">
                                                 
-                    <div class="row projectborder borderpadding">
-                    <h4>Galéria ku projektu</h4>
+                    <div class="row  borderpadding">
+                    
                         <% @project.pictures.each_slice(2) do |slice_of_two| %>
                        <div class="col-md-12">
                         <% slice_of_two.each_with_index do |pic, index| %>
                         <div class="col-md-6 picgal">
                         <%= link_to image_tag(pic.url(:resized).to_s), pic.url, class: :fancybox %>
-                        <% if @project.enabled == false %>
+                        <% if @project.requested == false  %>
                         <%= link_to content_tag(:i,nil,class: 'fa fa-trash-o'),project_picture_path(@project, index), :method => :delete, data: { confirm: "Naozaj chceš zmazať tento obrázok?" } %>
                         <% end %>
                         </div>
@@ -69,11 +79,8 @@
                         </div>
                         <% end %>
                         </div>
-               
-            
-                
-                     <div class="row gallery projectborder borderpadding">   
-                    <% if @project.enabled == false %>
+                         <div class="row gallery borderpadding">   
+                    <% if @project.requested == false %>
                     <div class="actions" style="float:left;">
                     <%= form_for @project, url: project_pictures_path(@project), method: :post do |f| %>
                     <%= f.file_field :pictures, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png", :class=>"hidden" %> 
@@ -82,9 +89,33 @@
                      </div>
                     <% end %>
                    <% end %>
-                    	
+                        
                     </div>
+                        </div>
+                         <div id="tabrewards" class="profile-edit tab-pane fade">
+                        
+                        <% if @project.rewards.any? %>
+                        <% @project.rewards.order(:amount).each do |p| %>
+                        <div class="people-say margin-bottom-20">
+                            <div class="overflow-h">
+                                <span><%= p.name %></span>
+                                <span class="hex pull-right" style="padding-right:3px">hodnota: <%= p.amount %> <i class="fa fa-eur"></i></span>
+                                <p><%= p.about %></p>
+                            </div>
+                            <hr>
+                        </div>
+                        <% end %>
+                        
+                        <% else %>
+                        <p> Projekt nemá žiadne odmeny </p>
+                        <% end %>
+                    </div>
+            
+                
+                    
                      </div>
+                </div>
+                </div>
                 </div>
                 <!-- End Left Inner -->
 
@@ -93,12 +124,16 @@
                     <div class="right-inner">
                     	<% if @project.user_id == current_user.id %>
                         <% if @project.requested %>
-                        <button class="btn-u btn-u-default btn-block" type="button" disabled><i class="fa fa-envelope-o"></i> Projekt odoslaný na schválenie</button>                        
+                        <button class="btn-u btn-u-default btn-block" type="button" disabled><i class="fa fa-spinner"></i> Projekt čaká na schválenie</button>
+                        <button class="btn-u btn-u-default btn-block" type="button" disabled><i class="fa fa-hour"></i> Od: <%= @project.confirmdate.strftime("%d-%m-%Y %H:%M") %></button>
+                        
                         <% else %>
                         <%= link_to edit_project_path(@project), :class=>"btn-u btn-block" do %><i class="fa fa-edit"></i>  Uprav/Doplň projekt<% end %>
                         <%= link_to project_path(@project), :class=>"btn-u btn-block", method: :delete, :data => {:confirm => 'Naozaj chceš tento projekt zmazať?'} do %><i class="fa fa-trash-o"></i>  Zmaž projekt<% end %>
                         <%= link_to new_reward_path(:project_id=>@project.id), :class=>"btn-u btn-block" do %><i class="fa fa-gift"></i>  Pridaj odmeny<% end %>
-                        <%= link_to "Pošli projekt na schválenie", submitproject_path(@project), :class=>"btn-u btn-block", :data => {:confirm =>'Je tento projekt kompletne vyplnený aby ho mohol administrátor schváliť?'}, method: :post %>
+                        <div style="margin-top:50px">
+                        <%= link_to submitproject_path(@project), :class=>"btn-u btn-block", :data => {:confirm =>'Je tento projekt kompletne vyplnený aby ho mohol administrátor schváliť?'}, method: :post do %><i class="fa fa-check"></i> Pošli projekt na schválenie <% end %>
+                    </div>
                         <% end %>
                         </hr>
                         <% end %>
@@ -106,28 +141,24 @@
                             <h1 style="color:white">Detaily</h1>
                             <br />
                         </div>
-                                                 
-                        
-                    
-                
-                         
-                        <h4>Odmeny</h4>
-                        <% if @project.rewards.any? %>
-                        <% @project.rewards.each do |p| %>
-                        <div class="people-say margin-bottom-20">
-                            <div class="overflow-h">
-                                <span><%= p.name %></span>
-                                <span class="hex pull-right" style="padding-right:3px">hodnota: <%= p.amount %> <i class="fa fa-eur"></i></span>
-                                <p><%= p.about %></p>
-                            </div>
+                        <div class="row" style="margin-top:60px">
+                            
+                        <% if @project.user.picture.url(:thumb).present? %>
+                                <%= image_tag @project.user.picture.url(:thumb).to_s, :style=>"width:100px" %>
+                            <% else %>
+                                <img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt="">
+                        <% end %>
+                            
+                       
+                        <div class="overflow-h">
+                            <span>Autor: <%= @project.user.name %></span>
+
+                            <p class="color-green"><span class="hex"><%=raw %(#{link_to(@project.user.personalweb, url_with_protocol(@project.user.personalweb), :target => '_blank')}) %></span></p>
+                           <p><span class="hex"><%= countUserProjects(@project.user_id) %> projektov</span></p>
                         </div>
-                        <% end %>
-                        
-                        <% else %>
-                        <p> Projekt nemá žiadne odmeny </p>
-                        <% end %>
-                        <hr>
-                        
+                         </div>
+                         
+                                               
                     </div>
                 </div>
                 <!-- End Right Inner -->

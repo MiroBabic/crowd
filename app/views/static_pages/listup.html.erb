@@ -1,15 +1,9 @@
 <div class="col-md-12">
   <div class="row">
        <div class="headline">
-        <% if @param == 'getAllNew' %>
-	<h2>Najnovšie projekty </h2>
-  <% elsif @param == 'getAllBest' %>
-  <h2>Najúspešnejšie projekty </h2>
-  <% elsif @param == 'getAllPaylast' %>
-  <h2>Naposledy podporené projekty </h2>
-  <% else %>
-  <% controller.redirect_to root_path %>
-  <% end %>
+        
+	<h2>Projekty autora <%= @projects.first.user.name %> </h2>
+  
 </div>
      <div class="profile-body">
       <!-- first -->
