@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   
 
+  
+  scope "(:locale)", locale: /en|sk|cs|hu|pl/ do
   resources :categories
-
+  end
 
   get '/userprojects' => 'projects#userprojects', :as => 'userprojects'
   get '/showproject/:id' => 'projects#showproject', :as => 'showproject'
@@ -22,12 +24,16 @@ Rails.application.routes.draw do
   get '/payments/selectreward/:id' => 'payments#selectreward', :as=> 'selectreward'
   post '/confirmpayment/:id' => 'payments#confirmpayment', :as => 'confirmpayment'
 
+scope "(:locale)", locale: /en|sk|cs|hu|pl/ do
   resources :projects do
     resources :pictures, :only => [:create, :destroy]
   end
+end
 
+scope "(:locale)", locale: /en|sk|cs|hu|pl/ do
   resources :payments
   resources :rewards
+end
   
   devise_scope :user do
     post '/saveuserpic' => 'users/registrations#saveuserpic', :as => 'saveuserpic'
@@ -45,7 +51,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'
+  
+  scope "(:locale)", locale: /en|sk|cs|hu|pl/ do
+      root 'static_pages#home'
+    end
+
+scope "(:locale)", locale: /en|sk|cs|hu|pl/ do
   get '/home' => 'static_pages#home'
   get '/help' => 'static_pages#help'
   get '/about' => 'static_pages#about'
@@ -57,7 +68,7 @@ Rails.application.routes.draw do
   get '/listup/:id' => 'static_pages#listup', :as => 'listup'
   get '/search' => 'static_pages#search', :as => 'search'
   get '/sign_up_success' => 'static_pages#sign_up_success', :as => 'sign_up_success'
-
+end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

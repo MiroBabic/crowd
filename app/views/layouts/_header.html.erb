@@ -13,22 +13,21 @@
 
                     <li class="hoverSelector">
                         <i class="fa fa-globe"></i>
-                        <a>Jazyky/Languages</a>
+                        <a><%= t('menu.languages.lang') %></a>
                         <ul class="languages hoverSelectorBlock">
-                            <li class="active">
-                                <a href="#">Slovenský <i class="fa fa-check"></i></a>
-                            </li>
-                            <li><a href="#">English</a></li>
-                            <li ><a href="#">Český</a></li>
-                            <li><a href="#">Poľský</a></li>
-                            <li><a href="#">Magyar</a></li>
+                             <li class="active"><%= link_to t('menu.languages.en'), locale: :en %></li>
+                             <li><%= link_to t('menu.languages.sk'), locale: :sk %></li>
+                             <li><%= link_to t('menu.languages.cs'), locale: :cs %></li>
+                             <li><%= link_to t('menu.languages.hu'), locale: :hu %></li>
+                             <li><%= link_to t('menu.languages.pl'), locale: :pl %></li>
+                            
                         </ul>
                     </li>
                     <li class="topbar-devider"></li>
                     <% if user_signed_in? %>
                     <li class="hoverSelector">
                         <a>
-                            Profil
+                            <%= t('menu.languages.profile') %>
                         </a>
                     <ul class="languages hoverSelectorBlock">
                     <%= content_tag(:li, link_to(current_user.email, edit_user_registration_path)) %>
@@ -61,18 +60,18 @@
                     <!-- Home -->
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                            Projekty
+                           <%= t('menu.main.projects') %>
                         </a>
                         <ul class="dropdown-menu">
-                            <%= content_tag(:li, link_to('Založiť nový projekt', project_terms_url)) %>
-                            <%= content_tag(:li, link_to('Úspešne ukončené kampane', success_url)) %>
+                            <%= content_tag(:li, link_to( t('menu.main.new'), project_terms_url)) %>
+                            <%= content_tag(:li, link_to( t('menu.main.success'), success_url)) %>
                             <!-- One Page -->
                                                        
                             
                         </ul>
                     </li>
-                    <%= content_tag(:li, link_to('Najčastejšie otázky', faq_path)) %>
-                    <%= content_tag(:li, link_to('O nás', about_url)) %>
+                    <%= content_tag(:li, link_to(t('menu.main.faq'), faq_path)) %>
+                    <%= content_tag(:li, link_to(t('menu.main.about'), about_url)) %>
                     <% if user_signed_in? && current_user.admin? %>
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">
