@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :categories
   end
 
+ scope "(:locale)", locale: /en|sk|cs|hu|pl/ do
   get '/userprojects' => 'projects#userprojects', :as => 'userprojects'
   get '/showproject/:id' => 'projects#showproject', :as => 'showproject'
   get '/finishedprojects' => 'projects#finished_projects', :as => 'finishedprojects'
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   get '/userpayments' => 'payments#userpayments', :as => 'userpayments'
   get '/payments/selectreward/:id' => 'payments#selectreward', :as=> 'selectreward'
   post '/confirmpayment/:id' => 'payments#confirmpayment', :as => 'confirmpayment'
+end
 
 scope "(:locale)", locale: /en|sk|cs|hu|pl/ do
   resources :projects do
