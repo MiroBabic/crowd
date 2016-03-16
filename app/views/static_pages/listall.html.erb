@@ -19,6 +19,7 @@
 
      		<div class="easy-block-v1">
                     	 <% if p.profile_pic.present? %>
+                       <!-- image -->
                         <%= image_tag p.profile_pic.url(:resized), :class=>"img-responsive", :height=>"120" %>
                         <% else %>
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
