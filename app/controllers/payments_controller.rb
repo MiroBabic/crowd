@@ -74,8 +74,12 @@ class PaymentsController < ApplicationController
     if params[:reward_id].present?
     @reward = Reward.find(params[:reward_id])
     end
+
+
     respond_to do |format|
       if @payment.save
+
+        PaymentMailer.newPayment(@payment.id).deliver_now
         format.html { redirect_to invoice_url(id: @payment.id), notice: 'Payment was successfully created.' }
         #format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
         format.json { render :show, status: :created, location: @payment }
