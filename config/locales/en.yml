@@ -251,4 +251,28 @@ en:
     new: "New projects"
     best: "Best projects"
     trending: "Trending projects"
+  footer:
+    target1: "Cieľom projektu"
+    target2: "je vytvoriť inovatívnu internetovú platformu na zber a financovanie nápadov, zameraných na podporu detí a mládeže v krajinách V4."
+    partners: "Partners"
+    contactus: "Contact Us"
+  modal:
+    login: "Login"
+    register: "Register"
+    useacc: "Or use your account on Support Your Dream"
+    regacc: "Or create your account on Support Your Dream"
+    passwd: "Password"
+    pwdconfirm: "Confirm Password"
+    remember: "remember me"
+    pwdforgot: "Forgot your password?"
+    pwdrecover: "Forgot your password? Put your email address and you'll receive instructions how to reset your password"
+    reset: "Password reset"
+    backtologin: "Back to log-in"
+  slider:
+    starthere: "START HERE"
+    slide3-1: "THIS PROJECT"
+    slide3-2: "USE LANGUAGES OF"
+    slide3-3: "VISEGRAD GROUP"
+    slide2-1: "Project was created"
+    slide2-2: "with help from"
 

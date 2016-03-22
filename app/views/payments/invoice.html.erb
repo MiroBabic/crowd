@@ -1,5 +1,5 @@
 <% if (@payment.user_id == current_user.id) || (current_user.admin?) %>
-<div class ="alert alert-success fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>Toto potvrdenie o príspevku s údajmi o platbe nájdeš vo svojom profile v kategórii "Moje príspevky"</div>
+<div class ="alert alert-success fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button><%= t('payments.invoice.confirm') %></div>
 <!--Invoice Header-->
         <div class="row invoice-header">
             <div class="col-xs-6">

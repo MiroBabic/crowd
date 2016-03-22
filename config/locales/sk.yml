@@ -228,3 +228,30 @@ sk:
     new: "Najnovšie projekty"
     best: "Najúspešnejšie projekty"
     trending: "Naposledy podporené projekty"
+  footer:
+    target1: "Cieľom projektu"
+    target2: "je vytvoriť inovatívnu internetovú platformu na zber a financovanie nápadov, zameraných na podporu detí a mládeže v krajinách V4."
+    partners: "Partneri projektu"
+    contactus: "Kontaktujte nás"
+  modal:
+    login: "Prihlás sa"
+    register: "Registruj sa"
+    useacc: "Alebo použi svoj účet na Support Your Dream"
+    regacc: "Alebo vytvor svoj účet na Support Your Dream"
+    passwd: "Heslo"
+    pwdconfirm: "Potvrď heslo"
+    remember: "pamätaj si ma"
+    pwdforgot: "Zabudol si heslo?"
+    pwdrecover: "Zabudol si heslo? Vyplň svoju emailovú adresu a o chvíľku obdržíš email s ďalšími inštrukciami."
+    reset: "Reset hesla"
+    backtologin: "Späť na prihlásenie"
+  slider:
+    starthere: "ZAČNI TU"
+    slide3-1: "TENTO PROJEKT"
+    slide3-2: "POUŽÍVA JAZYKY"
+    slide3-3: "VIŠEGRÁDSKEJ SKUPINY"
+    slide2-1: "Projekt vznikol"
+    slide2-2: "za pomoci"
+  payments:
+    invoice:
+      confirm: "Toto potvrdenie o príspevku s údajmi o platbe nájdeš vo svojom profile v kategórii Moje príspevky"

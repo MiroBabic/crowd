@@ -1,8 +1,8 @@
 <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
         <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
             <ul class="cd-switcher">
-                <li><a href="javascript:void(0);">Prihlás</a></li>
-                <li><a href="javascript:void(0);">Registruj</a></li>
+                <li><a href="javascript:void(0);"><%= t('modal.login') %></a></li>
+                <li><a href="javascript:void(0);"><%= t('modal.register') %></a></li>
             </ul>
 
             <div id="cd-login"> <!-- log in form -->
@@ -16,20 +16,20 @@
                         
                         
                     </p>
-                    <div class="lined-text"><span>Alebo použi svoj účet na Support Your Dream</span><hr></div>
+                    <div class="lined-text"><span><%= t('modal.useacc') %></span><hr></div>
 
                       <p class="fieldset">
                        <%= f.label :name, 'Email', :class => 'image-replace cd-username' %>
                        <%= f.text_field :email, :class => 'full-width has-padding has-border', :placeholder => 'Email' %>
                    </p>
                        <p class="fieldset">
-                        <%= f.label :name, 'Heslo', :class => 'image-replace cd-password' %>
-                        <%= f.password_field :password, :class => 'full-width has-padding has-border', :placeholder => 'Heslo' %>
+                        <%= f.label :name, t('modal.passwd'), :class => 'image-replace cd-password' %>
+                        <%= f.password_field :password, :class => 'full-width has-padding has-border', :placeholder => t('modal.passwd') %>
                     </p>
                        <p class="fieldset"><%= f.check_box :remember_me %>
-                      <%= f.label :name, 'pamätaj si ma' %></p>
-                      <%= f.submit 'Prihlás sa', :class=>'full-width has-padding', :style=>"background-color:rgba(38,184,157,0.8)" %>
-                    <p class="cd-form-bottom-message">  <%= link_to "Zabudol si heslo?", new_password_path(:user) %><p>
+                      <%= f.label :name, t('modal.remember') %></p>
+                      <%= f.submit t('modal.login'), :class=>'full-width has-padding', :style=>"background-color:rgba(38,184,157,0.8)" %>
+                    <p class="cd-form-bottom-message">  <%= link_to t('modal.pwdforgot'), new_password_path(:user) %><p>
                     <% end %>
                    
                 <!-- <a href="javascript:void(0);" class="cd-close-form">Close</a> -->
@@ -43,28 +43,28 @@
                         <span class="social-login-google"><%= link_to user_omniauth_authorize_path(:google_oauth2) do %><i class="fa fa-google"></i> Google<% end %></span>
                         
                     </p>
-                    <div class="lined-text"><span>Alebo vytvor svoj účet na Support Your Dream</span><hr></div>
+                    <div class="lined-text"><span><%= t('modal.regacc') %></span><hr></div>
 
                       <p class="fieldset">
                        <%= f.label :name, 'Email', :class => 'image-replace cd-username' %>
                        <%= f.text_field :email, :class => 'full-width has-padding has-border', :placeholder => 'Email' %>
                    </p>
                        <p class="fieldset">
-                        <%= f.label :name, 'Heslo', :class => 'image-replace cd-password' %>
+                        <%= f.label :name, t('modal.passwd'), :class => 'image-replace cd-password' %>
                            <% if @minimum_password_length %>
                             <em>(<%= @minimum_password_length %> znakov minimálne)</em>
                             <% end %><br />
-                        <%= f.password_field :password, autocomplete: "off", :class => 'full-width has-padding has-border', :placeholder => 'Heslo' %>
+                        <%= f.password_field :password, autocomplete: "off", :class => 'full-width has-padding has-border', :placeholder => t('modal.passwd') %>
                     </p>
                         <p class="fieldset">
-                          <%= f.label :name, 'Potvrď heslo', :class => 'image-replace cd-password' %>
-                          <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'full-width has-padding has-border', :placeholder => 'Potvrď heslo' %>   
+                          <%= f.label :name, t('modal.pwdconfirm'), :class => 'image-replace cd-password' %>
+                          <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'full-width has-padding has-border', :placeholder => t('modal.pwdconfirm') %>   
                         </p>
                        <!--<p class="fieldset">
                         <input type="checkbox" id="accept-terms">
                         <label for="accept-terms">Súhlasím s <a href="page_terms.html">podmienkami</a></label>
                     </p>-->
-                      <%= f.submit 'Registruj', :class=>'full-width has-padding', :style=>"background-color:rgba(38,184,157,0.8)" %>
+                      <%= f.submit t('modal.register'), :class=>'full-width has-padding', :style=>"background-color:rgba(38,184,157,0.8)" %>
                     
                     <% end %>
                     
@@ -72,7 +72,7 @@
             </div> <!-- cd-signup -->
 
             <div id="cd-reset-password"> <!-- reset password form -->
-                <p class="cd-form-message">Zabudol si heslo? Vyplň svoju emailovú adresu a o chvíľku obdržíš email s ďalšími inštrukciami.</p>
+                <p class="cd-form-message"><%= t('modal.pwdrecover') %></p>
 
                 
                 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, :class=>"cd-form" }) do |f| %>
@@ -84,11 +84,11 @@
                   </p>
 
                   <p class="fieldset">
-                    <%= f.submit "Reset Hesla", :class=>"full-width has-padding" %>
+                    <%= f.submit t('modal.reset'), :class=>"full-width has-padding" %>
                   </p>
                 <% end %>
 
-                <p class="cd-form-bottom-message"><a href="javascript:void(0);">Back to log-in</a></p>
+                <p class="cd-form-bottom-message"><a href="javascript:void(0);"><%= t('modal.backtologin') %></a></p>
             </div> <!-- cd-reset-password -->
             <a href="javascript:void(0);" class="cd-close-form">Close</a>
         </div> <!-- cd-user-modal-container -->
