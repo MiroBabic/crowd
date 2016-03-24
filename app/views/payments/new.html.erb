@@ -21,7 +21,7 @@
   </div>
   <div class="col-md-3" >
     <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
-    <div class="headline"><h2>Podporovateľ</h2></div>
+    <div class="headline"><h2><%= t('payments.new.supporter') %></h2></div>
                 <ul class="list-unstyled who margin-bottom-30">
           <li><a href="#"><i class="fa fa-user"></i><%= current_user.name %></a></li>
                     <li><a href="#"><i class="fa fa-home"></i><%= current_user.street %></a></li>
@@ -36,8 +36,8 @@
     <div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
    
   <label class="input" id="pamount">
-              <%= f.number_field :amount, :placeholder=>'Suma ktorou chceš prispieť', :style=>"-moz-appearance:textfield;", :required=> true, :value =>  getRewardAmount(params[:reward_id])  %>
-              <b class="tooltip tooltip-bottom-right">Zvoľ si sumu, ktorou chceš prispieť na tento projekt </b>
+              <%= f.number_field :amount, :placeholder=> t('payments.new.amount'), :style=>"-moz-appearance:textfield;", :required=> true, :value =>  getRewardAmount(params[:reward_id])  %>
+              <b class="tooltip tooltip-bottom-right"><%= t('payments.new.choose') %> </b>
         </label>
  
  
@@ -54,8 +54,8 @@
 
 <div class="control-group">
  <div class="actions">
-    <center><%= f.submit "Podpor", :class=> 'btn-u', data: {confirm: 'Naozaj chceš podporiť tento projekt?'} %>
-    <%= link_to "Rozmyslel som si to", :back, :class=> 'btn-u btn-u-red' %></center>
+    <center><%= f.submit t('payments.new.support') , :class=> 'btn-u', data: {confirm: t('payments.new.confirm')} %>
+    <%= link_to t('payments.new.nosupport'), :back, :class=> 'btn-u btn-u-red' %></center>
   </div>
 <% end %>
 </div>
@@ -70,7 +70,7 @@
                         <h4><i class="fa fa-eur"></i><%= @reward.amount %> </h4>
                     </div>
                     <ul class="pricing-content list-unstyled">
-                        <li><i class="fa fa-shopping-cart"></i> Počet zakúpení: <%= countRewardsBought(@reward.id) %></li>
+                        <li><i class="fa fa-shopping-cart"></i> <%= t('payments.new.rewardcount') %>: <%= countRewardsBought(@reward.id) %></li>
                         
                     </ul>
                     <div class="pricing-footer">
@@ -83,8 +83,8 @@
 <div class="col-md-3 col-sm-6">
 <div class="pricing">
                     <div class="pricing-head"  style="min-height: 50px">
-                        <h3>Príspevok bez odmeny </h3>
-                        <p>Prispej koľko uznáš za vhodné </p>
+                        <h3><%= t('payments.new.noreward') %> </h3>
+                        <p><%= t('payments.new.youchoose') %> </p>
                     </div>
                    
                     <div class="pricing-footer">

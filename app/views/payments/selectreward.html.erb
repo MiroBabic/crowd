@@ -1,7 +1,7 @@
 <% if @project.rewards.present? %>
  <div class="tag-box tag-box-v1 box-shadow shadow-effect-2" style="padding-bottom: 50px">
-    <span class="pull-left">Nechcem žiadnu odmenu, len prispieť na projekt</span>
-      <span class="pull-right"><%= link_to " Pokračuj", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block" %></span>
+    <span class="pull-left"><%= t('payments.selectrw.noreward') %></span>
+      <span class="pull-right"><%= link_to t('payments.selectrw.continue'), new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block" %></span>
 
 </div>
 
@@ -17,13 +17,13 @@
                         <h4><i class="fa fa-eur"></i><%= r.amount %> </h4>
                     </div>
                     <ul class="pricing-content list-unstyled">
-                        <li><i class="fa fa-shopping-cart"></i> Počet zakúpení: <%= countRewardsBought(r.id) %></li>
+                        <li><i class="fa fa-shopping-cart"></i> <%= t('payments.new.rewardcount') %>: <%= countRewardsBought(r.id) %></li>
                         
                     </ul>
                     <div class="pricing-footer">
                         <p ><%= r.about %></p>
                         <%= link_to  new_payment_path(:project_id=>@project.id, :reward_id=>r.id), :class=>"btn-u" do %>
-                        <i class="fa fa-gift"> Pokračuj </i>
+                        <i class="fa fa-gift"> <%= t('payments.selectrw.continue') %> </i>
                         <% end %>
                   </div>
                 </div>

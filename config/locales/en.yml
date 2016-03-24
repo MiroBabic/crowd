@@ -232,6 +232,11 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  user:
+    name: "Name"
+    address: "Address"
+    zip: "ZIP code"
+    country: "Country"
   menu:
     languages:
       profile: "Profile"
@@ -275,4 +280,34 @@ en:
     slide3-3: "VISEGRAD GROUP"
     slide2-1: "Project was created"
     slide2-2: "with help from"
-
+  payments:
+    invoice:
+      confirm: "You can find this confirmation with all info about payment in your profile - category My contributions"
+      VS: "Variable symbol"
+      details: "Details"
+      msg1: "Thank you for your contribution to project"
+      msg2: "with amount"
+      msg3: "After successful payment on our bank account with variable symbol"
+      msg4: "will be your contribution added to project and noted in your profile"
+      project: "Project"
+      desc: "Description"
+      reward: "Reward"
+      amount: "Amount"
+      noreward: "No reward"
+      contribution: "contribution"
+      print: "Print"
+      payer: "Payer"
+      recipient: "Recipient"
+    new:
+      supporter: "Supporter"
+      amount: "Amount you want to support"
+      choose: "Choose amount you want to support this project"
+      support: "Support!"
+      confirm: "Do you really want to support this project?"
+      nosupport: "I changed my mind"
+      rewardcount: "Count of supporters"
+      noreward: "Support without reward"
+      youchoose: "Support as much as you want"
+    selectrw:
+      noreward: "I don't want any reward"
+      continue: " Continue"

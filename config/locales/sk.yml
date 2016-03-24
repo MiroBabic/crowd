@@ -209,6 +209,11 @@ sk:
       long: "%A %d. %B %Y %H:%M"
       short: "%d.%m. %H:%M"
     pm: popoludní
+  user:
+    name: "Meno"
+    address: "Adresa"
+    zip: "PSČ"
+    country: "Krajina"
   menu:
     languages:
       profile: "Profil"
@@ -255,3 +260,31 @@ sk:
   payments:
     invoice:
       confirm: "Toto potvrdenie o príspevku s údajmi o platbe nájdeš vo svojom profile v kategórii Moje príspevky"
+      VS: "Variabilný symbol"
+      details: "Detaily príspevku"
+      msg1: "Ďakujeme za tvoj príspevok na projekt"
+      msg2: "v sume"
+      msg3: "Po uhradení platby na náš účet s variabilným symbolom"
+      msg4: "bude príspevok pripísaný ku projektu a zároveň zaznamenaný na tvojom profile"
+      project: "Projekt"
+      desc: "Popis"
+      reward: "Odmena"
+      amount: "Suma"
+      noreward: "Žiadna odmena"
+      contribution: "Príspevok"
+      print: "Vytlač"
+      payer: "Platiaci"
+      recipient: "Prijímajúci platbu"
+    new:
+      supporter: "Podporovateľ"
+      amount: "Suma ktorou chceš prispieť"
+      choose: "Zvoľ si sumu, ktorou chceš prispieť na tento projekt"
+      support: "Podpor"
+      confirm: "Naozaj chceš podporiť tento projekt?"
+      nosupport: "Rozmyslel som si to"
+      rewardcount: "Počet zakúpení"
+      noreward: "Príspevok bez odmeny"
+      youchoose: "Prispej koľko uznáš za vhodné"
+    selectrw:
+      noreward: "Nechcem žiadnu odmenu, len prispieť na projekt"
+      continue: " Pokračuj"

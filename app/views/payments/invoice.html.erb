@@ -19,24 +19,24 @@
         <div class="row invoice-info">
             <div class="col-xs-6">
                 <div class="tag-box tag-box-v3">
-                    <h2>Platiaci:</h2>
+                    <h2><%= t('payments.invoice.payer') %>:</h2>
                     <ul class="list-unstyled">
-                        <li><strong>Meno:</strong> <%= @payment.user.name %></li>
-                        <li><strong>Adresa:</strong> <%= @payment.user.street %>, <%= @payment.user.city %></li>
-                        <li><strong>PSČ:</strong> <%= @payment.user.zip %></li>
-                        <li><strong>Krajina:</strong> <%= @payment.user.country %></li>
+                        <li><strong><%= t('user.name') %>:</strong> <%= @payment.user.name %></li>
+                        <li><strong><%= t('user.address') %>:</strong> <%= @payment.user.street %>, <%= @payment.user.city %></li>
+                        <li><strong><%= t('user.zip') %>:</strong> <%= @payment.user.zip %></li>
+                        <li><strong><%= t('user.country') %>:</strong> <%= @payment.user.country %></li>
 
                     </ul>
                 </div>
             </div>
             <div class="col-xs-6">
                 <div class="tag-box tag-box-v3">
-                    <h2>Prijímajúci platbu:</h2>
+                    <h2><%= t('payments.invoice.recipient') %>:</h2>
                     <ul class="list-unstyled">
                         <li><strong>Support Your Dream</strong></li>
-                        <li><strong>Meno:</strong> Občianske združenie Help4People</li>
+                        <li><strong><%= t('user.name') %>:</strong> Občianske združenie Help4People</li>
                         <li><strong>IBAN#:</strong> SK00900001452648470251</li>
-                        <li><strong>Variabilný symbol#:</strong> <%= @payment.created_at.strftime("%Y") %><%= @payment.id %></li>
+                        <li><strong><%= t('payments.invoice.VS') %>#:</strong> <%= @payment.created_at.strftime("%Y") %><%= @payment.id %></li>
                     </ul>
                 </div>
             </div>
@@ -46,19 +46,19 @@
         <!--Invoice Table-->
         <div class="panel panel-default margin-bottom-40">
             <div class="panel-heading">
-                <h3 class="panel-title">Detaily príspevku</h3>
+                <h3 class="panel-title"><%= t('payments.invoice.details') %></h3>
             </div>
             <div class="panel-body">
-                <p>Ďakujeme za tvoj príspevok na projekt <strong><%= @payment.project.name %></strong> v sume <strong><%= @payment.amount %></strong>. Po uhradení platby na náš účet s variabilným symbolom <strong><%= @payment.created_at.strftime("%Y") %><%= @payment.id %></strong> bude príspevok pripísaný ku projektu a zároveň zaznamenaný na tvojom profile. </p>
+                <p><%= t('payments.invoice.msg1') %> <strong><%= @payment.project.name %></strong> <%= t('payments.invoice.msg2') %> <strong><%= @payment.amount %></strong>. <%= t('payments.invoice.msg3') %> <strong><%= @payment.created_at.strftime("%Y") %><%= @payment.id %></strong> <%= t('payments.invoice.msg4') %>. </p>
             </div>
             <table class="table table-striped invoice-table">
                 <thead>
                     <tr>
                        
-                        <th>Projekt</th>
-                        <th class="hidden-sm">Popis</th>
-                        <th>Odmena</th>
-                        <th>Suma</th>
+                        <th><%= t('payments.invoice.project') %></th>
+                        <th class="hidden-sm"><%= t('payments.invoice.desc') %></th>
+                        <th><%= t('payments.invoice.reward') %></th>
+                        <th><%= t('payments.invoice.amount') %></th>
                         
                     </tr>
                 </thead>
@@ -67,7 +67,7 @@
                         
                         <td><%= @payment.project.name %></td>
                         <td class="hidden-sm"><%= @payment.project.annotation %></td>
-                        <td><% if @payment.reward.nil? %>Žiadna odmena<% else %> <%= @payment.reward.name %><% end %></td>
+                        <td><% if @payment.reward.nil? %><%= t('payments.invoice.noreward') %><% else %> <%= @payment.reward.name %><% end %></td>
                         <td><%= @payment.amount %></td>
                         
                     </tr>
@@ -93,10 +93,10 @@
             <div class="col-xs-6 text-right">
                 <ul class="list-unstyled invoice-total-info">
                   </br>
-                  <li><strong>Príspevok:</strong> <%= @payment.amount %> <i class="fa fa-eur"></i></li>
+                  <li><strong><%= t('payments.invoice.contribution') %>:</strong> <%= @payment.amount %> <i class="fa fa-eur"></i></li>
                   </br></br></br>
                 </ul>
-                <button class="btn-u sm-margin-bottom-10" onclick="javascript:window.print();"><i class="fa fa-print"></i> Vytlač</button>
+                <button class="btn-u sm-margin-bottom-10" onclick="javascript:window.print();"><i class="fa fa-print"></i> <%= t('payments.invoice.print') %></button>
                 
             </div>
         </div>
