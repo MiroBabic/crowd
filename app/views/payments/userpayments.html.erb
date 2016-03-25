@@ -9,9 +9,9 @@
       </br></br>
               <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
                   
-                    <%= link_to '<i class="fa fa-cog"></i> Nastavenia profilu'.html_safe, edit_user_registration_path, :class=>"list-group-item" %>
-                    <%= link_to '<i class="fa fa-cubes"></i> Moje projekty'.html_safe, userprojects_path, :class=>"list-group-item" %>
-                    <%= link_to '<i class="fa fa-money"></i> Moje príspevky'.html_safe, userpayments_path, :class=>"list-group-item" %>
+                    <%= link_to edit_user_registration_path, :class=>"list-group-item" do %><i class="fa fa-cog"></i><%= t('user.profilesettings')%> <%end%>
+                    <%= link_to userprojects_path, :class=>"list-group-item" do %><i class="fa fa-cubes"></i><%= t('user.myprojects') %> <%end%>
+                    <%= link_to userpayments_path, :class=>"list-group-item" do %><i class="fa fa-money"></i><%= t('user.mypayments') %> <%end%>
                     
                     
               </ul>
@@ -19,21 +19,21 @@
     <div class="col-md-9">
      <div class="profile-body">
       <% if @payments.empty? %>
-        <p>Ešte si na žiaden projekt neprispel</p>
+        <p><%= t('userpayments.nopayment') %></p>
         <% else %>
         <div class="row">
 <div class="panel panel-sea margin-bottom-40">
    <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-edit"></i> Moje príspevky</h3>
+        <h3 class="panel-title"><i class="fa fa-edit"></i> <%= t('payments.userpayments.mypayments') %></h3>
     </div>
   
     <table id="userpayments" class="table table-striped table-bordered table-hover dataTable">
   <thead>
     <tr>
-      <th>Projekt</th>
-      <th>Moj príspevok</th>
-      <th>Odmena</th>
-      <th>Prijatá platba</th>
+      <th><%= t('payments.invoice.project') %></th>
+      <th><%= t('payments.userpayments.mycontribution') %></th>
+      <th><%= t('payments.invoice.reward') %></th>
+      <th><%= t('payments.userpayments.paymentack') %></th>
       <th></th>
     </tr>
   </thead>
@@ -43,9 +43,9 @@
       <tr>
         <td><%= link_to p.project.name, "/showproject/#{p.project.id}" %></td>
         <td><%= p.amount %> <i class="fa fa-eur"></i></td>
-        <td><% if p.reward.nil? %>Žiadna odmena<% else %> <%= p.reward.name %><% end %></td>
-        <td><% if p.confirmed? %>Áno<% else %> Nie<% end %></td>
-        <td><%= link_to "Detaily príspevku", "/invoice/#{p.id}"  %></td>
+        <td><% if p.reward.nil? %><%= t('payments.invoice.noreward') %><% else %> <%= p.reward.name %><% end %></td>
+        <td><% if p.confirmed? %><%= t('basic.yes') %><% else %> <%= t('basic.no') %><% end %></td>
+        <td><%= link_to t('payments.userpayments.details'), "/invoice/#{p.id}"  %></td>
 
       </tr>
     <% end %>

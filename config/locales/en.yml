@@ -122,6 +122,7 @@ en:
         other: "%{count} seconds"
     prompts:
       day: Day
+      days: Days
       hour: Hour
       minute: Minute
       month: Month
@@ -237,6 +238,9 @@ en:
     address: "Address"
     zip: "ZIP code"
     country: "Country"
+    profilesettings: "Profile settings"
+    myprojects: "My projects"
+    mypayments: "My payments"
   menu:
     languages:
       profile: "Profile"
@@ -311,3 +315,20 @@ en:
     selectrw:
       noreward: "I don't want any reward"
       continue: " Continue"
+    userpayments:
+      nopayment: "You didn't support any project yet"
+      mypayments: "My payments"
+      mycontribution: "My contribution"
+      paymentack: "Payment recieved"
+      details: "Details"
+  basic:
+    "yes": "Yes"
+    "no": "No"
+  project:
+    typereq: "Type and target of project"
+    projectname: "Project name"
+    choosenamemsg: "Choose interesting name"
+    targetamount: "Target amount"
+    choosetargetamount: "Choose target amount"
+    howlong: "How long should run your project?"
+

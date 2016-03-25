@@ -106,6 +106,7 @@ sk:
         other: "%{count} sekundami"
     prompts:
       day: Deň
+      days: "Dní"
       hour: Hodina
       minute: Minúta
       month: Mesiac
@@ -214,6 +215,9 @@ sk:
     address: "Adresa"
     zip: "PSČ"
     country: "Krajina"
+    profilesettings: "Nastavenia profilu"
+    myprojects: "Moje projekty"
+    mypayments: "Moje príspevky"
   menu:
     languages:
       profile: "Profil"
@@ -288,3 +292,24 @@ sk:
     selectrw:
       noreward: "Nechcem žiadnu odmenu, len prispieť na projekt"
       continue: " Pokračuj"
+    userpayments:
+      nopayment: "Ešte si na žiaden projekt neprispel"
+      mypayments: "Moje príspevky"
+      mycontribution: "Moj príspevok"
+      paymentack: "Prijatá platba"
+      details: "Detaily príspevku"
+  basic:
+    "yes": "Áno"
+    "no": "Nie"
+    "back": "Späť"
+    "savechanges": "Ulož zmeny"
+  project:
+    typereq: "Typ a cieľ projektu"
+    projectname: "Názov projektu"
+    choosenamemsg: "Vymysli meno, ktoré zarezonuje a pritiahne pozornosť na tvoj projekt"
+    targetamount: "Cieľová suma"
+    choosetargetamount: "Zvoľ cieľovú sumu"
+    howlong: "Ako dlho má bežať kampaň?"
+    aboutproject: "O projekte"
+    annotplaceholder: "Pár slov o projekte, ktoré sa zobrazia pri náhľade projektu na hlavnej stránke"
+    detailsplaceholder: "Detailný popis projektu"
