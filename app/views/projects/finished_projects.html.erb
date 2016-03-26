@@ -3,21 +3,21 @@
 <div class="row">
 <div class="panel panel-sea margin-bottom-40">
    <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-edit"></i> Ukončené Projekty</h3>
+        <h3 class="panel-title"><i class="fa fa-edit"></i> <%= t('project.finishedprojects') %></h3>
     </div>
   
     <table id="finished" class="table table-striped table-bordered table-hover dataTable">
   <thead>
     <tr>
-      <th>Projekt</th>
-      <th>Autor</th>
-      <th>Stav</th>
-      <th>Cieľová suma</th>
-      <th>Vyzbieraná suma</th>
-      <th>Ukončené dňa</th>
-      <th>Počet príspevkov </th>
-      <th>Počet vyžiadaných odmien </th>
-      <th>Sumár</th>
+      <th><%= t('project.project') %></th>
+      <th><%= t('project.author') %></th>
+      <th><%= t('project.status') %></th>
+      <th><%= t('project.targetamount') %></th>
+      <th><%= t('project.collectedamount') %></th>
+      <th><%= t('project.finishedat') %></th>
+      <th><%= t('project.countofdonations') %> </th>
+      <th><%= t('project.countofrewards') %> </th>
+      <th><%= t('project.summary') %></th>
      
     </tr>
   </thead>
@@ -28,13 +28,13 @@
       <tr>
         <td><%= link_to p.name, project_path(p) %></td>
         <td><%= p.user.email %></td>
-        <td><% if is_success(p.id) %>Úspešný<% else %>Neúspešný<% end %>
+        <td><% if is_success(p.id) %><%= t('project.success') %><% else %><%= t('project.nosuccess') %><% end %>
         <td><%= p.amount %></td>
         <td><%= collected(p.id) %></td>
         <td><%= p.enddate %></td>
         <td><%= reward_count(p.id) %></td>
         <td><%= payment_count(p.id) %></td>
-        <td><%= link_to "Detaily projektu", "/finisheddetail/#{p.id}" %></td>
+        <td><%= link_to t('project.projectdetails'), "/finisheddetail/#{p.id}" %></td>
       </tr>
     <% end %>
   </tbody>

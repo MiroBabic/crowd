@@ -14,10 +14,10 @@
                           </div>
                             <div class="col-md-7">
                                 <h2><%= @project.name %></h2>
-                                <span><strong>Cieľová suma:</strong> <%= @project.amount %></span>
-                                <span><strong>Vyzbieraná suma:</strong> <%= collected(@project.id) %></span>
-                                <p><strong>Počet prispievateľov:</strong> <%= payment_count(@project.id) %></p>
-                                <span><strong>Status: </strong><span style="font-size:18px;color:red"><% if is_success(@project.id) %>ÚSPEŠNÝ<% else %>NEÚSPEŠNÝ<% end %></span></span>
+                                <span><strong><%= t('project.targetamount') %>:</strong> <%= @project.amount %></span>
+                                <span><strong><%= t('project.collectedamount') %>:</strong> <%= collected(@project.id) %></span>
+                                <p><strong><%= t('project.countsupporters') %>:</strong> <%= payment_count(@project.id) %></p>
+                                <span><strong><%= t('project.status') %>: </strong><span style="font-size:18px;color:red"><% if is_success(@project.id) %><%= t('project.success') %><% else %><%= t('project.nosuccess') %><% end %></span></span>
                                 <hr>
                                 <p><%= @project.annotation %></p>
                                 
@@ -28,17 +28,17 @@
 <div class="row">
 <div class="panel panel-sea margin-bottom-40">
    <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-edit"></i> Detaily ukončeného projektu</h3>
+        <h3 class="panel-title"><i class="fa fa-edit"></i> <%= t('project.detailssuccess') %></h3>
     </div>
   
     <table id="finisheddetail" class="table table-striped table-bordered table-hover dataTable">
   <thead>
     <tr>
-      <th>Podporovateľ</th>
-      <th>Adresa</th>
-      <th>Variabilný symbol</th>
-      <th>Suma</th>
-      <th>Odmena</th>
+      <th><%= t('payments.new.supporter') %></th>
+      <th><%= t('user.address') %></th>
+      <th><%= t('payments.invoice.VS') %></th>
+      <th><%= t('payments.invoice.amount') %></th>
+      <th><%= t('payments.invoice.reward') %></th>
     </tr>
   </thead>
 
@@ -50,7 +50,7 @@
         <td><%= p.user.street %>, <%= p.user.city %>, <%= p.user.zip %>, <%= p.user.country %> </td>
         <td><%= p.created_at.strftime("%Y") %><%= p.id %></td>
         <td><%= p.amount %></td>
-        <td><% if p.reward.present? %><%= p.reward.name %><% else %>Bez odmeny<% end %></td>
+        <td><% if p.reward.present? %><%= p.reward.name %><% else %><%= t('payments.invoice.noreward') %><% end %></td>
         
       </tr>
     <% end %>

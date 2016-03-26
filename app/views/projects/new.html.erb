@@ -1,5 +1,5 @@
 <div class="row" >
-  <center><h1> Založ nový projekt </h1></center>
+  <center><h1> <%= t('project.startnew') %> </h1></center>
 <%= form_for(@project, html: {:class => "sky-form"}, validate: true) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -19,27 +19,27 @@
   </div>
   <div class="col-md-6" style="height:450px;">
   <label class="input">
-              <%= f.text_field :name, :placeholder=>'Názov projektu',:required => true %>
-              <b class="tooltip tooltip-bottom-right">Vymysli meno, ktoré zarezonuje a pritiahne pozornosť na tvoj projekt </b>
+              <%= f.text_field :name, :placeholder=> t('project.projectname') ,:required => true %>
+              <b class="tooltip tooltip-bottom-right"><%= t('project.choosenamemsg') %> </b>
         </label>
     <label class="select">
-  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: 'Vyber kategóriu'},{:class => 'form-control m-b', :required => true} %>
+  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: t('project.choosecategory')},{:class => 'form-control m-b', :required => true} %>
       </label>
 
       <label class="input">
               <i class="icon-append fa fa-eur"></i>
-              <%= f.number_field :amount, :placeholder=>"Cieľová suma",:required => true, :style=>"-moz-appearance:textfield;" %>
-              <b class="tooltip tooltip-bottom-right">Zvoľ cieľovú sumu </b>
+              <%= f.number_field :amount, :placeholder=>t('project.targetamount'),:required => true, :style=>"-moz-appearance:textfield;" %>
+              <b class="tooltip tooltip-bottom-right"><%= t('project.choosetargetamount') %> </b>
        </label>
 
-       <label class="label">Ako dlho má bežať kampaň?</label>
-              <label class="toggle"><%= f.radio_button :duration, "10", :type=>'radio', :checked => 'checked' %><i class="no-rounded"></i> 10 dní</label>
-              <label class="toggle"><%= f.radio_button :duration, "30", :type=>'radio'  %><i class="no-rounded"></i> 30 dní</label>
-              <label class="toggle"><%= f.radio_button :duration, "60", :type=>'radio' %><i class="no-rounded"></i> 60 dní</label>
+       <label class="label"><%= t('project.howlong') %></label>
+              <label class="toggle"><%= f.radio_button :duration, "10", :type=>'radio', :checked => 'checked' %><i class="no-rounded"></i> 10 <%= t('datetime.prompts.days') %></label>
+              <label class="toggle"><%= f.radio_button :duration, "30", :type=>'radio'  %><i class="no-rounded"></i> 30 <%= t('datetime.prompts.days') %></label>
+              <label class="toggle"><%= f.radio_button :duration, "60", :type=>'radio' %><i class="no-rounded"></i> 60 <%= t('datetime.prompts.days') %></label>
 
 <div class="control-group">
  <div class="actions">
-    <center><%= f.submit "Pokračuj", :class=> 'btn-u' %></center>
+    <center><%= f.submit t('project.continue'), :class=> 'btn-u' %></center>
   </div>
 <% end %>
 </div>

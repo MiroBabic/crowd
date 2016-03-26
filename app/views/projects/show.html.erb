@@ -1,5 +1,5 @@
-<div class ="alert alert-success fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>Uprav svoj projekt do želanej podoby a potom ho pošli na schválenie administrátorom</div>
-<div class ="alert alert-danger fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>Profilový obrázok projektu musí mať rozmery aspoň 850x550 aby ho bolo možné vložiť do projektu. Pre zmenu stačí vložiť nový a starý bude prepísaný </div>
+<div class ="alert alert-success fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button><%= t('project.updatemsg') %></div>
+<div class ="alert alert-danger fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button><%= t('project.profilepicmsg') %> </div>
 <% if (@project.user_id == current_user.id) || (current_user.admin?) %>
 <style>
 .cropit-preview {
@@ -36,23 +36,23 @@
                           <input type="range" class="cropit-image-zoom-input " />
                           <%= f.file_field :profile_pic, accept: "image/jpeg, image/jpg, image/gif, image/png", :class=> "cropit-image-input hidden" %> 
                          <!-- <input type="file" class="cropit-image-input" />-->
-                         <div class="btn-u btn-u-yellow" id="uploadTrigger"><i class="fa fa-upload"></i> Vyber Obrázok</div>
+                         <div class="btn-u btn-u-yellow" id="uploadTrigger"><i class="fa fa-upload"></i> <%= t('project.selectimg') %></div>
                          <%= button_tag :class=>'btn-u', :onclick=>"getimage()",:type => 'button' do %>
-                         <i class="fa fa-check"></i>  Potvrď <% end %>
+                         <i class="fa fa-check"></i>  <%= t('project.confirmimg') %> <% end %>
                             <% end %>
                             <% end %>
                         </div>
                         <% end %>
                        
                         <div class="row projectborder borderpadding" style="margin-bottom:30px; margin-top: 20px">
-                            <h4>V skratke</h4>
+                            <h4><%= t('project.annot') %></h4>
                             <p><%= @project.annotation %></p>
                         </div>
                          <div class="tab-v1">
                               <ul class="nav nav-justified nav-tabs">
-                                  <li class="active"><a data-toggle="tab" href="#tababout">O projekte</a></li>
-                                  <li><a data-toggle="tab" href="#tabgallery">Galéria</a></li>
-                                  <li><a data-toggle="tab" href="#tabrewards">Odmeny</a></li>
+                                  <li class="active"><a data-toggle="tab" href="#tababout"><%= t('project.aboutproject') %></a></li>
+                                  <li><a data-toggle="tab" href="#tabgallery"><%= t('project.gallery') %></a></li>
+                                  <li><a data-toggle="tab" href="#tabrewards"><%= t('project.rewards') %></a></li>
                                   </ul>
                               <div class="tab-content">
                                     <div id="tababout" class="profile-edit tab-pane fade in active">
@@ -72,7 +72,7 @@
                         <div class="col-md-6 picgal">
                         <%= link_to image_tag(pic.url(:resized).to_s), pic.url, class: :fancybox %>
                         <% if @project.requested == false  %>
-                        <%= link_to content_tag(:i,nil,class: 'fa fa-trash-o'),project_picture_path(@project, index), :method => :delete, data: { confirm: "Naozaj chceš zmazať tento obrázok?" } %>
+                        <%= link_to content_tag(:i,nil,class: 'fa fa-trash-o'),project_picture_path(@project, index), :method => :delete, data: { confirm: t('project.confirmdelimg') } %>
                         <% end %>
                         </div>
                         <% end %>
@@ -84,8 +84,8 @@
                     <div class="actions" style="float:left;">
                     <%= form_for @project, url: project_pictures_path(@project), method: :post do |f| %>
                     <%= f.file_field :pictures, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png", :class=>"hidden" %> 
-                    <div class="btn-u btn-u-yellow" id="uploadTrigger2"><i class="fa fa-upload"></i>  Vyber súbory</div>
-                    <%= f.submit "Pridaj", :class=> 'btn-u', :disabled => "disabled"  %>
+                    <div class="btn-u btn-u-yellow" id="uploadTrigger2"><i class="fa fa-upload"></i>  <%= t('project.selfiles') %></div>
+                    <%= f.submit t('project.addfiles'), :class=> 'btn-u', :disabled => "disabled"  %>
                      </div>
                     <% end %>
                    <% end %>
@@ -99,7 +99,7 @@
                         <div class="people-say margin-bottom-20">
                             <div class="overflow-h">
                                 <span><%= p.name %></span>
-                                <span class="hex pull-right" style="padding-right:3px">hodnota: <%= p.amount %> <i class="fa fa-eur"></i></span>
+                                <span class="hex pull-right" style="padding-right:3px"><%= t('project.value') %>: <%= p.amount %> <i class="fa fa-eur"></i></span>
                                 <p><%= p.about %></p>
                             </div>
                             <hr>
@@ -107,7 +107,7 @@
                         <% end %>
                         
                         <% else %>
-                        <p> Projekt nemá žiadne odmeny </p>
+                        <p> <%= t('project.norewards') %> </p>
                         <% end %>
                     </div>
             
@@ -124,21 +124,21 @@
                     <div class="right-inner">
                     	<% if @project.user_id == current_user.id %>
                         <% if @project.requested %>
-                        <button class="btn-u btn-u-default btn-block" type="button" disabled><i class="fa fa-spinner"></i> Projekt čaká na schválenie</button>
-                        <button class="btn-u btn-u-default btn-block" type="button" disabled><i class="fa fa-hour"></i> Od: <%= @project.confirmdate.strftime("%d-%m-%Y %H:%M") %></button>
+                        <button class="btn-u btn-u-default btn-block" type="button" disabled><i class="fa fa-spinner"></i> <%= t('project.projectwait') %></button>
+                        <button class="btn-u btn-u-default btn-block" type="button" disabled><i class="fa fa-hour"></i> <%= t('project.from') %>: <%= @project.confirmdate.strftime("%d-%m-%Y %H:%M") %></button>
                         
                         <% else %>
-                        <%= link_to edit_project_path(@project), :class=>"btn-u btn-block" do %><i class="fa fa-edit"></i>  Uprav/Doplň projekt<% end %>
-                        <%= link_to project_path(@project), :class=>"btn-u btn-block", method: :delete, :data => {:confirm => 'Naozaj chceš tento projekt zmazať?'} do %><i class="fa fa-trash-o"></i>  Zmaž projekt<% end %>
-                        <%= link_to new_reward_path(:project_id=>@project.id), :class=>"btn-u btn-block" do %><i class="fa fa-gift"></i>  Pridaj odmeny<% end %>
+                        <%= link_to edit_project_path(@project), :class=>"btn-u btn-block" do %><i class="fa fa-edit"></i>  <%= t('project.edit') %><% end %>
+                        <%= link_to project_path(@project), :class=>"btn-u btn-block", method: :delete, :data => {:confirm => t('project.confirmdelpr')} do %><i class="fa fa-trash-o"></i>  <%= t('project.projectdel') %><% end %>
+                        <%= link_to new_reward_path(:project_id=>@project.id), :class=>"btn-u btn-block" do %><i class="fa fa-gift"></i>  <%= t('project.addrewards') %><% end %>
                         <div style="margin-top:50px">
-                        <%= link_to submitproject_path(@project), :class=>"btn-u btn-block", :data => {:confirm =>'Je tento projekt kompletne vyplnený aby ho mohol administrátor schváliť?'}, method: :post do %><i class="fa fa-check"></i> Pošli projekt na schválenie <% end %>
+                        <%= link_to submitproject_path(@project), :class=>"btn-u btn-block", :data => {:confirm =>t('project.submitmsg')}, method: :post do %><i class="fa fa-check"></i> <%= t('project.sendtoadmin') %> <% end %>
                     </div>
                         <% end %>
                         </hr>
                         <% end %>
                        <div class="row">
-                            <h1 style="color:white">Detaily</h1>
+                            <h1 style="color:white"><%= t('project.details') %></h1>
                             <br />
                         </div>
                         <div class="row" style="margin-top:60px">
@@ -154,7 +154,7 @@
                             <span>Autor: <%= @project.user.name %></span>
 
                             <p class="color-green"><span class="hex"><%=raw %(#{link_to(@project.user.personalweb, url_with_protocol(@project.user.personalweb), :target => '_blank')}) %></span></p>
-                           <p><span class="hex"><%= countUserProjects(@project.user_id) %> projektov</span></p>
+                           <p><span class="hex"><%= countUserProjects(@project.user_id) %> <%= t('project.projectcountinfo') %></span></p>
                         </div>
                          </div>
                          
