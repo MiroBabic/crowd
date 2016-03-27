@@ -368,6 +368,8 @@ sk:
     funded: "SPLNENÝCH"
     pledged: "ZÍSKANÝCH"
     daystogo: "DO KONCA"
+    show: "Ukáž viac"
+    hide: "Schovaj"
 
 
 
