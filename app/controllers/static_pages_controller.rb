@@ -26,13 +26,13 @@ class StaticPagesController < ApplicationController
   def listall
     @param=params[:id]
 
-    if @param == 'getAllNew'
+    if @param == '1'
       @projects=Project.where('enabled = true and enddate > ?', Time.now )
       @projects.order(confirmdate: :desc)
-    elsif @param == 'getAllBest'
+    elsif @param == '2'
       @projects=Project.where('enabled = true and enddate > ?', Time.now)
        .sort_by(&:collected_money_percentage).reverse
-    elsif @param == 'getAllPaylast'
+    elsif @param == '3'
       @projects = Project.joins(:payments).where('enabled = true and enddate > ? and payments.confirmed = true', Time.now)
       .order('payments.created_at DESC')
     end

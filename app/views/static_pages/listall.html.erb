@@ -1,11 +1,11 @@
 <div class="col-md-12">
   <div class="row">
        <div class="headline">
-        <% if @param == 'getAllNew' %>
+        <% if @param == '1' %>
 	<h2><%= t('homepage.new') %> </h2>
-  <% elsif @param == 'getAllBest' %>
+  <% elsif @param == '2' %>
   <h2><%= t('homepage.best') %> </h2>
-  <% elsif @param == 'getAllPaylast' %>
+  <% elsif @param == '3' %>
   <h2><%= t('homepage.trending') %> </h2>
   <% else %>
   <% controller.redirect_to root_path %>

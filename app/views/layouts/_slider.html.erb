@@ -3,7 +3,8 @@
     <div id="da-slider" class="da-slider">
       <div class="da-slide ">
         <h2><i >SUPPORT YOUR DREAM</i> <!--<br /> <i >SVOJE SNY</i> <br />--></h2>
-        <p><a href="/project_terms" style="text-decoration:none; color: #fff; font-size: 30px" class="btn-u btn-u-yellow"><%= t('slider.starthere') %></a> <br /> </p>
+        <p><%= link_to t('slider.starthere'), project_terms_url, :style=>"text-decoration:none; color: #fff; font-size: 30px", :class=>"btn-u btn-u-yellow" %>
+           <br /> </p>
         <div class="da-img"><img  src="<%= asset_path( 'deti.jpg' ) %>" alt="" style="max-width:500px; width:100%; margin-top:-60px"></div>
       </div>
       <div class="da-slide">
