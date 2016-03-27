@@ -20,23 +20,23 @@
 
                          <div class="tab-v1">
                               <ul class="nav nav-justified nav-tabs">
-                                  <li class="active"><a data-toggle="tab" href="#tababout">O projekte</a></li>
-                                  <li><a data-toggle="tab" href="#tabgallery">Galéria</a></li>
-                                  <li><a data-toggle="tab" href="#tabrewards">Odmeny</a></li>
-                                  <li><a data-toggle="tab" href="#tabsupporters">Prispievatelia</a></li>
+                                  <li class="active"><a data-toggle="tab" href="#tababout"><%= t('project.aboutproject') %></a></li>
+                                  <li><a data-toggle="tab" href="#tabgallery"><%= t('project.gallery') %></a></li>
+                                  <li><a data-toggle="tab" href="#tabrewards"><%= t('project.rewards') %></a></li>
+                                  <li><a data-toggle="tab" href="#tabsupporters"><%= t('project.supporters') %></a></li>
                               </ul>
                               <div class="tab-content">
                                     <div id="tababout" class="profile-edit tab-pane fade in active">
                                         
                                         <div class="row gallery projectborder borderpadding">
-                                        <h4>Detailne o projekte</h4>
+                                        <h4><%= t('project.projectdetails') %></h4>
                                         <p><%= raw @project.about %></p>
                                         </div>
                             </div>
                         <div id="tabgallery" class="profile-edit tab-pane fade">
                                                 
                     <div class="row projectborder borderpadding">
-                    <h4>Galéria ku projektu</h4>
+                    <h4><%= t('project.gallery') %></h4>
                         <% @project.pictures.each_slice(2) do |slice_of_two| %>
                        <div class="col-md-12">
                         <% slice_of_two.each_with_index do |pic, index| %>
@@ -57,9 +57,9 @@
                                 <% if pay.user.name? %>
                                 <span><%= pay.user.name %></span>
                                 <% else %>
-                                <span>Anonym</span>
+                                <span><%= t('project.anonym') %></span>
                                 <% end %>
-                                <span class="hex pull-right" style="padding-right:3px">prispel: <%= pay.amount %> <i class="fa fa-eur"></i></span>
+                                <span class="hex pull-right" style="padding-right:3px"><%= t('project.donated') %>: <%= pay.amount %> <i class="fa fa-eur"></i></span>
                             
                         </div>
                         <hr>
@@ -73,7 +73,7 @@
                         <div class="people-say margin-bottom-20">
                             <div class="overflow-h">
                                 <span><%= p.name %></span>
-                                <span class="hex pull-right" style="padding-right:3px">hodnota: <%= p.amount %> <i class="fa fa-eur"></i></span>
+                                <span class="hex pull-right" style="padding-right:3px"><%= t('project.value') %>: <%= p.amount %> <i class="fa fa-eur"></i></span>
                                 <p><%= p.about %></p>
                             </div>
                             <hr>
@@ -81,7 +81,7 @@
                         <% end %>
                         
                         <% else %>
-                        <p> Projekt nemá žiadne odmeny </p>
+                        <p> <%= t('project.norewards') %> </p>
                         <% end %>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="col-md-3">
                     <div class="right-inner">
                         <div class="row">
-                            <h1 style="color:white">Detaily</h1>
+                            <h1 style="color:white"><%= t('project.details') %></h1>
                             <br />
                         </div>
                     	<div class="row">
@@ -102,21 +102,21 @@
                         <div class="row pie-progress-charts">
                         <div class="inner-pchart col-md-3">
                             <div class="circle" id="circle-1"></div>
-                            <h3 class="circle-title" >Splnených</h3>
+                            <h3 class="circle-title" ><%= t('project.completed') %></h3>
                             
                         </div>
                         </div>
                         <h3 style="margin-left:25px"><%= projectCollectedMoney(@project.id) %> <i class="fa fa-eur"></i></h3>
                         <p style="margin-left:25px">z <%= @project.amount %> <i class="fa fa-eur"></i></p>
                         <br />
-                        <h3 style="margin-left:25px; margin-top:-25px;"><%= daysToEnd(@project.id) %> dní</h3>
-                        <p style="margin-left:25px">do konca</p>
+                        <h3 style="margin-left:25px; margin-top:-25px;"><%= daysToEnd(@project.id) %> <%= t('datetime.prompts.days') %></h3>
+                        <p style="margin-left:25px"><%= t('project.totheend') %></p>
                         <br />
                         <h3 style="margin-left:25px; margin-top:-25px;"><%= countSupporters(@project.id) %></h3>
-                        <p style="margin-left:25px">prispievateľov</p>
+                        <p style="margin-left:25px"><%= t('project.countsup') %></p>
                         <% if @project.enddate > Time.now %>
                         <!--<%= link_to " Podpor projekt", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block fa fa-eur" %>-->
-                        <%= link_to selectreward_path, :class=>"btn-u btn-block" do %><i class="fa fa-eur"></i>  Podpor projekt <% end %>
+                        <%= link_to selectreward_path, :class=>"btn-u btn-block" do %><i class="fa fa-eur"></i>  <%= t('project.support') %> <% end %>
                         <% end %>
                         <br />
                         </div>
@@ -133,14 +133,14 @@
                             <span>Autor: <%= @project.user.name %></span>
 
                             <p class="color-green"><span class="hex"><%=raw %(#{link_to(@project.user.personalweb, url_with_protocol(@project.user.personalweb), :target => '_blank')}) %></span></p>
-                           <p><span class="hex"><%= countUserProjects(@project.user_id) %> projektov</span></p>
+                           <p><span class="hex"><%= countUserProjects(@project.user_id) %> <%= t('project.projects') %></span></p>
                         </div>
                          </div>
                         <div class="row">
                         <hr>
 
                         <ul class="list-unstyled save-job">
-                            <li><i class="fa fa-eye"></i> <a href="/listup/<%= @project.user.id %>">Pozri autorove dalsie projekty</a></li>
+                            <li><i class="fa fa-eye"></i> <a href="/listup/<%= @project.user.id %>"><%= t('project.lookother') %></a></li>
                             
                         </ul>
 

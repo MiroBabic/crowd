@@ -151,7 +151,7 @@
                             
                        
                         <div class="overflow-h">
-                            <span>Autor: <%= @project.user.name %></span>
+                            <span><%= t('project.author') %>: <%= @project.user.name %></span>
 
                             <p class="color-green"><span class="hex"><%=raw %(#{link_to(@project.user.personalweb, url_with_protocol(@project.user.personalweb), :target => '_blank')}) %></span></p>
                            <p><span class="hex"><%= countUserProjects(@project.user_id) %> <%= t('project.projectcountinfo') %></span></p>

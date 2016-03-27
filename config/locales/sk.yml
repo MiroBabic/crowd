@@ -341,7 +341,7 @@ sk:
     selfiles: "Vyber súbory"
     addfiles: "Pridaj"
     value: "hodnota"
-    norwards: "Projekt nemá žiadne odmeny"
+    norewards: "Projekt nemá žiadne odmeny"
     projectwait: "Projekt čaká na schválenie"
     from: "Od"
     edit: "Uprav/Doplň projekt"
@@ -352,7 +352,22 @@ sk:
     submitmsg: "Je tento projekt kompletne vyplnený aby ho mohol administrátor schváliť?"
     details: "Detaily"
     projectcountinfo: "projektov"
-
+    supporters: "Prispievatelia"
+    anonym: "Anonym"
+    donated: "Prispel"
+    completed: "Splnených"
+    totheend: "do konca"
+    countsup: "prispievateľov"
+    support: "Podpor projekt"
+    projects: "projektov"
+    lookother: "Pozri autorove ďalšie projekty"
+    active: "Aktívne projekty"
+    working: "Rozpracované projekty"
+    finished: "Ukončené projekty"
+    noproject: "Nemáš žiaden vytvorený projekt"
+    funded: "SPLNENÝCH"
+    pledged: "ZÍSKANÝCH"
+    daystogo: "DO KONCA"
 
 
 
