@@ -56,19 +56,19 @@
                                         
                                     </li>
                                     <li style="float:right;width: 33%;text-align:center;">
-                                        <strong><%= daysToEnd(p.id) %> dní</strong>
+                                        <strong><%= daysToEnd(p.id) %> <%= t('datetime.prompts.days') %></strong>
                                         
                                     </li>
                                 </ul>
                                <ul class="list-inline blog-info-v2 margin10minus">
                                    <li style=" width: 33%; text-align:center">
-                                        <span style="font-size:10px">SPLNENÝCH</span>
+                                        <span style="font-size:10px"><%= t('project.funded') %></span>
                                     </li>
                                     <li style = "width: 30%;text-align:center">
-                                        <span style="font-size:10px">ZÍSKANÝCH</span>
+                                        <span style="font-size:10px"><%= t('project.pledged') %></span>
                                     </li>
                                    <li style="float:right;width: 33%;text-align:center;">
-                                        <span style="font-size:10px">DO KONCA</span>
+                                        <span style="font-size:10px"><%= t('project.daystogo') %></span>
                                     </li>
                                 </ul>
                                   
@@ -87,8 +87,8 @@
 $('annotation').readmore({
   speed: 75,
   collapsedHeight: 60,
-  moreLink: '<a href="#">Ukáž viac</a>',
+  moreLink: '<a href="#"><%= t("project.show") %></a>',
   embedCSS: true,
-  lessLink: '<a href="#">Schovaj</a>'
+  lessLink: '<a href="#"><%= t("project.hide") %></a>'
 });
 </script>

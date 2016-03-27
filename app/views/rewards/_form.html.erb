@@ -16,37 +16,37 @@
   </div>
 
 <div class="col-md-6" style="height:450px;">
-  <h2>Odmeny za príspevok</h2>
+  <h2><%= t('rewards.title') %></h2>
 </br>
 <dd>
      <section>
          <label class="input">
-              <%= f.text_field :name, :placeholder=>'Názov odmeny' %>
-              <b class="tooltip tooltip-bottom-right">Urči názov tejto odmeny </b>
+              <%= f.text_field :name, :placeholder=>t('rewards.name') %>
+              <b class="tooltip tooltip-bottom-right"><%= t('rewards.selectnamemsg') %> </b>
         </label>
         </section>
    </dd>
    <dd>
      <section>
          <label class="input">
-              <%= f.text_field :about, :placeholder=>'Čo odmena obsahuje' %>
-              <b class="tooltip tooltip-bottom-right">Čo dostane prispievateľ za investovanú sumu? </b>
+              <%= f.text_field :about, :placeholder=>t('rewards.about') %>
+              <b class="tooltip tooltip-bottom-right"><%= t('rewards.contentmsg') %> </b>
         </label>
         </section>
    </dd>
   <dd>
      <section>
          <label class="input">
-              <%= f.number_field :amount, :placeholder=>'Hodnota odmeny' %>
-              <b class="tooltip tooltip-bottom-right">Koľko je nutné investovať za túto odmenu? </b>
+              <%= f.number_field :amount, :placeholder=>t('rewards.amount') %>
+              <b class="tooltip tooltip-bottom-right"><%= t('rewards.amountmsg') %> </b>
         </label>
         </section>
    </dd> 
    <%= f.hidden_field :project_id, :value => params[:project_id] %>
   
   <div class="actions">
-    <%= f.submit "Vytvor odmenu", :class=> 'btn-u' %>
-    <%= link_to "Späť",:back, :class=> 'btn-u btn-u-red' %>
+    <%= f.submit t('rewards.create'), :class=> 'btn-u' %>
+    <%= link_to t('basic.back'),:back, :class=> 'btn-u btn-u-red' %>
   </div>
 <% end %>
 </div>

@@ -277,6 +277,7 @@ en:
     pwdrecover: "Forgot your password? Put your email address and you'll receive instructions how to reset your password"
     reset: "Password reset"
     backtologin: "Back to log-in"
+    signupsuccess: "Your account was successfuly created. Please confirm your registration on link sent to your registration email"
   slider:
     starthere: "START HERE"
     slide3-1: "THIS PROJECT"
@@ -393,3 +394,18 @@ en:
     daystogo: "DAYS TO GO"
     show: "Show"
     hide: "Hide"
+    authorprojects: "Projects by author"
+    suctitle: "Successful campaigns"
+  rewards:
+    title: "Rewards for supporters"
+    selectnamemsg: "Choose name of this reward"
+    contentmsg: "What will supporter recieve for this reward?"
+    name: "Reward name"
+    about: "What reward contains"
+    amount: "Value"
+    amountmsg: "How much to invest for this reward?"
+    create: "Create reward"
+  search:
+    notfound: "Not found, try again"
+    placeholder: "What are you looking for? (search in name and content of projects)"
+    search: "Search"

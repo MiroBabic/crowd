@@ -49,19 +49,19 @@
                                         
                                     </li>
                                     <li style="float:right;width: 33%;text-align:center;">
-                                        <strong><%= daysToEnd(p.id) %> dní</strong>
+                                        <strong><%= daysToEnd(p.id) %> <%= t('datetime.prompts.days') %></strong>
                                         
                                     </li>
                                 </ul>
                                <ul class="list-inline blog-info-v2 margin10minus">
-                                   <li style=" width: 33%; text-align:center">
-                                        <span style="font-size:10px">SPLNENÝCH</span>
+                                  <li style=" width: 33%; text-align:center">
+                                        <span style="font-size:10px"><%= t('project.funded') %></span>
                                     </li>
                                     <li style = "width: 30%;text-align:center">
-                                        <span style="font-size:10px">ZÍSKANÝCH</span>
+                                        <span style="font-size:10px"><%= t('project.pledged') %></span>
                                     </li>
                                    <li style="float:right;width: 33%;text-align:center;">
-                                        <span style="font-size:10px">DO KONCA</span>
+                                        <span style="font-size:10px"><%= t('project.daystogo') %></span>
                                     </li>
                                 </ul>
                                   
@@ -81,12 +81,12 @@
            <div class="search-block-v2">
         <div class="container">
             <div class="col-md-6 col-md-offset-3">
-                <h2>Nenájdené, skús znova</h2>
+                <h2><%= t('search.notfound') %></h2>
                 
                   <form method="get" action="/search" class="button_to">
                     <span class="input-group-btn">
-                    <input type="text" id="q" name="q" class="form-control" placeholder="Zadaj hľadaný text (vyhľadáva sa v názve aj popise projektov)">
-                    <center><button class="btn-u" type="submit" >Hľadaj <i class="fa fa-search"></i></button></center>
+                    <input type="text" id="q" name="q" class="form-control" placeholder="<%= t('search.placeholder') %>">
+                    <center><button class="btn-u" type="submit" ><%= t('search.search') %> <i class="fa fa-search"></i></button></center>
                     </span>
                   </form>
                 
@@ -99,8 +99,8 @@
 $('annotation').readmore({
   speed: 75,
   collapsedHeight: 60,
-  moreLink: '<a href="#">Ukáž viac</a>',
+  moreLink: '<a href="#"><%= t("project.show") %></a>',
   embedCSS: true,
-  lessLink: '<a href="#">Schovaj</a>'
+  lessLink: '<a href="#"><%= t("project.hide") %></a>'
 });
 </script>

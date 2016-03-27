@@ -254,6 +254,7 @@ sk:
     pwdrecover: "Zabudol si heslo? Vyplň svoju emailovú adresu a o chvíľku obdržíš email s ďalšími inštrukciami."
     reset: "Reset hesla"
     backtologin: "Späť na prihlásenie"
+    signupsuccess: "Tvoj účet bol úspešne vytvorený. Prosím potvrď tvoju registráciu kliknutím na link, ktorý ti prišiel na email zadaný pri registrácii"
   slider:
     starthere: "ZAČNI TU"
     slide3-1: "TENTO PROJEKT"
@@ -370,6 +371,24 @@ sk:
     daystogo: "DO KONCA"
     show: "Ukáž viac"
     hide: "Schovaj"
+    authorprojects: "Projekty autora"
+    suctitle: "Úspešne ukončené kampane"
+  rewards:
+    title: "Odmeny za príspevok"
+    selectnamemsg: "Urči názov tejto odmeny"
+    contentmsg: "Čo dostane prispievateľ za investovanú sumu?"
+    name: "Názov odmeny"
+    about: "Čo odmena obsahuje"
+    amount: "Hodnota odmeny"
+    amountmsg: "Koľko je nutné investovať za túto odmenu?"
+    create: "Vytvor odmenu"
+  search:
+    notfound: "Nenájdené, skús znova"
+    placeholder: "Zadaj hľadaný text (vyhľadáva sa v názve aj popise projektov)"
+    search: "Hľadaj"
+  
+
+
 
 
 

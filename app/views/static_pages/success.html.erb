@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <div class="row">
        <div class="headline">
-	<h2>Úspešne ukončené kampane</h2>
+	<h2><%= t('project.suctitle') %></h2>
 </div>
      <div class="profile-body">
       <!-- first -->
@@ -24,7 +24,7 @@
                                 <h4><strong><a class="color-dark" href="/showproject/<%= p.id %>"><%= p.name %></a></strong></h4>
                               </div>
                                 <ul class="list-unstyled list-inline blog-info-v2">
-                                    <li>Autor: <a class="color-green" href="#"><%= p.user.name %></a></li><br>
+                                    <li><%= t('project.author') %>: <a class="color-green" href="#"><%= p.user.name %></a></li><br>
                                     
                                 </ul>
                                 <annotation>
@@ -51,19 +51,19 @@
                                         
                                     </li>
                                     <li style="float:right;width: 33%;text-align:center;">
-                                        <strong><%= daysToEnd(p.id) %> dní</strong>
+                                        <strong><%= daysToEnd(p.id) %> <%= t('datetime.prompts.days') %></strong>
                                         
                                     </li>
                                 </ul>
                                <ul class="list-inline blog-info-v2 margin10minus">
                                    <li style=" width: 33%; text-align:center">
-                                        <span style="font-size:10px">SPLNENÝCH</span>
+                                        <span style="font-size:10px"><%= t('project.funded') %></span>
                                     </li>
                                     <li style = "width: 30%;text-align:center">
-                                        <span style="font-size:10px">ZÍSKANÝCH</span>
+                                        <span style="font-size:10px"><%= t('project.pledged') %></span>
                                     </li>
                                    <li style="float:right;width: 33%;text-align:center;">
-                                        <span style="font-size:10px">DO KONCA</span>
+                                        <span style="font-size:10px"><%= t('project.daystogo') %></span>
                                     </li>
                                 </ul>
                                   
