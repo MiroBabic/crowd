@@ -18,7 +18,7 @@
       <% end %>
       <br />
       <% if @user.picture.url(:thumb).present? %>
-      <div class="btn-u btn-u-red btn-block" onclick="deleteimage();"><i class="fa fa-trash-o"></i> Zmaž Obrázok</div>
+      <div class="btn-u btn-u-red btn-block" onclick="deleteimage();"><i class="fa fa-trash-o"></i> <%= t('user.delpic') %></div>
       <% end %>
       </br></br>
               <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
@@ -34,79 +34,79 @@
       <div class="profile-body margin-bottom-20">
          <div class="tab-v1">
           <ul class="nav nav-justified nav-tabs">
-              <li class="active"><a data-toggle="tab" href="#profile">Profil</a></li>
-              <li><a data-toggle="tab" href="#passwordTab">Zmena Hesla</a></li>
-              <li><a data-toggle="tab" href="#profilePicTab">Zmena Profilovej fotky</a></li>
+              <li class="active"><a data-toggle="tab" href="#profile"><%= t('user.profile') %></a></li>
+              <li><a data-toggle="tab" href="#passwordTab"><%= t('user.changepass') %></a></li>
+              <li><a data-toggle="tab" href="#profilePicTab"><%= t('user.changepic') %></a></li>
           </ul>
           <div class="tab-content">
                 <div id="profile" class="profile-edit tab-pane fade in active">
-                  <h2 class="heading-md">Údaje o užívateľovi</h2>
-                                <p>Ak projekt za príspevok ponúka odmenu, na adresu ktorú tu uvediete bude odoslaná.</p>
+                  <h2 class="heading-md"><%= t('user.userinfo') %></h2>
+                                <p><%= t('user.userinfomsg') %></p>
                                 <br>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name),  html: {:class => "sky-form", id: "profile_#{resource.email}_edit", namespace: "profile_#{resource.email}", method: :put }) do |f| %>
  
     
-<dt>Meno </dt>
+<dt><%= t('user.name') %> </dt>
     <dd>
      <section>
         <label class="input">
         <i class="icon-append fa fa-user"></i>
-        <%= f.text_field :name, :placeholder=>'Meno užívateľa', :value=> current_user.name, html: {id: "profile_#{resource.email}_name"} %>
-        <b class="tooltip tooltip-bottom-right">Toto meno bude použité v prípade zaslania odmeny </b>
+        <%= f.text_field :name, :placeholder=>t('user.name'), :value=> current_user.name, html: {id: "profile_#{resource.email}_name"} %>
+        <b class="tooltip tooltip-bottom-right"><%= t('user.namemsg') %> </b>
         </label>
     </section>
     </dd>
-<dt>Ulica </dt>
+<dt><%= t('user.street') %> </dt>
     <dd>
      <section>
         <label class="input">
         <i class="icon-append fa fa-home"></i>
-        <%= f.text_field :street, :placeholder=>'Ulica', :value=> current_user.street,html: {id: "profile_#{resource.email}_street"} %>
-        <b class="tooltip tooltip-bottom-right">Na túto adresu bude zaslaná prípadná odmena </b>
+        <%= f.text_field :street, :placeholder=>t('user.street'), :value=> current_user.street,html: {id: "profile_#{resource.email}_street"} %>
+        <b class="tooltip tooltip-bottom-right"><%= t('user.addressmsg') %> </b>
         </label>
     </section>
     </dd>
-<dt>Mesto </dt>
+<dt><%= t('user.city') %> </dt>
     <dd>
      <section>
         <label class="input">
         <i class="icon-append fa fa-map"></i>
-        <%= f.text_field :city, :placeholder=>'Mesto', :value=> current_user.city, html: {id: "profile_#{resource.email}_city"} %>
-        <b class="tooltip tooltip-bottom-right">Na túto adresu bude zaslaná prípadná odmena </b>
+        <%= f.text_field :city, :placeholder=>t('user.city'), :value=> current_user.city, html: {id: "profile_#{resource.email}_city"} %>
+        <b class="tooltip tooltip-bottom-right"><%= t('user.addressmsg') %> </b>
         </label>
     </section>
     </dd>
-  <dt>PSČ </dt>
+  <dt><%= t('user.zip') %> </dt>
     <dd>
      <section>
         <label class="input">
         <i class="icon-append fa fa-map"></i>
-        <%= f.text_field :zip, :placeholder=>'PSČ', :value=> current_user.zip, html: {id: "profile_#{resource.email}_zip"} %>
-        <b class="tooltip tooltip-bottom-right">Na túto adresu bude zaslaná prípadná odmena </b>
+        <%= f.text_field :zip, :placeholder=>t('user.zip'), :value=> current_user.zip, html: {id: "profile_#{resource.email}_zip"} %>
+        <b class="tooltip tooltip-bottom-right"><%= t('user.addressmsg') %> </b>
         </label>
     </section>
     </dd>
-    <dt>Krajina </dt>
+    <dt><%= t('user.country') %> </dt>
     <dd>
      <section>
         <label class="input">
         <i class="icon-append fa fa-map"></i>
-        <%= f.text_field :country, :placeholder=>'Krajina', :value=> current_user.country, html: {id: "profile_#{resource.email}_zip"} %>
-        <b class="tooltip tooltip-bottom-right">Na túto adresu bude zaslaná prípadná odmena </b>
+        <%= f.text_field :country, :placeholder=>t('user.country'), :value=> current_user.country, html: {id: "profile_#{resource.email}_zip"} %>
+        <b class="tooltip tooltip-bottom-right"><%= t('user.addressmsg') %> </b>
         </label>
     </section>
     </dd>
-  <dt>Telefón </dt>
+  <dt><%= t('user.phone') %> </dt>
     <dd>
      <section>
         <label class="input">
         <i class="icon-append fa fa-mobile"></i>
-        <%= f.text_field :phone, :placeholder=>'Telefón', :value=> current_user.phone, html: {id: "profile_#{resource.email}_phone"} %>
-        <b class="tooltip tooltip-bottom-right">Pre rýchlu komunikáciu od správcu v prípade potreby </b>
+        <%= f.text_field :phone, :placeholder=>t('user.phone'), :value=> current_user.phone, html: {id: "profile_#{resource.email}_phone"} %>
+        <b class="tooltip tooltip-bottom-right"><%= t('user.phonemsg') %> </b>
         </label>
     </section>
     </dd>
-  <dt>Alternatívny email </dt>
+  <!--<dt>Alternatívny email </dt>
     <dd>
      <section>
         <label class="input">
@@ -115,60 +115,60 @@
         <b class="tooltip tooltip-bottom-right">Zmeňte ak chcete byt kontaktovaný na iný email, než ste použili pri registrácii </b>
         </label>
     </section>
-    </dd>
-  <dt>FB Profil </dt>
+    </dd>-->
+  <dt><%= t('user.fbprofile') %> </dt>
     <dd>
      <section>
         <label class="input">
         <i class="icon-append fa fa-facebook"></i>
-        <%= f.text_field :fbprofile, :placeholder=>'Facebook profil', :value=> current_user.fbprofile, html: {id: "profile_#{resource.email}_fb"} %>
-        <b class="tooltip tooltip-bottom-right">Facebook profil </b>
+        <%= f.text_field :fbprofile, :placeholder=>t('user.fbprofile'), :value=> current_user.fbprofile, html: {id: "profile_#{resource.email}_fb"} %>
+        <b class="tooltip tooltip-bottom-right"><%= t('user.fbprofile') %> </b>
         </label>
     </section>
     </dd>
-  <dt>Google+ Profil </dt>
+  <dt><%= t('user.gplusprofile') %> </dt>
     <dd>
      <section>
         <label class="input">
         <i class="icon-append fa fa-google-plus"></i>
-        <%= f.text_field :gplusprofile, :placeholder=>'Google+ profil', :value=> current_user.gplusprofile, html: {id: "profile_#{resource.email}_gplus"} %>
-        <b class="tooltip tooltip-bottom-right">Google+ profil </b>
+        <%= f.text_field :gplusprofile, :placeholder=>t('user.gplusprofile'), :value=> current_user.gplusprofile, html: {id: "profile_#{resource.email}_gplus"} %>
+        <b class="tooltip tooltip-bottom-right"><%= t('user.gplusprofile') %> </b>
         </label>
     </section>
     </dd>
-  <dt>Twitter Profil </dt>
+  <dt><%= t('user.twitterprofile') %> </dt>
     <dd>
      <section>
         <label class="input">
         <i class="icon-append fa fa-twitter"></i>
-        <%= f.text_field :twitterprofile, :placeholder=>'Twitter profil', :value=> current_user.twitterprofile,html: {id: "profile_#{resource.email}_twitter"} %>
-        <b class="tooltip tooltip-bottom-right">Twitter profil </b>
+        <%= f.text_field :twitterprofile, :placeholder=>t('user.twitterprofile'), :value=> current_user.twitterprofile,html: {id: "profile_#{resource.email}_twitter"} %>
+        <b class="tooltip tooltip-bottom-right"><%= t('user.twitterprofile') %> </b>
         </label>
     </section>
     </dd>
-  <dt>Môj web </dt>
+  <dt><%= t('user.myweb') %> </dt>
     <dd>
      <section>
         <label class="input">
         <i class="icon-append fa fa-link"></i>
-        <%= f.text_field :personalweb, :placeholder=>'Môj web', :value=> current_user.personalweb, html: {id: "profile_#{resource.email}_web"} %>
-        <b class="tooltip tooltip-bottom-right">Môj web </b>
+        <%= f.text_field :personalweb, :placeholder=>t('user.myweb'), :value=> current_user.personalweb, html: {id: "profile_#{resource.email}_web"} %>
+        <b class="tooltip tooltip-bottom-right"><%= t('user.myweb') %> </b>
         </label>
     </section>
     </dd>
-  <dt>O mne </dt>
+  <dt><%= t('user.aboutme') %> </dt>
     <dd>
      <section>
         <label class="textarea">
-        <%= f.text_area :aboutme, :placeholder=>'O mne', :value=> current_user.aboutme,html: {id: "profile_#{resource.email}_aboutme"} %>
-        <b class="tooltip tooltip-bottom-right">O mne </b>
+        <%= f.text_area :aboutme, :placeholder=>t('user.aboutme'), :value=> current_user.aboutme,html: {id: "profile_#{resource.email}_aboutme"} %>
+        <b class="tooltip tooltip-bottom-right"><%= t('user.aboutme') %></b>
         </label>
     </section>
     </dd>
    </br>
  
   <div class="actions">
-    <%= f.submit "Ulož zmeny", :class=> 'btn-u' %>
+    <%= f.submit t('basic.savechanges'), :class=> 'btn-u' %>
   </div>
 <% end %>                             
                                 
