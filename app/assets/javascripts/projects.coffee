@@ -12,7 +12,7 @@ $(document).ready ->
   return
 
 jQuery -> 
-	$('form').validate(
+	$('#new_project').validate(
 		 lang: 'sk'
 		 rules:
 		 	'project[amount]': min: 1
