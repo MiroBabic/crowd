@@ -4,12 +4,12 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name),html: { method: :post, :class=>'reg-page'}) do |f| %>
   <%= devise_error_messages! %>
 <div class="reg-header">
-                        <h2>Zaregistruj sa</h2>
+                        <h2><%= t('user.register') %></h2>
                     </div>
 
   <div class="input-group margin-bottom-20">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <%= f.email_field :email, autofocus: true, :class=>'form-control', :placeholder=>'Prihlasovací email' %>
+                        <%= f.email_field :email, autofocus: true, :class=>'form-control', :placeholder=> t('user.logemail') %>
                         </div>
 
 
@@ -18,19 +18,19 @@
     
    
     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        <%= f.password_field :password, autocomplete: "off",:class=>'form-control', :placeholder=>'Heslo -minimálne 8 znakov' %>
+                        <%= f.password_field :password, autocomplete: "off",:class=>'form-control', :placeholder=>t('user.pass') %>
                     </div>
 
   <div class="input-group margin-bottom-20">
     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-    <%= f.password_field :password_confirmation, autocomplete: "off", :class=>'form-control',  :placeholder=>'Potvrď heslo'  %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class=>'form-control',  :placeholder=>t('user.confirmpass')  %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Vytvor účet", :class=>"btn btn-u" %>
+    <%= f.submit t('user.createacc'), :class=>"btn btn-u" %>
   </div>
   <hr>
-  <h4>Alebo sa zaregistruj cez sociálne siete</h4>
+  <h4><%= t('user.soclogin') %></h4>
   <p class="social-login">
   <span class="social-login-facebook"><%= link_to user_omniauth_authorize_path(:facebook) do %><i class="fa fa-facebook"></i> Facebook<% end %></span>
                         <span class="social-login-google"><%= link_to user_omniauth_authorize_path(:google_oauth2) do %><i class="fa fa-google"></i> Google<% end %></span>

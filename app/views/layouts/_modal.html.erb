@@ -52,7 +52,7 @@
                        <p class="fieldset">
                         <%= f.label :name, t('modal.passwd'), :class => 'image-replace cd-password' %>
                            <% if @minimum_password_length %>
-                            <em>(<%= @minimum_password_length %> znakov minimálne)</em>
+                            <em>(<%= @minimum_password_length %> <%= t('modal.minchar') %>)</em>
                             <% end %><br />
                         <%= f.password_field :password, autocomplete: "off", :class => 'full-width has-padding has-border', :placeholder => t('modal.passwd') %>
                     </p>

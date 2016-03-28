@@ -176,54 +176,52 @@
                 </div>
                  <div id="passwordTab" class="profile-edit tab-pane fade">
 
-                  <h2 class="heading-md">Bezpečnostné nastavenia </h2>
-                        <p>Zmeň heslo</p>
+                  <h2 class="heading-md"><%= t('user.securitysettings') %></h2>
+                        <p><%= t('user.chngpass') %></p>
                         <br>
                         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:class => "sky-form", method: :put }) do |f2| %>
                         <%= devise_error_messages! %>
                     
                     <dl class="dl-horizontal">
-                                      <dt>Registračný Email </dt>
+                                      <dt><%= t('user.logemail') %> </dt>
                                         <dd>
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-envelope"></i>
-                                                    <%= f2.email_field :email, autofocus: true, :placeholder=>'Emailová adresa' %>
+                                                    <%= f2.email_field :email, autofocus: true, :placeholder=>t('user.logemail') %>
                                                     <!--<input type="email" placeholder="Email address" name="email">-->
-                                                    <b class="tooltip tooltip-bottom-right">Potrebný ako prihlasovacie meno </b>
+                                                    <b class="tooltip tooltip-bottom-right"> <%= t('user.logemailmsg') %> </b>
                                                 </label>
                                             </section>
                                         </dd>
-                                         <dt>Aktuálne heslo</dt>
+                                         <dt><%= t('user.oldpass') %></dt>
                                         <dd>
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <%= f2.password_field :current_password, autocomplete: "off",:placeholder => 'Aktuálne heslo'  %>
-                                                   <!-- <input type="password" name="passwordConfirm" placeholder="Potvrď heslo">-->
-                                                    <b class="tooltip tooltip-bottom-right">Nezabudni svoje heslo</b>
-                                                </label>
+                                                    <%= f2.password_field :current_password, autocomplete: "off",:placeholder => t('user.oldpass')  %>
+                                                   </label>
                                             </section>
                                         </dd>
-                                        <dt>Nové heslo</dt>
+                                        <dt><%= t('user.newpass') %></dt>
                                         <dd>
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <%= f2.password_field :password, autocomplete: "off", :placeholder => 'Nové heslo'  %>
+                                                    <%= f2.password_field :password, autocomplete: "off", :placeholder => t('user.newpass')  %>
                                                    <!--<input type="password" id="password" name="password" placeholder="Heslo">-->
-                                                    <b class="tooltip tooltip-bottom-right">Nezabudni svoje heslo</b>
+                                                    <b class="tooltip tooltip-bottom-right"><%= t('user.passmgs') %> </b>
                                                 </label>
                                             </section>
                                         </dd>
-                                        <dt>Potvrď heslo</dt>
+                                        <dt><%= t('modal.pwdconfirm') %></dt>
                                         <dd>
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <%= f2.password_field :password_confirmation, autocomplete: "off",:placeholder => 'Potvrď Heslo'  %>
+                                                    <%= f2.password_field :password_confirmation, autocomplete: "off",:placeholder => t('modal.pwdconfirm') %>
                                                    <!-- <input type="password" name="passwordConfirm" placeholder="Potvrď heslo">-->
-                                                    <b class="tooltip tooltip-bottom-right">Nezabudni svoje heslo</b>
+                                                    <b class="tooltip tooltip-bottom-right"><%= t('user.passmgs') %></b>
                                                 </label>
                                             </section>
                                         </dd>
@@ -233,20 +231,18 @@
 </br>
  
   <div class="actions">
-    <%= f2.submit "Ulož zmeny", :class=> 'btn-u' %>
+    <%= f2.submit t('basic.savechanges'), :class=> 'btn-u' %>
   </div>
 <% end %>
 </br>
 <hr class="devider devider-db"></hr>
-<h3 class="heading-md">Zrušenie účtu</h3>
+<h3 class="heading-md"><%= t('user.delacc') %></h3>
 
-<%= button_to "Naozaj chcem zrušiť účet", registration_path(resource_name), data: { confirm: "Si si istý? Všetky údaje budú zmazané bez možnosti obnovy." },:class=>'btn-u btn-u-red', method: :delete %>
-
-<!--<%= link_to "Back", :back %>-->
+<%= button_to t('user.buttondelacc'), registration_path(resource_name), data: { confirm: t('user.delaccmsg') },:class=>'btn-u btn-u-red', method: :delete %>
 
               </div>
                <div id="profilePicTab" class="profile-edit tab-pane fade">
-                <div class ="alert alert-danger fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>Profilová fotka musí mať rozmery aspoň 400x400 aby ju bolo možné vložiť. </div>
+                <div class ="alert alert-danger fade in alert-dismissable"><button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button><%= t('user.profilepicmgs') %> </div>
                  <div id="image-cropper" align="center">
                             
                              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put) do |f| %>
@@ -257,9 +253,9 @@
                           <input type="range" class="cropit-image-zoom-input " />
                           <%= f.file_field :picture, accept: "image/jpeg, image/jpg, image/gif, image/png", :class=> "cropit-image-input hidden" %> 
                       
-                         <div class="btn-u btn-u-yellow" id="uploadTrigger"><i class="fa fa-upload"></i> Vyber Obrázok</div>
+                         <div class="btn-u btn-u-yellow" id="uploadTrigger"><i class="fa fa-upload"></i> <%= t('user.selectimg') %></div>
                          <%= button_tag :class=>'btn-u', :onclick=>"getimage()",:type => 'button' do %>
-                         <i class="fa fa-check"></i>  Potvrď <% end %>
+                         <i class="fa fa-check"></i>  <%= t('project.confirmimg') %> <% end %>
                             <% end %>
                         
                       
@@ -345,7 +341,7 @@
 
       function deleteimage(){
 
-      var c = confirm("Naozaj chceš zmazať svoju profilovú fotku?");
+      var c = confirm("<%= t('user.imgdelmgs') %>");
       if (c) {
         var fd = new FormData();
         fd.append('id', <%= @user.id %>);
@@ -359,7 +355,7 @@
                     cache: false                   
                         })
                     .done(function (msg) {
-                    alert("Obrázok bol zmazaný" );
+                    alert("<%= t('user.imgdelconf') %>" );
                     location.reload();
                      });
                   }
