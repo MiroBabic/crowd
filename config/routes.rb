@@ -42,9 +42,9 @@ end
     post '/deluserpic' => 'users/registrations#deluserpic', :as => 'deluserpic'
   end
  
-
+ 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/callbacks", :registrations => "users/registrations" }
-
+ 
 
   
 

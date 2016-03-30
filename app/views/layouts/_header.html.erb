@@ -99,7 +99,7 @@
                         <i class="search fa fa-search search-btn" style="background: #2F3236; color: #fff;" ></i>
                         <div class="search-open" style=" z-index:9999">
                             <div class="input-group animated fadeInDown">
-                               <%= form_tag({controller: "static_pages", action: "search"}, method: "get", class: "button_to") do %>
+                               <%= form_tag(search_path, method: "get", class: "button_to") do %>
                                 <span class="input-group-btn">
                                 <input id="q" name="q" type="text" class="form-control" placeholder="Hľadaj">
                                 <button class="btn-u" type="submit"><i class="fa fa-search"></i></button>

@@ -12,7 +12,7 @@ var ParallaxSlider = function () {
 			    // increment the background position 
 			    // (parallax effect) when sliding
 			     
-			    autoplay    : false,
+			    autoplay    : true,
 			    // slideshow on / off
 			     
 			    interval    : 4000  

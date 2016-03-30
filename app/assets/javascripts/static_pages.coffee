@@ -13,7 +13,7 @@ ParallaxSlider = do ->
     $('#da-slider').cslider
       current: 0
       bgincrement: 50
-      autoplay: false
+      autoplay: true
       interval: 4000
     return
- } 
+ }
