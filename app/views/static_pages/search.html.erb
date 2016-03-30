@@ -83,12 +83,18 @@
             <div class="col-md-6 col-md-offset-3">
                 <h2><%= t('search.notfound') %></h2>
                 
-                  <form method="get" action="/search" class="button_to">
+                  <%= form_tag({controller: "static_pages", action: "search"}, method: "get", class: "button_to") do %>
                     <span class="input-group-btn">
                     <input type="text" id="q" name="q" class="form-control" placeholder="<%= t('search.placeholder') %>">
                     <center><button class="btn-u" type="submit" ><%= t('search.search') %> <i class="fa fa-search"></i></button></center>
                     </span>
-                  </form>
+                  <% end %>
+
+                  
+                      
+                  
+
+                  
                 
             </div>
         </div>

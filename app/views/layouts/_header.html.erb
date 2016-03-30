@@ -4,9 +4,11 @@
     <div class="container">
 
        
-            <a class="logo" href="/">
+            <!--<a class="logo" href="/">-->
+            <%= link_to root_path, class: "logo" do %>
                 <img src="<%= asset_path( 'logo.png' ) %>" alt="Logo" height="75">
-            </a>
+            <!--</a>-->
+            <% end %>
         
         <div class="topbar" >
            <ul class="loginbar pull-right">
@@ -97,12 +99,12 @@
                         <i class="search fa fa-search search-btn" style="background: #2F3236; color: #fff;" ></i>
                         <div class="search-open" style=" z-index:9999">
                             <div class="input-group animated fadeInDown">
-                               <form method="get" action="/search" class="button_to">
+                               <%= form_tag({controller: "static_pages", action: "search"}, method: "get", class: "button_to") do %>
                                 <span class="input-group-btn">
                                 <input id="q" name="q" type="text" class="form-control" placeholder="Hľadaj">
                                 <button class="btn-u" type="submit"><i class="fa fa-search"></i></button>
                                 </span>
-                            </form>
+                            <% end %>
                             </div>
                         </div>
                     </li>
