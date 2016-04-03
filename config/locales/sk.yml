@@ -412,6 +412,7 @@ sk:
     hide: "Schovaj"
     authorprojects: "Projekty autora"
     suctitle: "Úspešne ukončené kampane"
+    terms: "Prečítal som podmienky a súhlasím s nimi"
   rewards:
     title: "Odmeny za príspevok"
     selectnamemsg: "Urči názov tejto odmeny"

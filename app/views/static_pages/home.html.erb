@@ -18,7 +18,19 @@
                         
                         
                     
+                    <% if I18n.locale == :sk && p.category.name.present? %>
                     <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% elsif I18n.locale == :en && p.category.name_en.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_en %></div>
+                    <% elsif I18n.locale == :cs && p.category.name_cs.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_cs %></div>
+                    <% elsif I18n.locale == :pl && p.category.name_pl.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_pl %></div>
+                    <% elsif I18n.locale == :hu && p.category.name_hu.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_hu %></div>
+                    <% else %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% end %>
               </div>
      	<div class="projects">    <div id="header" style="height:50px;">
                                 <h4><strong>
@@ -100,7 +112,20 @@
                         
                         
                     
+                    <% if I18n.locale == :sk && p.category.name.present? %>
                     <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% elsif I18n.locale == :en && p.category.name_en.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_en %></div>
+                    <% elsif I18n.locale == :cs && p.category.name_cs.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_cs %></div>
+                    <% elsif I18n.locale == :pl && p.category.name_pl.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_pl %></div>
+                    <% elsif I18n.locale == :hu && p.category.name_hu.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_hu %></div>
+                    <% else %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% end %>
+                    
               </div>
      	<div class="projects">
                                 <div id="header" style="height:50px;">
@@ -176,8 +201,19 @@
                         <% end %>
                         
                         
-                    
+                   <% if I18n.locale == :sk && p.category.name.present? %>
                     <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% elsif I18n.locale == :en && p.category.name_en.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_en %></div>
+                    <% elsif I18n.locale == :cs && p.category.name_cs.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_cs %></div>
+                    <% elsif I18n.locale == :pl && p.category.name_pl.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_pl %></div>
+                    <% elsif I18n.locale == :hu && p.category.name_hu.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_hu %></div>
+                    <% else %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% end %>
               </div>
       <div class="projects">
                                 <div id="header" style="height:50px;">

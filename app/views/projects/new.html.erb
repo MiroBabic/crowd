@@ -23,7 +23,19 @@
               <b class="tooltip tooltip-bottom-right"><%= t('project.choosenamemsg') %> </b>
         </label>
     <label class="select">
-  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: t('project.choosecategory')},{:class => 'form-control m-b', :required => true} %>
+      <% if I18n.locale == :en && category_locale_exists('en') == 0 %>
+  <%= f.select :category_id, Category.all.collect { |p| [ p.name_en, p.id ] }, {include_blank: t('project.choosecategory')}, {:class => 'form-control m-b', :required => true} %>
+   <% elsif I18n.locale == :cs && category_locale_exists('cs')== 0 %>
+   <%= f.select :category_id, Category.all.collect { |p| [ p.name_cs, p.id ] }, {include_blank: t('project.choosecategory')}, {:class => 'form-control m-b', :required => true} %>
+   <% elsif I18n.locale == :pl && category_locale_exists('pl') == 0 %>
+   <%= f.select :category_id, Category.all.collect { |p| [ p.name_pl, p.id ] }, {include_blank: t('project.choosecategory')},{:class => 'form-control m-b', :required => true} %>
+   <% elsif I18n.locale == :hu && category_locale_exists('hu') == 0 %>
+   <%= f.select :category_id, Category.all.collect { |p| [ p.name_hu, p.id ] }, {include_blank: t('project.choosecategory')}, {:class => 'form-control m-b', :required => true} %>
+   <% else %>
+  <%= f.select :category_id, Category.all.collect { |p| [ p.name, p.id ] }, {include_blank: t('project.choosecategory')}, {:class => 'form-control m-b', :required => true} %>
+  <% end %>
+
+  
       </label>
 
       <label class="input">

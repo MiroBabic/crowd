@@ -17,3 +17,12 @@ ParallaxSlider = do ->
       interval: 4000
     return
  }
+
+jQuery ->
+  $('#checkbox_newproject').click ->
+    if $(this).is(':checked')
+      $('#newprojectbutton').removeAttr 'disabled', 'disabled'
+    else
+      $('#newprojectbutton').attr 'disabled'
+    return
+  return

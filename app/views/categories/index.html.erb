@@ -10,7 +10,11 @@
     <table id="category" class="table table-striped table-bordered table-hover dataTable">
   <thead>
     <tr>
-      <th>Názov</th>
+      <th>Názov SK</th>
+      <th>Názov EN</th>
+      <th>Názov CS</th>
+      <th>Názov PL</th>
+      <th>Názov HU</th>
       <th></th>
       <th></th>
     </tr>
@@ -20,6 +24,10 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
+        <td><%= category.name_en %></td>
+        <td><%= category.name_cs %></td>
+        <td><%= category.name_pl %></td>
+        <td><%= category.name_hu %></td>
         <td><%= link_to 'Edituj', edit_category_path(category) %></td>
         <td><%= link_to 'Zmaž', category, method: :delete, data: { confirm: 'Skontroloval si, či k tejto kategórii nepatrí nejaký projekt?' } %></td>
       </tr>

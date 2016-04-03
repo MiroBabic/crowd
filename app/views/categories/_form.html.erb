@@ -16,11 +16,43 @@
     <dd>
      <section>
          <label class="input">
-              <%= f.text_field :name, :placeholder=>'Názov kategórie' %>
+              <%= f.text_field :name, :placeholder=>'SK Názov kategórie' %>
           </label>
         </section>
    </dd>
   
+     <dd>
+     <section>
+         <label class="input">
+              <%= f.text_field :name_en, :placeholder=>'EN Názov kategórie' %>
+          </label>
+        </section>
+   </dd>
+
+    <dd>
+     <section>
+         <label class="input">
+              <%= f.text_field :name_cs, :placeholder=>'CS Názov kategórie' %>
+          </label>
+        </section>
+   </dd>
+
+       <dd>
+     <section>
+         <label class="input">
+              <%= f.text_field :name_pl, :placeholder=>'PL Názov kategórie' %>
+          </label>
+        </section>
+   </dd>
+
+  <dd>
+     <section>
+         <label class="input">
+              <%= f.text_field :name_hu, :placeholder=>'HU Názov kategórie' %>
+          </label>
+        </section>
+   </dd>
+
    <div class="actions">
     <%= f.submit "Vytvor/uprav kategóriu", :class=> 'btn-u' %>
     <%= link_to "Späť", @category, :class=> 'btn-u btn-u-red' %>

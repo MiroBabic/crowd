@@ -1,5 +1,10 @@
     	<div class="row-fluid privacy">
-            <h1>Tu budu vseobecne podmienky o projekte </h1> 
+            <!--<h1>Tu budu vseobecne podmienky o projekte </h1> -->
+
+            <!-- <center><%= link_to image_tag("zaloz_projekt.png",size: "250x60", :alt => "SupportYourDream Logo", :class => "logo"), new_project_path %></center>-->
+            <center><%= button_to new_project_path, {:class=>"btn-u btn-xl", :style=>"text-decoration:none", :id=>"newprojectbutton", :disabled=>true }  do %><i class="fa fa-play-circle"></i>  <%= t('project.startnew') %><% end %></center><br />
+
+            <center ><input type="checkbox" id="checkbox_newproject" style="inline"> <%= t('project.terms') %> </input></center> <br />
             
             
             <p>Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.</p>
@@ -27,7 +32,6 @@
             	<li>Mentum eleifend enim a feugiat distinctio lor</li>
             </ul>
             <p><em>Praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non ipsum dolor sit amet. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non ipsum dolor sit amet. Ut non libero magna. Sed et quam lacus usce condimentum eleifend enim a feugiat <a href="#">consectetur adipiscing elit</a>.</em></p><br />
-
-             <center><%= link_to image_tag("zaloz_projekt.png",size: "250x60", :alt => "SupportYourDream Logo", :class => "logo"), new_project_path %></center>
+             
         </div><!--/row-fluid-->
     

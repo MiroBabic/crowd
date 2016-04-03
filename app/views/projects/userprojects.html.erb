@@ -41,10 +41,22 @@
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
                         <% end %>
                     
-                    <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
+                    <% if I18n.locale == :sk && p.category.name.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% elsif I18n.locale == :en && p.category.name_en.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_en %></div>
+                    <% elsif I18n.locale == :cs && p.category.name_cs.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_cs %></div>
+                    <% elsif I18n.locale == :pl && p.category.name_pl.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_pl %></div>
+                    <% elsif I18n.locale == :hu && p.category.name_hu.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_hu %></div>
+                    <% else %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% end %>
               </div>
             <div class="projects">
-                                <h2><a class="color-dark" href="/projects/<%= p.id %>"><%= p.name %></a></h2>
+                                <h2><%= link_to p.name, project_path(p.id), :class=>"color-dark" %></h2>
                                 <ul class="list-unstyled list-inline blog-info-v2">
                                     <li><%= t('project.author') %>: <a class="color-green" href="#"><%= p.user.name %></a></li>
                                     <li><i class="fa fa-clock-o"></i> <%= p.created_at %></li>
@@ -105,10 +117,22 @@
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
                         <% end %>
                     
-                    <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
+                    <% if I18n.locale == :sk && p.category.name.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% elsif I18n.locale == :en && p.category.name_en.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_en %></div>
+                    <% elsif I18n.locale == :cs && p.category.name_cs.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_cs %></div>
+                    <% elsif I18n.locale == :pl && p.category.name_pl.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_pl %></div>
+                    <% elsif I18n.locale == :hu && p.category.name_hu.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_hu %></div>
+                    <% else %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% end %>
               </div>
             <div class="projects">
-                                <h2><a class="color-dark" href="/projects/<%= p.id %>"><%= p.name %></a></h2>
+                                <h2><%= link_to p.name, project_path(p.id), :class=>"color-dark" %></h2>
                                 <ul class="list-unstyled list-inline blog-info-v2">
                                     <li><%= t('project.author') %>: <a class="color-green" href="#"><%= p.user.name %></a></li>
                                     <li><i class="fa fa-clock-o"></i> <%= p.created_at %></li>
@@ -139,10 +163,22 @@
                         <img src="<%= asset_path( 'img_empty.jpg' ) %>" alt="">
                         <% end %>
                     
-                    <div class="easy-block-v1-badge rgba-red"><%= p.category.name %></div>
+                    <% if I18n.locale == :sk && p.category.name.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% elsif I18n.locale == :en && p.category.name_en.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_en %></div>
+                    <% elsif I18n.locale == :cs && p.category.name_cs.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_cs %></div>
+                    <% elsif I18n.locale == :pl && p.category.name_pl.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_pl %></div>
+                    <% elsif I18n.locale == :hu && p.category.name_hu.present? %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name_hu %></div>
+                    <% else %>
+                    <div class="easy-block-v1-badge rgba-green"><%= p.category.name %></div>
+                    <% end %>
               </div>
             <div class="projects">
-                                <h2><a class="color-dark" href="/projects/<%= p.id %>"><%= p.name %></a></h2>
+                                <h2><%= link_to p.name, project_path(p.id), :class=>"color-dark" %></h2>
                                 <ul class="list-unstyled list-inline blog-info-v2">
                                     <li><%= t('project.author') %>: <a class="color-green" href="#"><%= p.user.name %></a></li>
                                     <li><i class="fa fa-clock-o"></i> <%= p.created_at %></li>
