@@ -426,8 +426,13 @@ sk:
     notfound: "Nenájdené, skús znova"
     placeholder: "Zadaj hľadaný text (vyhľadáva sa v názve aj popise projektov)"
     search: "Hľadaj"
-  
-
+  projectterms:
+    part1: "Ochranu súkromia berie Poskytovateľ veľmi vážne a venuje jej maximálnu pozornosť. Poskytovateľ za žiadnych okolností neobchoduje s osobnými údajmi. Používateľov a projektové zámery neposkytuje tretím stranám."  
+    part2: "Používaním Webstránky a Platformy, Používateľ potvrdzuje, že s týmito podmienkami ochrany súkromia súhlasí a bude sa nimi riadiť. Tieto podmienky ochrany súkromia sa týkajú spracovávania a ochrany osobných údajov Používateľov cez túto Webstránku a Platformu Poskytovateľom a spriaznenou advokátskou kanceláriou, ktorá pre Poskytovateľa a Používateľov poskytuje právny servis. Podmienky ochrany súkromia sa nevzťahujú na webstránky tretích strán, na ktoré odkazujú linky z Webstránky a Platformy. Podmienky ochrany súkromia sa spravujú zákonom č. 122/2013 Z.z. o ochrane osobných údajov v znení podľa neskorších predpisov."
+    part3: "Poskytovateľovi sú poskytnuté osobné údaje Používateľov a Darcov, za účelom vytvorenia používateľských účtov a poskytnutia Služby Support your dream. Poskytovateľ zbiera a spracováva osobné údaje Používateľov. Rozsah obdržaných, zbieraných, spracovávaných a tretím stranám poskytnutých osobných údajov je: meno, priezvisko, adresa trvalého pobytu, e-mailová adresa, rodné číslo, dátum narodenia a číslo mobilného zariadenia. Tieto osobné údaje budú zaznamenané u Poskytovateľa za účelom poskytnutia podpory Službou Support your dream."
+    part4: "Poskytnuté osobné údaje Darcu budú poskytnuté tretím osobám a príjemcom, a to výlučne nasledovným subjektom:"
+    part5: "Obdarovanému a to až potom, ako sa konkrétny Darca zaviaže investovať do Projektu."
+    part6: "Advokátskej kancelárii, ktorá zabezpečuje v mene Poskytovateľa a Používateľa právny servis a s tým spojené právne úkony."
 
 
 
