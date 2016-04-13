@@ -2,7 +2,7 @@
             <!--<h1>Tu budu vseobecne podmienky o projekte </h1> -->
 
             <!-- <center><%= link_to image_tag("zaloz_projekt.png",size: "250x60", :alt => "SupportYourDream Logo", :class => "logo"), new_project_path %></center>-->
-            <center><%= button_to new_project_path, {:class=>"btn-u btn-xl", :style=>"text-decoration:none", :id=>"newprojectbutton", :disabled=>true }  do %><i class="fa fa-play-circle"></i>  <%= t('project.startnew') %><% end %></center><br />
+            <center><%= button_to new_project_path, {:method=>"get",:class=>"btn-u btn-xl", :style=>"text-decoration:none", :id=>"newprojectbutton", :disabled=>true }  do %><i class="fa fa-play-circle"></i>  <%= t('project.startnew') %><% end %></center><br />
 
             <center ><input type="checkbox" id="checkbox_newproject" style="inline"> <%= t('project.terms') %> </input></center> <br />
             
