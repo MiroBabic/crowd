@@ -19,26 +19,31 @@ $font-family-sans-serif: "Open Sans", Arial, sans-serif !default;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "style";
-@import "header-default";
-@import "footer-default";
+@import "style.css";
+@import "header-default.css";
+@import "footer-default.css";
 @import "font-awesome";
-@import "theme-colors/green";
-@import "login-signup-modal/style";
-@import "page_project";
-@import "sky-form";
-@import "custom-sky-form";
+@import "app.css";
+@import "ie8.css";
+@import "blocks.css.scss";
+@import "plugins.css";
+@import "one-theme.css";
+
+@import "login-signup-modal/style.css";
+@import "page_project.css";
+@import "sky-form.css";
+@import "custom-sky-form.css";
 @import "pricing.css";
 @import "profile.css";
 //Datatables css
 @import "dataTables/datatables.min.css";
 //slider css
-@import "parallax-slider/parallax-slider.css";
+@import "parallax-slider.css.scss";
 //wysihtml5
 @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 //fancybox
 @import "fancybox.css";
 //custom
-@import "custom";
+@import "custom.css.scss";
 @import "about.css";
 

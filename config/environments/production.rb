@@ -24,12 +24,18 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
+
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  #config.assets.compile = false
+  config.assets.compile = true
+  
+  config.assets.precompile += %w(vendor/assets/javascripts/*)
+  config.assets.precompile += %w(vendor/assets/stylesheets/*)
+
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -77,5 +83,20 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.action_mailer.default_url_options = { host: 'mirorailsubuntu.cloudapp.net' }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.smtp_settings = {
+address: 'smtp.websupport.sk',
+port: 25,
+domain: 'supportyourdream.com',
+authentication: 'plain',
+enable_starttls_auto: true,
+user_name: ENV['EMAIL'],
+password: ENV['PASSWORD']
+}
    config.serve_static_files = true
 end

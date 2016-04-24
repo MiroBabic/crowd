@@ -1,0 +1,1 @@
+(function(){jQuery(function(){return $("#payments").DataTable({order:[0,"asc"],language:{url:"datatables_slovak.json"}})}),jQuery(function(){return $("#userpayments").DataTable({order:[0,"asc"],language:{url:"datatables_slovak.json"}})})}).call(this);

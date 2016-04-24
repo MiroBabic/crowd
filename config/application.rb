@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 
 
 
+
 module Crowdportal
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -24,6 +25,8 @@ module Crowdportal
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'stylesheets', 'custom')
+    
     config.active_record.raise_in_transactional_callbacks = true
 
     config.i18n.available_locales =[:en, :sk, :cs, :hu, :pl]
