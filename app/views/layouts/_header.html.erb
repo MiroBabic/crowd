@@ -28,7 +28,7 @@
                     <li class="topbar-devider"></li>
                     <% if user_signed_in? %>
                     <li class="hoverSelector">
-                        <a>
+                        <a style="color:#f1c40f">
                             <%= t('menu.languages.profile') %>
                         </a>
                     <ul class="languages hoverSelectorBlock">
@@ -38,7 +38,7 @@
                     </ul>
                     </li>
                     <% else %>
-                    <li class="cd-log_reg"><a class="cd-signin" href="#">Login</a></li>
+                    <li class="cd-log_reg"><a class="cd-signin" href="#">Login/Registration</a></li>
                     <% end %>
                 </ul>
     </div>
@@ -66,6 +66,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <%= content_tag(:li, link_to( t('menu.main.new'), project_terms_url)) %>
+                            <%= content_tag(:li, link_to( t('menu.main.all'), listall_path(4))) %>
                             <%= content_tag(:li, link_to( t('menu.main.success'), success_url)) %>
                             <!-- One Page -->
                                                        

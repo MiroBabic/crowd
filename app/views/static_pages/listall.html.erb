@@ -7,6 +7,8 @@
   <h2><%= t('homepage.best') %> </h2>
   <% elsif @param == '3' %>
   <h2><%= t('homepage.trending') %> </h2>
+  <% elsif @param == '4' %>
+  <h2><%= t('menu.main.all') %> </h2>
   <% else %>
   <% controller.redirect_to root_path %>
   <% end %>

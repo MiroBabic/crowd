@@ -294,6 +294,7 @@ en:
       about: "About Us"
       new: "New project"
       success: "Successful campaigns"
+      all: "All projects"
   homepage:
     new: "New projects"
     best: "Best projects"

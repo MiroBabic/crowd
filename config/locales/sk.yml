@@ -271,6 +271,7 @@ sk:
       about: "O nás"
       new: "Nový projekt"
       success: "Úspešne ukončené kampane"
+      all: "Všetky projekty"
   homepage:
     new: "Najnovšie projekty"
     best: "Najúspešnejšie projekty"

@@ -197,7 +197,7 @@ body.header-fixed-space-default {
 
 /*Navbar Toggle*/
 .header .navbar-toggle {
-	border-color: #5fb611;
+	border-color: #00A885;
 }
 
 @media (max-width: 991px) {
@@ -220,7 +220,7 @@ body.header-fixed-space-default {
 }
 
 .header .navbar-toggle:hover {
-	background: #5fb611 !important;
+	background: #00A885 !important;
 	position: relative;
 }
 
@@ -654,7 +654,7 @@ body.header-fixed-space-default {
 	}
 
 	.header .nav > li > .search:hover {
-		background: #5fb611;
+		background: #00A885;
 		color: #fff !important;
 	}
 

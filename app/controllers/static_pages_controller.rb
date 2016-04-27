@@ -35,6 +35,9 @@ class StaticPagesController < ApplicationController
     elsif @param == '3'
       @projects = Project.joins(:payments).where('enabled = true and enddate > ? and payments.confirmed = true', Time.now)
       .order('payments.created_at DESC')
+    elsif @param == '4'
+      @projects = @projects=Project.where('enabled = true and enddate > ?', Time.now )
+      @projects.order(name: :asc)
     end
   end
 
