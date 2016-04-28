@@ -6018,6 +6018,7 @@ blockquote.hero.hero-default small {
 
 .progress-u .progress-bar {
 	box-shadow: none;
+  background: #f1c40f;
 }
 
 /*progress-bar (sizes)*/
@@ -6043,6 +6044,10 @@ blockquote.hero.hero-default small {
 /*progress-bar (colors)*/
 .progress {
 	background: #e5e5e5;
+}
+
+.progress-bar {
+  background: #f1c40f;
 }
 
 .progress-bar-u {

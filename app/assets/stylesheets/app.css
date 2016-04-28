@@ -3214,10 +3214,12 @@ blockquote.hero.hero-default small {
 ------------------------------------*/
 .progress {
   border-radius: 0;
+  background: #f1c40f;
 }
 
 .progress-u {
   box-shadow: none;
+  background: #f1c40f;
 }
 
 .progress-u .progress-bar {
