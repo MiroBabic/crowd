@@ -28,7 +28,7 @@
                     </p>
                        <p class="fieldset"><%= f.check_box :remember_me %>
                       <%= f.label :name, t('modal.remember') %></p>
-                      <%= f.submit t('modal.login'), :class=>'full-width has-padding', :style=>"background-color:rgba(38,184,157,0.8)" %>
+                      <%= f.submit t('modal.login'), :class=>'full-width has-padding', :style=>"background-color:#f1c40f" %>
                     <p class="cd-form-bottom-message">  <%= link_to t('modal.pwdforgot'), new_password_path(:user) %><p>
                     <% end %>
                    
@@ -64,7 +64,7 @@
                         <input type="checkbox" id="accept-terms">
                         <label for="accept-terms">Súhlasím s <a href="page_terms.html">podmienkami</a></label>
                     </p>-->
-                      <%= f.submit t('modal.register'), :class=>'full-width has-padding', :style=>"background-color:rgba(38,184,157,0.8)" %>
+                      <%= f.submit t('modal.register'), :class=>'full-width has-padding', :style=>"background-color:#f1c40f" %>
                     
                     <% end %>
                     

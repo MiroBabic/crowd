@@ -132,7 +132,7 @@
                         <%= link_to project_path(@project), :class=>"btn-u btn-block", method: :delete, :data => {:confirm => t('project.confirmdelpr')} do %><i class="fa fa-trash-o"></i>  <%= t('project.projectdel') %><% end %>
                         <%= link_to new_reward_path(:project_id=>@project.id), :class=>"btn-u btn-block" do %><i class="fa fa-gift"></i>  <%= t('project.addrewards') %><% end %>
                         <div style="margin-top:50px">
-                        <%= link_to submitproject_path(@project), :class=>"btn-u btn-block", :data => {:confirm =>t('project.submitmsg')}, method: :post do %><i class="fa fa-check"></i> <%= t('project.sendtoadmin') %> <% end %>
+                        <%= link_to submitproject_path(@project), :class=>"btn-u btn-block btn-u-yellow", :data => {:confirm =>t('project.submitmsg')}, method: :post do %><i class="fa fa-check"></i> <%= t('project.sendtoadmin') %> <% end %>
                     </div>
                         <% end %>
                         </hr>

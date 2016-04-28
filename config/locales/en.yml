@@ -376,7 +376,7 @@ en:
     choosetargetamount: "Choose target amount"
     howlong: "How long should run your project?"
     aboutproject: "About project"
-    annotplaceholder: "Few words about your project which will be shown on main page"
+    annotplaceholder: "Few words about your project which will be shown on main page. MAX 250 characters!!"
     detailsplaceholder: "Details about project"
     collectedamount: "Collected amount"
     countsupporters: "Number of supporters"

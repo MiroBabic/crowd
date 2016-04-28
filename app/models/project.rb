@@ -14,5 +14,7 @@ class Project < ActiveRecord::Base
 
    include ActiveModel::Validations
   	validates_presence_of :name, :category_id, :amount
+    validates_length_of :annotation, maximum: 250
+     validates_numericality_of :amount, :greater_than => 0
 
 end

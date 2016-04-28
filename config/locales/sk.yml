@@ -353,7 +353,7 @@ sk:
     choosetargetamount: "Zvoľ cieľovú sumu"
     howlong: "Ako dlho má bežať kampaň?"
     aboutproject: "O projekte"
-    annotplaceholder: "Pár slov o projekte, ktoré sa zobrazia pri náhľade projektu na hlavnej stránke"
+    annotplaceholder: "Pár slov o projekte, ktoré sa zobrazia pri náhľade projektu na hlavnej stránke. MAX 250 znakov!!"
     detailsplaceholder: "Detailný popis projektu"
     collectedamount: "Vyzbieraná suma"
     countsupporters: "Počet prispievateľov"

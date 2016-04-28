@@ -106,8 +106,8 @@
                             
                         </div>
                         </div>
-                        <h3 style="margin-left:25px"><%= projectCollectedMoney(@project.id) %> <i class="fa fa-eur"></i></h3>
-                        <p style="margin-left:25px; margin-top: -10px;">z <%= @project.amount %> <i class="fa fa-eur"></i></p>
+                        <h3 style="margin-left:25px"><%= projectCollectedMoney(@project.id) %> €</h3>
+                        <p style="margin-left:25px; margin-top: -10px;">z <%= @project.amount %> €</p>
                         <br />
                         <h3 style="margin-left:25px; margin-top:-15px;"><%= daysToEnd(@project.id) %> <%= t('datetime.prompts.days') %></h3>
                         <p style="margin-left:25px;margin-top: -10px;"><%= t('project.totheend') %></p>
@@ -116,7 +116,7 @@
                         <p style="margin-left:25px; margin-top: -10px;"><%= t('project.countsup') %></p>
                         <% if @project.enddate > Time.now %>
                         <!--<%= link_to " Podpor projekt", new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block fa fa-eur" %>-->
-                        <%= link_to selectreward_path, :class=>"btn-u btn-block" do %><i class="fa fa-eur"></i>  <%= t('project.support') %> <% end %>
+                        <%= link_to selectreward_path, :class=>"btn-u btn-u-yellow btn-block btn-capitalize" do %><%= t('project.support') %> <% end %>
                         <% end %>
                         <br />
                         </div>
@@ -130,7 +130,7 @@
                             
                        
                         <div class="overflow-h">
-                            <span>Autor: <%= @project.user.name %></span>
+                            <span><%= @project.user.name %></span>
 
                             <p class="color-green"><span class="hex"><%=raw %(#{link_to(@project.user.personalweb, url_with_protocol(@project.user.personalweb), :target => '_blank')}) %></span></p>
                            <p><span class="hex"><%= countUserProjects(@project.user_id) %> <%= t('project.projects') %></span></p>

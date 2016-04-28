@@ -61,7 +61,7 @@
     <h2> <%= t('project.aboutproject') %> </h2>
   </br>
    <label class="textarea">
-    <%= f.text_area :annotation, rows: '3', :placeholder=> t('project.annotplaceholder') %>
+    <%= f.text_area :annotation, :maxlength => 250, rows: '3', :placeholder=> t('project.annotplaceholder') %>
   </label>
   <label class="textarea">
     <%= f.text_area :about, rows: '20', :placeholder=> t('project.detailsplaceholder') , :class=>'wysihtml5' %>
@@ -77,3 +77,5 @@
 <% end %>
 </div>
 </div>
+
+
