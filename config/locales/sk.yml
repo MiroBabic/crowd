@@ -227,7 +227,7 @@ sk:
     namemsg: "Toto meno bude použité v prípade zaslania odmeny"
     street: "Ulica"
     addressmsg: "Na túto adresu bude zaslaná prípadná odmena"
-    city: "Krajina"
+    city: "Mesto"
     phone: "Telefón"
     phonemsg: "Pre rýchlu komunikáciu od správcu v prípade potreby"
     fbprofile: "Facebook profil"

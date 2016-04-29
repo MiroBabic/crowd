@@ -1,0 +1,44 @@
+<div class="container content profile">
+  <div class="row">
+    <div class="col-md-3 md-margin-bottom-40">
+      <% if @user.picture.url(:thumb).present? %>
+      <center><%= image_tag @user.picture.url(:thumb).to_s %></center>
+      <% else %>
+      <center><img class="img-responsive profile-img margin-bottom-20" src="<%= asset_path( 'user-avatar.png' ) %>" alt=""></center>
+      <% end %>
+      </br></br>
+              <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+                  
+                    <%= link_to userprofile_path, :class=>"list-group-item" do %><i class="fa fa-user"></i><%= t('user.profile') %> <%end%>
+                    <%= link_to edit_user_registration_path, :class=>"list-group-item" do %><i class="fa fa-cog"></i><%= t('user.profilesettings')%> <%end%>
+                    <%= link_to userprojects_path, :class=>"list-group-item" do %><i class="fa fa-cubes"></i><%= t('user.myprojects') %> <%end%>
+                    <%= link_to userpayments_path, :class=>"list-group-item" do %><i class="fa fa-money"></i><%= t('user.mypayments') %> <%end%>
+                    
+                    
+              </ul>
+    </div>
+    <div class="col-md-9">
+     <div class="profile-body">
+     
+       <div class="headline"><h2><%= t('user.profile') %></h2></div>
+                            <dl class="dl-horizontal">
+                                <dt><%= t('user.name') %></dt>
+                                <dd><%= @user.name %></dd>
+                                <dt><%= t('user.country') %></dt>
+                                <dd><%= @user.country %></dd>
+                                <dt><%= t('user.fbprofile') %></dt>
+                                <dd><%= @user.fbprofile %></dd>
+                                <dt><%= t('user.gplusprofile') %></dt>
+                                <dd><%= @user.gplusprofile %></dd>
+                                <dt><%= t('user.twitterprofile') %></dt>
+                                <dd><%= @user.twitterprofile %></dd>
+                                <dt><%= t('user.myweb') %></dt>
+                                <dd><%= @user.personalweb %></dd>
+                                <dt><%= t('user.aboutme') %></dt>
+                                <dd><%= @user.aboutme %></dd>
+                            </dl>
+     </div>
+
+    </div>
+  </div>
+</div>

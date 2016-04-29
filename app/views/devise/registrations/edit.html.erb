@@ -23,6 +23,7 @@
       </br></br>
               <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
                   
+                    <%= link_to userprofile_path, :class=>"list-group-item" do %><i class="fa fa-user"></i><%= t('user.profile') %> <%end%>
                     <%= link_to edit_user_registration_path, :class=>"list-group-item" do %><i class="fa fa-cog"></i><%= t('user.profilesettings')%> <%end%>
                     <%= link_to userprojects_path, :class=>"list-group-item" do %><i class="fa fa-cubes"></i><%= t('user.myprojects') %> <%end%>
                     <%= link_to userpayments_path, :class=>"list-group-item" do %><i class="fa fa-money"></i><%= t('user.mypayments') %> <%end%>

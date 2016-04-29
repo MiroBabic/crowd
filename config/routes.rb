@@ -69,6 +69,7 @@ scope "(:locale)", locale: /en|sk|cs|hu|pl/ do
   get '/listall/:id' => 'static_pages#listall', :as => 'listall'
   get '/listup/:id' => 'static_pages#listup', :as => 'listup'
   get '/search' => 'static_pages#search', :as => 'search'
+  get '/userprofile' => 'static_pages#userprofile', :as => 'userprofile'
   get '/sign_up_success' => 'static_pages#sign_up_success', :as => 'sign_up_success'
 end
 

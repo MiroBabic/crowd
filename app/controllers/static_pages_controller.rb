@@ -49,5 +49,8 @@ class StaticPagesController < ApplicationController
     @projects=Project.basic_search(params[:q]).where('enabled=true')
   end
 
+  def userprofile
+    @user=current_user
+  end
   
 end

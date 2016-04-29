@@ -250,7 +250,7 @@ en:
     namemsg: "This name will be used for sending reward"
     street: "Street"
     addressmsg: "This address will be used for sending reward"
-    city: "Country"
+    city: "City"
     phone: "Phone"
     phonemsg: "For quick communication with admin if necessary"
     fbprofile: "Facebook profile"
