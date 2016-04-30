@@ -14,7 +14,7 @@ ParallaxSlider = do ->
       current: 0
       bgincrement: 50
       autoplay: true
-      interval: 4000
+      interval: 5000
     return
  }
 

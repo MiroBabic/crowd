@@ -130,9 +130,9 @@
                             
                        
                         <div class="overflow-h">
-                            <span><%= @project.user.name %></span>
+                            <span data-toggle="modal" data-target="#profileModal"><%= @project.user.name %></span>
 
-                            <p class="color-green"><span class="hex"><%=raw %(#{link_to(@project.user.personalweb, url_with_protocol(@project.user.personalweb), :target => '_blank')}) %></span></p>
+                            <!--<p class="color-green"><span class="hex"><%=raw %(#{link_to(@project.user.personalweb, url_with_protocol(@project.user.personalweb), :target => '_blank')}) %></span></p> -->
                            <p><span class="hex"><%= countUserProjects(@project.user_id) %> <%= t('project.projects') %></span></p>
                         </div>
                          </div>
@@ -158,6 +158,36 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                        <h4 id="myModalLabel1" class="modal-title"><%= t('user.profile') %></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                         <dl class="dl-horizontal">
+                                <dt><%= t('user.name') %></dt>
+                                <dd><%= @project.user.name %></dd>
+                                <dt><%= t('user.country') %></dt>
+                                <dd><%= @project.user.country %></dd>
+                                <dt><%= t('user.fbprofile') %></dt>
+                                <dd><%= @project.user.fbprofile %></dd>
+                                <dt><%= t('user.gplusprofile') %></dt>
+                                <dd><%= @project.user.gplusprofile %></dd>
+                                <dt><%= t('user.twitterprofile') %></dt>
+                                <dd><%= @project.user.twitterprofile %></dd>
+                                <dt><%= t('user.myweb') %></dt>
+                                <dd><%= @project.user.personalweb %></dd>
+                                <dt><%= t('user.aboutme') %></dt>
+                                <dd><%= @project.user.aboutme %></dd>
+                            </dl>
+                                    </div>
+                                    
+                                  </div>
+                            </div>
+                        </div>
     <script>
     Circles.create({
                 id:         'circle-1',
