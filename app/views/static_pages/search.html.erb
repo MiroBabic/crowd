@@ -42,8 +42,10 @@
                                 <p><%= p.annotation %></p>
                                 </div>
                                 </annotation>
+                                <% unless p.annotation.nil? %>
                                 <% if p.annotation.length < 90 %>
                                 <div style="height:11px"></div>
+                                <% end %>
                                 <% end %>
                                 <br>
                                 

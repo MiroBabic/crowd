@@ -1,7 +1,7 @@
 <% if @project.rewards.present? %>
  <div class="tag-box tag-box-v1 box-shadow shadow-effect-2" style="padding-bottom: 50px">
     <span class="pull-left"><%= t('payments.selectrw.noreward') %></span>
-      <span class="pull-right"><%= link_to t('payments.selectrw.continue'), new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block" %></span>
+      <span class="pull-right"><%= link_to t('payments.selectrw.continue'), new_payment_path(:project_id=>@project.id), :class=>"btn-u btn-block btn-u-yellow" %></span>
 
 </div>
 
@@ -10,7 +10,7 @@
           <% slice.each do |r| %>
 
  
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6" style="padding:5px">
                 <div class="pricing">
                     <div class="pricing-head"  style="min-height: 50px">
                         <h3><%= r.name %> </h3>
