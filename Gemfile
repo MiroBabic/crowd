@@ -31,6 +31,9 @@ gem 'devise'
 gem 'jquery-turbolinks'
 gem 'will_paginate'
 
+#unicorn server
+gem 'unicorn'
+
 #omniauth for fb,google,twitter login
 gem 'omniauth-oauth2'
 gem 'omniauth-twitter'
