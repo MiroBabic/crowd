@@ -17,11 +17,16 @@
                         <i class="fa fa-globe"></i>
                         <a><%= t('menu.languages.lang') %></a>
                         <ul class="languages hoverSelectorBlock">
-                             <li><%= link_to t('menu.languages.en'), locale: :en %></li>
+                             <!--<li><%= link_to t('menu.languages.en'), locale: :en %></li>
                              <li><%= link_to t('menu.languages.sk'), locale: :sk %></li>
                              <li><%= link_to t('menu.languages.cs'), locale: :cs %></li>
                              <li><%= link_to t('menu.languages.hu'), locale: :hu %></li>
-                             <li><%= link_to t('menu.languages.pl'), locale: :pl %></li>
+                             <li><%= link_to t('menu.languages.pl'), locale: :pl %></li>-->
+                             <li><%= link_to "English", locale: :en %></li>
+                             <li><%= link_to "Slovensky", locale: :sk %></li>
+                             <li><%= link_to "Česky", locale: :cs %></li>
+                             <li><%= link_to "Magyar", locale: :hu %></li>
+                             <li><%= link_to "Polski", locale: :pl %></li>
                             
                         </ul>
                     </li>
