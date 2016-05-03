@@ -1,4 +1,5 @@
 class RewardsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_reward, only: [:show, :edit, :update, :destroy]
 
   # GET /rewards
@@ -59,7 +60,8 @@ class RewardsController < ApplicationController
   def destroy
     @reward.destroy
     respond_to do |format|
-      format.html { redirect_to rewards_url, notice: 'Reward was successfully destroyed.' }
+      #format.html { redirect_to rewards_url, notice: 'Reward was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Reward was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

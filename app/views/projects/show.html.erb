@@ -98,9 +98,10 @@
                         <% @project.rewards.order(:amount).each do |p| %>
                         <div class="people-say margin-bottom-20">
                             <div class="overflow-h">
-                                <span><%= p.name %></span>
+                                <span><%= link_to content_tag(:i,nil,class: 'fa fa-trash-o'),reward_path(p), :method => :delete %>   <%= p.name %></span>
                                 <span class="hex pull-right" style="padding-right:3px"><%= t('project.value') %>: <%= p.amount %> <i class="fa fa-eur"></i></span>
                                 <p><%= p.about %></p>
+                                
                             </div>
                             <hr>
                         </div>

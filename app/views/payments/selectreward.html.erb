@@ -23,7 +23,7 @@
                     <div class="pricing-footer">
                         <p ><%= r.about %></p>
                         <%= link_to  new_payment_path(:project_id=>@project.id, :reward_id=>r.id), :class=>"btn-u btn-u-yellow" do %>
-                        <i class="fa fa-gift"> <%= t('payments.selectrw.continue') %> </i>
+                        <span><i class="fa fa-gift"></i> <%= t('payments.selectrw.continue') %> </span>
                         <% end %>
                   </div>
                 </div>

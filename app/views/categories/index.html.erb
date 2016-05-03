@@ -1,3 +1,4 @@
+<% if current_user.admin? %>
 <div class="row">
 <div class="col-md-3">
 </div>
@@ -38,4 +39,6 @@
 <%= link_to 'Vytvor novú kategóriu', new_category_path, :class=>"btn-u btn-block" %>
 </div>
 </div>
-
+<% else %>
+    <% controller.redirect_to root_path %>
+  <% end %>

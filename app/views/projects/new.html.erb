@@ -23,6 +23,7 @@
               <b class="tooltip tooltip-bottom-right"><%= t('project.choosenamemsg') %> </b>
         </label>
     <label class="select">
+      <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
       <% if I18n.locale == :en && category_locale_exists('en') == 0 %>
   <%= f.select :category_id, Category.all.collect { |p| [ p.name_en, p.id ] }, {include_blank: t('project.choosecategory')}, {:class => 'form-control m-b', :required => true} %>
    <% elsif I18n.locale == :cs && category_locale_exists('cs')== 0 %>

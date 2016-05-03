@@ -21,3 +21,4 @@
 
 #ignore file with email username and pass
 /config/initializers/app_env_vars.rb
+/config/database.yml
