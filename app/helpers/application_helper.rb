@@ -30,4 +30,18 @@ module ApplicationHelper
     end
   end
 
+  def totalamountfromusers
+    Payment.where('confirmed = true').sum(:amount)
+  end
+
+  def totalpayments
+    Payment.where('confirmed = true').count
+  end
+
+  def totalsuccess
+    @projects=Project.select("projects.*").joins(:payments).group("projects.id").where('enabled = true and enddate < ?', Time.now)
+    .having("sum(payments.amount) > projects.amount")
+    @count=@projects.count.count
+
+  end
 end
