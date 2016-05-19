@@ -179,3 +179,12 @@ address {
 	font-size: 22px;
 	font-weight: 400;
 }
+
+.bgsliderlayer {
+    background-image: image_url('bg_pattern.png');
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   }

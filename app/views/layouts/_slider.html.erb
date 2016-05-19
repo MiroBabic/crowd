@@ -1,12 +1,16 @@
  <!--=== Slider ===-->
+ 
   <div class="slider-inner">
+
     <div id="da-slider" class="da-slider">
+      <div class="bgsliderlayer"></div>
       <div class="da-slide ">
         <h2><i >SUPPORT YOUR DREAM</i> <!--<br /> <i >SVOJE SNY</i> <br />--></h2>
-        <p><%= link_to t('slider.starthere'), project_terms_url, :style=>"text-decoration:none; color: #fff; font-size: 30px", :class=>"btn-u btn-u-yellow" %>
+        <p><%= link_to t('slider.starthere'), project_terms_url, :style=>"text-decoration:none; color: #fff; font-size: 30px" %>
            <br /> </p>
-        <div class="da-img"><img  src="<%= asset_path( 'deti.jpg' ) %>" alt="" style="max-width:500px; width:100%; margin-top:-60px"></div>
+        <!--<div class="da-img"><img  src="<%= asset_path( 'deti.jpg' ) %>" alt="" style="max-width:500px; width:100%; margin-top:-60px"></div>-->
       </div>
+
       <div class="da-slide">
         <h2><i ><%= t('slider.slide2-1') %></i> <br /> <i  ><%= t('slider.slide2-2') %></i> <br /> <i >Visegrad Fund</i></h2>
         <!--<p><i>Lorem ipsum dolor amet</i> <br /> <i>tempor incididunt ut</i></p>-->
@@ -30,5 +34,7 @@
         <span class="da-arrows-next"></span>
       </div>
     </div>
+
   </div><!--/slider-->
+
   <!--=== End Slider ===-->
