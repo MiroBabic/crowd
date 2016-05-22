@@ -489,3 +489,7 @@ sk:
     part105gen: "Proti kterým je vedený výkon rozhodnutia (napr. podľa zákona č. 233/1995 Z.z. o súdnych exekútoroch a exekučnej činnosti, zákona č. 563/2009 Z.z. o správe daní)"
     part11gen: "Zadávatelia Služby Support your dream prehlasujú, že sa na nich a na spoločnosti, ktoré zastupujú, nevzťahuje vylúčenie podľa bodu 2.10. a podbodov. Zadávatelia projektov a spoločnosti, ktoré Zadávatelia projektov zastupujú zodpovedajú za škodu, ktorú spôsobia zamlčaním akýchkoľvek skutočností, ktoré by odôvodňovali ich vylúčenie z používania Platformy podľa bodu 2.10. a podbodov, alebo ktoré by znižovali potenciál alebo návratnosť investícií."
     part12gen: "Poskytovateľ si vyhradzuje právo prehodnotiť vylúčenie Zadávateľov projektov podľa bodu 2.10. a podbodov v odôvodnených prípadoch."
+  lista:
+    total: "Dohromady sme už vyzbierali"
+    payments: "Ľudia prispeli už"
+    success: "projektov skončilo úspešne"

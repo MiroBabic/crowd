@@ -1,10 +1,10 @@
 <!--=== Header ===-->
 <% if cookies[:lista] != "yes" %>
-<div id="lista" style="height:30px">
+<!--<div id="lista" style="height:30px">
     <button id="zavrilistu" class="close" aria-hidden="true" type="button">×</button>
-   <h4 style="text-align:center">Dohromady sme už vyzbierali <%= totalamountfromusers %>€ | Ľudia prispeli už <%= totalpayments %>x  |  <%= totalsuccess %> projektov skončilo úspešne </h4>
+   <h4 style="text-align:center"><%= t('lista.total') %> <%= totalamountfromusers %>€ | <%= t('lista.payments') %> <%= totalpayments %>x  |  <%= totalsuccess %> <%= t('lista.success') %> </h4>
    
-</div>
+</div> -->
 <% end %>
 <div class="header" >
     <script>
@@ -126,7 +126,7 @@
                             <div class="input-group animated fadeInDown">
                                <%= form_tag(search_path, method: "get", class: "button_to") do %>
                                 <span class="input-group-btn">
-                                <input id="q" name="q" type="text" class="form-control" placeholder="Hľadaj">
+                                <input id="q" name="q" type="text" class="form-control" placeholder="<%= t('search.search') %>">
                                 <button class="btn-u" type="submit"><i class="fa fa-search"></i></button>
                                 </span>
                             <% end %>
