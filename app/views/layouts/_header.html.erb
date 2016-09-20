@@ -29,7 +29,12 @@
         
         <div class="topbar" >
            <ul class="loginbar pull-right">
-        
+                    <li>
+                      <%= link_to 'https://translate.google.com/translate?hl=en&sl=auto&tl=en&u='+request.original_url, :target => "_blank"  do %>
+                                           Google Translate <i class="fa fa-language x2"></i>
+                                        <% end %>
+                    </li>
+                    <li class="topbar-devider"></li>
                     <li class="hoverSelector">
                         <i class="fa fa-globe"></i>
                         <a><%= t('menu.languages.lang') %></a>
